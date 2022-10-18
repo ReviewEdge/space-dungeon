@@ -12,7 +12,7 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Rigidbody2D _rbody;
+        _rbody = GetComponent<Rigidbody2D>();
     }
 
     void FixedUpdate()
