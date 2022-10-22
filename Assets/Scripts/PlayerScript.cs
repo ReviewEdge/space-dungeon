@@ -2,36 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-<<<<<<< Updated upstream
-[RequireComponent(typeof(Rigidbody2D))]
-public class PlayerScript : MonoBehaviour
-{
-    Rigidbody2D _rbody;
-    public float _speed;
-
-
-=======
 public class PlayerScript : MonoBehaviour
 {
     Rigidbody2D _rbody;
     const float _SPEED = 5;
     public float moveSpeed; //speed var
     public float roll; //roll distance
->>>>>>> Stashed changes
     // Start is called before the first frame update
     void Start()
     {
         _rbody = GetComponent<Rigidbody2D>();
     }
 
-<<<<<<< Updated upstream
-    void FixedUpdate()
-    {
-        float x = _speed * Input.GetAxis("Horizontal");
-        float y = _speed * Input.GetAxis("Vertical");
-
-        _rbody.velocity = new Vector2(x, y);
-=======
     // Update is called once per frame
     void Update()
     {
@@ -68,6 +50,5 @@ public class PlayerScript : MonoBehaviour
             _rbody.velocity = new Vector2(_rbody.velocity.x, (x * moveSpeed) * roll);
             // play roll sprite animation
         }
->>>>>>> Stashed changes
     }
 }
