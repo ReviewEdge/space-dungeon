@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: e309ba63670e5cd48b639a70649fe6b1, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -105,7 +105,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &4657886081473965377
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -134,4 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 204e3f09d565a9d41a093748eecbbc85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 0
+  _isDead: 0
+  _health: 100
+  _speed: 2
+  _player: {fileID: 0}
+  _weaponDrop: {fileID: 21300000, guid: 163c9c29f3fae5f428d743324ed61300, type: 3}
