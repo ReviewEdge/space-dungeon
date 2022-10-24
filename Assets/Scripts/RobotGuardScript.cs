@@ -26,11 +26,11 @@ public class RobotGuardScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _rayGun.ShootRayGun(target.position);
         if (!_isDead)
         {
             Transform target = _player.transform;
             transform.position = Vector2.MoveTowards(transform.position, target.position, _speed * Time.deltaTime);
+            _rayGun.ShootRayGun(target.position);
 
             if (_health <= 0)
             {
@@ -44,4 +44,9 @@ public class RobotGuardScript : MonoBehaviour
         _isDead = true;
         gameObject.GetComponent<SpriteRenderer>().sprite = _weaponDrop;
     }
+
+    public void TakeDamage(int damage) {
+        _health -= damage;
+    }
+
 }

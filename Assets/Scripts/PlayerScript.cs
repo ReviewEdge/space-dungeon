@@ -10,6 +10,7 @@ public class PlayerScript : MonoBehaviour
     const float _SPEED = 5;
     public float moveSpeed; //speed var
     public float roll; //roll distance
+    public int _health;
 
     // Start is called before the first frame update
     void Start()
@@ -56,5 +57,10 @@ public class PlayerScript : MonoBehaviour
             _rbody.velocity = new Vector2(_rbody.velocity.x, (x * moveSpeed) * roll);
             // play roll sprite animation
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        _health -= damage;
     }
 }
