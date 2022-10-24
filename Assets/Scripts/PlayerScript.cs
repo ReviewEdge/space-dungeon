@@ -5,22 +5,29 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     Rigidbody2D _rbody;
+    RayGunScript _rayGun;
+    public Camera _mainCamera;
     const float _SPEED = 5;
     public float moveSpeed; //speed var
     public float roll; //roll distance
+    public int _health;
+
     // Start is called before the first frame update
     void Start()
     {
         _rbody = GetComponent<Rigidbody2D>();
+        _rayGun = GetComponent<RayGunScript>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector3 mouseLocation = _mainCamera.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, -_mainCamera.transform.position.z);
+            _rayGun.ShootRayGun(mouseLocation);
+        }
     }
-
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         MovePlayer();
     }
@@ -50,5 +57,10 @@ public class PlayerScript : MonoBehaviour
             _rbody.velocity = new Vector2(_rbody.velocity.x, (x * moveSpeed) * roll);
             // play roll sprite animation
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        _health -= damage;
     }
 }

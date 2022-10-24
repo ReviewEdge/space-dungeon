@@ -232,6 +232,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 153470707}
   m_CullTransparentMesh: 1
+--- !u!1 &297385464 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5301700170056371205, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
+  m_PrefabInstance: {fileID: 1037446833}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &297385470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297385464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa6bf6233228321478e0a1859ab084b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletPrefab: {fileID: 2146386861331672398, guid: c9fc1c82975dcc74586ee53d3ca749be, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,7 +284,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf774d44b13a8b249afa595826e5815a, type: 3}
   m_Name: 
@@ -570,7 +588,8 @@ GameObject:
   - component: {fileID: 872344633}
   - component: {fileID: 872344632}
   - component: {fileID: 872344631}
-  m_Layer: 0
+  - component: {fileID: 872344634}
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -656,6 +675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 3
+  _mainCamera: {fileID: 519420031}
 --- !u!58 &872344632
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -692,7 +712,20 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0
+--- !u!114 &872344634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872344628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa6bf6233228321478e0a1859ab084b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletPrefab: {fileID: 1475951678033319893, guid: 383de1278aec12b40802707a8813579d, type: 3}
 --- !u!1 &891693248
 GameObject:
   m_ObjectHideFlags: 0
@@ -914,6 +947,10 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 872344628}
+    - target: {fileID: 6752406277774274934, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
 --- !u!1001 &1062077903
