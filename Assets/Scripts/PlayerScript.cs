@@ -1,26 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(CircleCollider2D))]
 public class PlayerScript : MonoBehaviour
 {
     Rigidbody2D _rbody;
+    SpriteRenderer _srender;
     RayGunScript _rayGun;
     LaserSwordScript _laserSword;
     public Camera _mainCamera;
+    public int health = 100;
+    public int lives = 3;
+    public bool _isDead;
     public float _SPEED = 5;
     public float moveSpeed; //speed var
     public float roll; //roll distance
-    public int _health;
     public bool hasRayGun = false;
     public bool hasLaserSword = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         _rbody = GetComponent<Rigidbody2D>();
+        _srender = GetComponent<SpriteRenderer>();
         _rayGun = GetComponent<RayGunScript>();
         _laserSword = GetComponent<LaserSwordScript>();
+
+        _isDead = false;
     }
 
     private void Update()
@@ -40,20 +48,42 @@ public class PlayerScript : MonoBehaviour
                 _rayGun.ShootRayGun(mouseLocation);
             }
         }
+
+        if(health <= 0)
+        {
+            PlayerDeath();
+        }
+
+        while (_isDead)
+        {
+            _srender.enabled = false;
+        }
+
     }
     void FixedUpdate()
     {
         MovePlayer();
     }
 
+    private void PlayerDeath()
+    {
+        _isDead = true;
+
+        //implement some function that waits for a few seconds before player respawns?
+        //Task.Delay(3000);
+
+        lives--;
+        _rbody.position = new Vector2(0, 0);
+        health = 100;
+
+        _isDead = false;
+    }
     private void MovePlayer()
     {
-        //get H and V vars
         float x = _SPEED * Input.GetAxis("Horizontal");
         float y = _SPEED * Input.GetAxis("Vertical");
         _rbody.velocity = new Vector2(x, y);
 
-        //move player
         Vector2 movement = new Vector2(x, y);
         _rbody.velocity = movement * moveSpeed;
 
@@ -73,28 +103,32 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    /*public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag.Equals(TagList.enemyTag))
         {
             //Take some damage from running into Guard?
-            //Or Taking melee damage can be here
         }
-
+    }*/
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
         if (collision.gameObject.tag.Equals(TagList.healthpackTag))
         {
             RestoreHealth(25);
+
+            //destroys Healthpack after it is used
+            Destroy(collision.gameObject);  
         }
     }
     public void TakeDamage(int damage)
     {
-        _health -= damage;
-        print("Oww! My health is now " + _health);
+        health -= damage;
+        print("Oww! My health is now " + health);
     }
 
     public void RestoreHealth(int hitpoints)
     {
-        _health += hitpoints;
-        print("HP Restored; health is now " + _health);
+        health += hitpoints;
+        print("HP Restored; health is now " + health);
     }
 }

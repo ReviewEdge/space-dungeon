@@ -6,6 +6,7 @@ public class GeneralManagerScript : MonoBehaviour
 {
     // Start is called before the first frame update
     public UIManagerScript UIManager;
+    public PlayerScript _player;
 
     int level;
     int score;
@@ -32,7 +33,7 @@ public class GeneralManagerScript : MonoBehaviour
         UIManager.UpdateLevelText(level);
         UIManager.UpdateScoreText(score);
         UIManager.UpdateFreedText(remainingPrisoners, numofPrisoners);
-        UIManager.UpdateHealthText(health);
+        UIManager.UpdateHealthText(_player.health);
         if (magazineAmmo == 0 && remainingAmmo == 0) {
             UIManager.UpdateAmmoText();
         } else {
