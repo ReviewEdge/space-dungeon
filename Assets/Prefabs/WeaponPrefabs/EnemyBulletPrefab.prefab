@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 891421868324112798, guid: 383de1278aec12b40802707a8813579d, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 891421868324112798, guid: 383de1278aec12b40802707a8813579d, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1991539345021478310, guid: 383de1278aec12b40802707a8813579d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -53,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7163304917783524653, guid: 383de1278aec12b40802707a8813579d, type: 3}
       propertyPath: m_Name
-      value: BulletPrefab
+      value: EnemyBulletPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 7163304917783524653, guid: 383de1278aec12b40802707a8813579d, type: 3}
       propertyPath: m_Layer
