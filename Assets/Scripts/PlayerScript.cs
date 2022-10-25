@@ -8,8 +8,7 @@ public class PlayerScript : MonoBehaviour
     RayGunScript _rayGun;
     LaserSwordScript _laserSword;
     public Camera _mainCamera;
-
-    const float _SPEED = 5;
+    public float _SPEED = 5;
     public float moveSpeed; //speed var
     public float roll; //roll distance
     public int _health;
