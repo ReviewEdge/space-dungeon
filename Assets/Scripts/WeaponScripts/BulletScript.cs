@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
-    public int _damage;
+    private int _damage;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,5 +25,9 @@ public class BulletScript : MonoBehaviour
             collision.collider.GetComponent<PlayerScript>().TakeDamage(_damage);
         }
         Destroy(gameObject);
+    }
+
+    public void SetDamage(int damage) {
+        _damage = damage;
     }
 }

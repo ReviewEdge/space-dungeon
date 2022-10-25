@@ -6,6 +6,7 @@ public class PlayerScript : MonoBehaviour
 {
     Rigidbody2D _rbody;
     RayGunScript _rayGun;
+    LaserSwordScript _laserSword;
     public Camera _mainCamera;
     const float _SPEED = 5;
     public float moveSpeed; //speed var
@@ -17,6 +18,7 @@ public class PlayerScript : MonoBehaviour
     {
         _rbody = GetComponent<Rigidbody2D>();
         _rayGun = GetComponent<RayGunScript>();
+        _laserSword = GetComponent<LaserSwordScript>();
     }
 
     private void Update()
@@ -25,6 +27,7 @@ public class PlayerScript : MonoBehaviour
         {
             Vector3 mouseLocation = _mainCamera.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, -_mainCamera.transform.position.z);
             _rayGun.ShootRayGun(mouseLocation);
+            //_laserSword.SwingLaserSword(mouseLocation);
         }
     }
     void FixedUpdate()
@@ -62,5 +65,6 @@ public class PlayerScript : MonoBehaviour
     public void TakeDamage(int damage)
     {
         _health -= damage;
+        print("Oww! My health is now " + _health);
     }
 }
