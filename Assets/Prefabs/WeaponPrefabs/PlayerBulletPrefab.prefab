@@ -9,11 +9,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2687377676186210251, guid: f40e676b2a3553a4baa52c935e28205a, type: 3}
       propertyPath: m_Name
-      value: BulletPrefab
+      value: PlayerBulletPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 2687377676186210251, guid: f40e676b2a3553a4baa52c935e28205a, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367348938122081144, guid: f40e676b2a3553a4baa52c935e28205a, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367348938122081144, guid: f40e676b2a3553a4baa52c935e28205a, type: 3}
+      propertyPath: m_Color.g
+      value: 0.9027058
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367348938122081144, guid: f40e676b2a3553a4baa52c935e28205a, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6737682353941339968, guid: f40e676b2a3553a4baa52c935e28205a, type: 3}
       propertyPath: m_RootOrder

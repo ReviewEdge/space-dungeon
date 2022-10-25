@@ -12,13 +12,14 @@ public class PlayerScript : MonoBehaviour
     RayGunScript _rayGun;
     LaserSwordScript _laserSword;
     public Camera _mainCamera;
-
-    const float _SPEED = 5;
-    public float moveSpeed; 
-    public float roll; 
     public int health = 100;
     public int lives = 3;
     public bool _isDead;
+    public float _SPEED = 5;
+    public float moveSpeed; //speed var
+    public float roll; //roll distance
+    public bool hasRayGun = false;
+    public bool hasLaserSword = false;
 
     void Start()
     {
@@ -32,11 +33,20 @@ public class PlayerScript : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if(hasLaserSword)
         {
-            Vector3 mouseLocation = _mainCamera.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, -_mainCamera.transform.position.z);
-            _rayGun.ShootRayGun(mouseLocation);
-            //_laserSword.SwingLaserSword(mouseLocation);
+            if (Input.GetMouseButtonDown(0))
+            {
+                Vector3 mouseLocation = _mainCamera.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, -_mainCamera.transform.position.z);
+                _laserSword.SwingLaserSword(mouseLocation);
+            }
+        } else if(hasRayGun)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Vector3 mouseLocation = _mainCamera.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, -_mainCamera.transform.position.z);
+                _rayGun.ShootRayGun(mouseLocation);
+            }
         }
 
         if(health <= 0)
