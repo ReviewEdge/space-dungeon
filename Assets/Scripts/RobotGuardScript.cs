@@ -17,6 +17,7 @@ public class RobotGuardScript : MonoBehaviour
     LaserSwordScript _laserSword;
     public GameObject _laserSwordDropPrefab;
     public GameObject _rayGunDropPrefab;
+    [SerializeField] TagList.weaponType weapon;
 
     // Start is called before the first frame update
     void Start()
@@ -34,12 +35,14 @@ public class RobotGuardScript : MonoBehaviour
         Transform target = _player.transform;
         transform.position = Vector2.MoveTowards(transform.position, target.position, _speed * Time.deltaTime);
 
-        if(hasLaserSword)
+        switch (weapon)
         {
-            _laserSword.SwingLaserSword(target.position);
-        } else if(hasRayGun)
-        {
-            _rayGun.ShootRayGun(target.position);
+            case TagList.weaponType.LaserSword:
+                _laserSword.SwingLaserSword(target.position);
+                break;
+            case TagList.weaponType.RayGun:
+                _rayGun.ShootRayGun(target.position);
+                break;
         }
 
         if (_health <= 0)

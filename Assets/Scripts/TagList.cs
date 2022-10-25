@@ -13,7 +13,9 @@ public class TagList
 
     public const string playerBulletLayer = "Player Bullet";
     public const string enemyBulletLayer = "Enemy Bullet";
-    enum weaponType
+
+    //weapons
+    public enum weaponType
     {
         LaserSword,
         RayGun

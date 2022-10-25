@@ -251,6 +251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bulletPrefab: {fileID: 2146386861331672398, guid: c9fc1c82975dcc74586ee53d3ca749be, type: 3}
   damage: 20
+  attackSpeed: 1
 --- !u!114 &297385471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,12 +259,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297385464}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6eb4c434a5d973545ae195bd1a6761bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 100
+  attackSpeed: 1
   _foesLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -522,6 +524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dec770e95484c948b371acf2a66d701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 0}
   levelText: {fileID: 939762294}
   scoreText: {fileID: 891693250}
   freedText: {fileID: 1596188685}
@@ -694,11 +697,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainCamera: {fileID: 519420031}
-  moveSpeed: 1
-  roll: 5
   health: 100
   lives: 3
   _isDead: 0
+  _SPEED: 5
+  moveSpeed: 1
+  roll: 5
+  weapon: 1
 --- !u!58 &872344632
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -750,6 +755,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bulletPrefab: {fileID: 1475951678033319893, guid: 383de1278aec12b40802707a8813579d, type: 3}
   damage: 20
+  attackSpeed: 0.3
 --- !u!114 &872344635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -757,12 +763,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 872344628}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6eb4c434a5d973545ae195bd1a6761bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 100
+  attackSpeed: 0.5
   _foesLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -984,12 +991,24 @@ PrefabInstance:
       value: 2.01
       objectReference: {fileID: 0}
     - target: {fileID: 6752406277774274934, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
+      propertyPath: weapon
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752406277774274934, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
       propertyPath: _player
       value: 
       objectReference: {fileID: 872344628}
     - target: {fileID: 6752406277774274934, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
+      propertyPath: hasRayGun
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752406277774274934, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752406277774274934, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
+      propertyPath: hasLaserSword
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
