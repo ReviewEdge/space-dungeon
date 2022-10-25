@@ -6,6 +6,7 @@ public class RayGunScript : MonoBehaviour
 {
     public BulletScript _bulletPrefab;
     private Transform _entityLocation;
+    public int damage;
     private int _bulletSpeed;
     private float _lastShot;
 
@@ -33,11 +34,12 @@ public class RayGunScript : MonoBehaviour
             return;
         }
 
-        Vector3 desiredVector = (aimingAt + (-_entityLocation.position)).normalized;
+        Vector3 directionalVector = (aimingAt + (-_entityLocation.position)).normalized;
 
         BulletScript bullet = Instantiate(_bulletPrefab, new Vector2(_entityLocation.position.x, _entityLocation.position.y), Quaternion.identity);
-        
-        bullet.GetComponent<Rigidbody2D>().AddForce(desiredVector * _bulletSpeed);
+
+        bullet.SetDamage(damage);
+        bullet.GetComponent<Rigidbody2D>().AddForce(directionalVector * _bulletSpeed);
         _lastShot = Time.time;
     }
 }
