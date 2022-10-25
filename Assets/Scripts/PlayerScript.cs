@@ -95,13 +95,13 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    /*public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag.Equals(TagList.enemyTag))
         {
             //Take some damage from running into Guard?
         }
-    }
+    }*/
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Equals(TagList.healthpackTag))
