@@ -26,6 +26,7 @@ public class PlayerScript : MonoBehaviour
         _rbody = GetComponent<Rigidbody2D>();
         _srender = GetComponent<SpriteRenderer>();
         _rayGun = GetComponent<RayGunScript>();
+        _rayGun.GetComponent<RayGunScript>().coolDownTime = .3f;
         _laserSword = GetComponent<LaserSwordScript>();
 
         _isDead = false;
@@ -120,6 +121,7 @@ public class PlayerScript : MonoBehaviour
             Destroy(collision.gameObject);  
         }
     }
+    
     public void TakeDamage(int damage)
     {
         health -= damage;

@@ -7,6 +7,7 @@ public class RayGunScript : MonoBehaviour
     public BulletScript _bulletPrefab;
     private Transform _entityLocation;
     public int damage;
+    public float coolDownTime = 1;
     private int _bulletSpeed;
     private float _lastShot;
 
@@ -29,7 +30,7 @@ public class RayGunScript : MonoBehaviour
     }
 
     public void ShootRayGun(Vector3 aimingAt) {
-        if (Time.time - _lastShot < 1)
+        if (Time.time - _lastShot < coolDownTime)
         {
             return;
         }
