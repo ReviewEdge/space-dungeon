@@ -697,6 +697,7 @@ MonoBehaviour:
   moveSpeed: 1
   roll: 5
   health: 100
+  _isDead: 0
 --- !u!58 &872344632
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1256,11 +1257,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7620569458401409020, guid: 44575fd33c2c62e46ac826b258e0aaff, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.09005
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 7620569458401409020, guid: 44575fd33c2c62e46ac826b258e0aaff, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.5136423
+      value: -4.83
       objectReference: {fileID: 0}
     - target: {fileID: 7620569458401409020, guid: 44575fd33c2c62e46ac826b258e0aaff, type: 3}
       propertyPath: m_LocalPosition.z
