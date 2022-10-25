@@ -23,7 +23,7 @@ public class UIManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateHealthText(_player.GetComponent<PlayerScript>()._health);
+        UpdateHealthText(_player.GetComponent<PlayerScript>().health);
     }
 
     public void UpdateLevelText(int level)
