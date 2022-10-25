@@ -12,6 +12,8 @@ public class PlayerScript : MonoBehaviour
     public float moveSpeed; //speed var
     public float roll; //roll distance
     public int _health;
+    public bool hasRayGun = false;
+    public bool hasLaserSword = false;
 
     // Start is called before the first frame update
     void Start()
@@ -23,11 +25,20 @@ public class PlayerScript : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if(hasLaserSword)
         {
-            Vector3 mouseLocation = _mainCamera.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, -_mainCamera.transform.position.z);
-            _rayGun.ShootRayGun(mouseLocation);
-            //_laserSword.SwingLaserSword(mouseLocation);
+            if (Input.GetMouseButtonDown(0))
+            {
+                Vector3 mouseLocation = _mainCamera.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, -_mainCamera.transform.position.z);
+                _laserSword.SwingLaserSword(mouseLocation);
+            }
+        } else if(hasRayGun)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Vector3 mouseLocation = _mainCamera.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, -_mainCamera.transform.position.z);
+                _rayGun.ShootRayGun(mouseLocation);
+            }
         }
     }
     void FixedUpdate()

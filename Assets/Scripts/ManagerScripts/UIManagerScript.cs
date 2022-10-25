@@ -7,7 +7,8 @@ using UnityEngine.UIElements;
 
 public class UIManagerScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject _player;
+    
     public Text levelText;
     public Text scoreText;
     public Text freedText;
@@ -15,14 +16,14 @@ public class UIManagerScript : MonoBehaviour
     public Text ammoText;
 
     void Start()
-    {
-        
+    {   
+        _player = GameObject.FindWithTag(TagList.playerTag);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        UpdateHealthText(_player.GetComponent<PlayerScript>()._health);
     }
 
     public void UpdateLevelText(int level)
