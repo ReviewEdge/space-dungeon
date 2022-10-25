@@ -12,14 +12,16 @@ public class RobotGuardScript : MonoBehaviour
 
     public float _speed;
     public GameObject _player;
+    RayGunScript _rayGun;
+    LaserSwordScript _laserSword;
     public Sprite _weaponDrop;
-
 
     // Start is called before the first frame update
     void Start()
     {
         _isDead = false;
-
+        _rayGun = GetComponent<RayGunScript>();
+        _laserSword = GetComponent<LaserSwordScript>();
         _player = GameObject.FindWithTag(TagList.playerTag);
     }
 
@@ -30,6 +32,9 @@ public class RobotGuardScript : MonoBehaviour
         {
             Transform target = _player.transform;
             transform.position = Vector2.MoveTowards(transform.position, target.position, _speed * Time.deltaTime);
+            _rayGun.ShootRayGun(target.position);
+            //_laserSword.SwingLaserSword(target.position);
+
 
             if (_health <= 0)
             {
@@ -43,4 +48,9 @@ public class RobotGuardScript : MonoBehaviour
         _isDead = true;
         gameObject.GetComponent<SpriteRenderer>().sprite = _weaponDrop;
     }
+
+    public void TakeDamage(int damage) {
+        _health -= damage;
+    }
+
 }

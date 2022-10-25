@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6199295061425861483}
   - component: {fileID: 4657886081473965377}
   - component: {fileID: 6752406277774274934}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RobotGuardPrefab
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

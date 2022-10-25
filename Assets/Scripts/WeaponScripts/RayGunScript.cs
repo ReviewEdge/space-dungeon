@@ -5,24 +5,22 @@ using UnityEngine;
 public class RayGunScript : MonoBehaviour
 {
     public BulletScript _bulletPrefab;
-    public int _bulletSpeed;
     private Transform _entityLocation;
-    private Camera _mainCamera;
-    private Transform _transform;
+    public int damage;
+    private int _bulletSpeed;
+    private float _lastShot;
+
     // Start is called before the first frame update
     void Start()
     {
-        _entityLocation = GetComponent<Transform>();
-        _mainCamera = Camera.main;
-        _transform = transform;
+        _entityLocation = transform;
+        _lastShot = Time.time;
+        _bulletSpeed = 200;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) { 
-            OnClick();
-        }
     }
 
     private void FixedUpdate()
@@ -30,17 +28,18 @@ public class RayGunScript : MonoBehaviour
 
     }
 
-    private void OnClick() {
-        SpawnBullet();
-    }
+    public void ShootRayGun(Vector3 aimingAt) {
+        if (Time.time - _lastShot < 1)
+        {
+            return;
+        }
 
-    private void SpawnBullet() {
-        BulletScript bullet = Instantiate(_bulletPrefab, new Vector3(_entityLocation.position.x, _entityLocation.position.y, 0), Quaternion.identity);
+        Vector3 directionalVector = (aimingAt + (-_entityLocation.position)).normalized;
 
-        Vector3 mouseLocation = _mainCamera.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0,0, -_mainCamera.transform.position.z);
-        Vector3 entityLocation = _transform.position;
-        Vector3 desiredVector = (mouseLocation + (-entityLocation)).normalized;
+        BulletScript bullet = Instantiate(_bulletPrefab, new Vector2(_entityLocation.position.x, _entityLocation.position.y), Quaternion.identity);
 
-        bullet.GetComponent<Rigidbody2D>().AddForce(desiredVector * _bulletSpeed);
+        bullet.SetDamage(damage);
+        bullet.GetComponent<Rigidbody2D>().AddForce(directionalVector * _bulletSpeed);
+        _lastShot = Time.time;
     }
 }

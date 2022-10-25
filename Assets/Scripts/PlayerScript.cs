@@ -5,22 +5,32 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     Rigidbody2D _rbody;
+    RayGunScript _rayGun;
+    LaserSwordScript _laserSword;
+    public Camera _mainCamera;
     public float _SPEED = 5;
     public float moveSpeed; //speed var
     public float roll; //roll distance
+    public int _health;
 
+    // Start is called before the first frame update
     void Start()
     {
         _rbody = GetComponent<Rigidbody2D>();
+        _rayGun = GetComponent<RayGunScript>();
+        _laserSword = GetComponent<LaserSwordScript>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector3 mouseLocation = _mainCamera.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, -_mainCamera.transform.position.z);
+            _rayGun.ShootRayGun(mouseLocation);
+            //_laserSword.SwingLaserSword(mouseLocation);
+        }
     }
-
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         MovePlayer();
     }
@@ -37,18 +47,43 @@ public class PlayerScript : MonoBehaviour
         _rbody.velocity = movement * moveSpeed;
 
 
-        //check for space key to roll player
-        if (Input.GetKeyDown(KeyCode.Space) && movement.x != 0)
+        //check for shift key to roll player
+        if (Input.GetKeyDown(KeyCode.LeftShift) && movement.x != 0)
         {
             // dodge/roll player left/right
             _rbody.velocity = new Vector2((x * moveSpeed) * roll, _rbody.velocity.y);
             // play roll sprite animation
         }
-        else if (Input.GetKeyDown(KeyCode.Space) && movement.y != 0)
+        else if (Input.GetKeyDown(KeyCode.LeftShift) && movement.y != 0)
         {
             // dodge/roll player up/down
             _rbody.velocity = new Vector2(_rbody.velocity.x, (x * moveSpeed) * roll);
             // play roll sprite animation
         }
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag.Equals(TagList.enemyTag))
+        {
+            //Take some damage from running into Guard?
+            //Or Taking melee damage can be here
+        }
+
+        if (collision.gameObject.tag.Equals(TagList.healthpackTag))
+        {
+            RestoreHealth(25);
+        }
+    }
+    public void TakeDamage(int damage)
+    {
+        _health -= damage;
+        print("Oww! My health is now " + _health);
+    }
+
+    public void RestoreHealth(int hitpoints)
+    {
+        _health += hitpoints;
+        print("HP Restored; health is now " + _health);
     }
 }
