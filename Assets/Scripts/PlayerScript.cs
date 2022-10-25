@@ -11,7 +11,7 @@ public class PlayerScript : MonoBehaviour
     const float _SPEED = 5;
     public float moveSpeed; //speed var
     public float roll; //roll distance
-    public int _health;
+    public int health = 100;
 
     // Start is called before the first frame update
     void Start()
@@ -69,21 +69,24 @@ public class PlayerScript : MonoBehaviour
             //Take some damage from running into Guard?
             //Or Taking melee damage can be here
         }
-
+    }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
         if (collision.gameObject.tag.Equals(TagList.healthpackTag))
         {
             RestoreHealth(25);
+            Destroy(collision.gameObject);  
         }
     }
     public void TakeDamage(int damage)
     {
-        _health -= damage;
-        print("Oww! My health is now " + _health);
+        health -= damage;
+        print("Oww! My health is now " + health);
     }
 
     public void RestoreHealth(int hitpoints)
     {
-        _health += hitpoints;
-        print("HP Restored; health is now " + _health);
+        health += hitpoints;
+        print("HP Restored; health is now " + health);
     }
 }
