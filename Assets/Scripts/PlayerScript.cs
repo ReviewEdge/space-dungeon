@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     Rigidbody2D _rbody;
-    const float _SPEED = 5;
+    public float _SPEED = 5;
     public float moveSpeed; //speed var
     public float roll; //roll distance
-    // Start is called before the first frame update
+
     void Start()
     {
         _rbody = GetComponent<Rigidbody2D>();
