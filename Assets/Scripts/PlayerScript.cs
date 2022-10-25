@@ -14,13 +14,12 @@ public class PlayerScript : MonoBehaviour
     public Camera _mainCamera;
 
     const float _SPEED = 5;
-    public float moveSpeed; //speed var
-    public float roll; //roll distance
+    public float moveSpeed; 
+    public float roll; 
     public int health = 100;
     public int lives = 3;
     public bool _isDead;
 
-    // Start is called before the first frame update
     void Start()
     {
         _rbody = GetComponent<Rigidbody2D>();
@@ -44,6 +43,7 @@ public class PlayerScript : MonoBehaviour
         {
             PlayerDeath();
         }
+
         while (_isDead)
         {
             _srender.enabled = false;
@@ -70,12 +70,10 @@ public class PlayerScript : MonoBehaviour
     }
     private void MovePlayer()
     {
-        //get H and V vars
         float x = _SPEED * Input.GetAxis("Horizontal");
         float y = _SPEED * Input.GetAxis("Vertical");
         _rbody.velocity = new Vector2(x, y);
 
-        //move player
         Vector2 movement = new Vector2(x, y);
         _rbody.velocity = movement * moveSpeed;
 
