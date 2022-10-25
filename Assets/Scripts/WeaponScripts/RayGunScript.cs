@@ -7,21 +7,24 @@ public class RayGunScript : MonoBehaviour
     public BulletScript _bulletPrefab;
     private Transform _entityLocation;
     public int damage;
-    public float coolDownTime = 1;
+    public float attackSpeed;
+    private float _timeBtwAttack;
+    //public float coolDownTime = 1;
     private int _bulletSpeed;
-    private float _lastShot;
+    //private float _lastShot;
 
     // Start is called before the first frame update
     void Start()
     {
         _entityLocation = transform;
-        _lastShot = Time.time;
+        //_lastShot = Time.time;
         _bulletSpeed = 200;
     }
 
     // Update is called once per frame
     void Update()
     {
+        _timeBtwAttack -= Time.deltaTime;
     }
 
     private void FixedUpdate()
@@ -30,8 +33,7 @@ public class RayGunScript : MonoBehaviour
     }
 
     public void ShootRayGun(Vector3 aimingAt) {
-        if (Time.time - _lastShot < coolDownTime)
-        {
+        if (_timeBtwAttack > 0) {
             return;
         }
 
@@ -41,6 +43,7 @@ public class RayGunScript : MonoBehaviour
 
         bullet.SetDamage(damage);
         bullet.GetComponent<Rigidbody2D>().AddForce(directionalVector * _bulletSpeed);
-        _lastShot = Time.time;
+
+        _timeBtwAttack = attackSpeed;
     }
 }

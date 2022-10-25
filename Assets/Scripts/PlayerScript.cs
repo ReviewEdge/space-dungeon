@@ -18,35 +18,30 @@ public class PlayerScript : MonoBehaviour
     public float _SPEED = 5;
     public float moveSpeed; //speed var
     public float roll; //roll distance
-    public bool hasRayGun = false;
-    public bool hasLaserSword = false;
+    [SerializeField] TagList.weaponType weapon;
 
     void Start()
     {
         _rbody = GetComponent<Rigidbody2D>();
         _srender = GetComponent<SpriteRenderer>();
         _rayGun = GetComponent<RayGunScript>();
-        _rayGun.GetComponent<RayGunScript>().coolDownTime = .3f;
         _laserSword = GetComponent<LaserSwordScript>();
-
         _isDead = false;
     }
 
     private void Update()
     {
-        if(hasLaserSword)
+        if (Input.GetMouseButtonDown(0))
         {
-            if (Input.GetMouseButtonDown(0))
+            Vector3 mouseLocation = _mainCamera.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, -_mainCamera.transform.position.z);
+            switch (weapon)
             {
-                Vector3 mouseLocation = _mainCamera.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, -_mainCamera.transform.position.z);
-                _laserSword.SwingLaserSword(mouseLocation);
-            }
-        } else if(hasRayGun)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                Vector3 mouseLocation = _mainCamera.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, -_mainCamera.transform.position.z);
-                _rayGun.ShootRayGun(mouseLocation);
+                case TagList.weaponType.LaserSword:
+                    _laserSword.SwingLaserSword(mouseLocation);
+                    break;
+                case TagList.weaponType.RayGun:
+                    _rayGun.ShootRayGun(mouseLocation);
+                    break;
             }
         }
 
