@@ -280,7 +280,6 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
-  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -296,19 +295,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
---- !u!114 &519420030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf774d44b13a8b249afa595826e5815a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _player: {fileID: 872344628}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -524,7 +510,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dec770e95484c948b371acf2a66d701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
   levelText: {fileID: 939762294}
   scoreText: {fileID: 891693250}
   freedText: {fileID: 1596188685}
@@ -703,6 +688,8 @@ MonoBehaviour:
   _SPEED: 5
   moveSpeed: 1
   roll: 5
+  magazineAmmo: 0
+  remainingAmmo: 0
   weapon: 1
 --- !u!58 &872344632
 CircleCollider2D:
@@ -837,7 +824,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 2
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -992,7 +979,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6752406277774274934, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
       propertyPath: weapon
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6752406277774274934, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
       propertyPath: _player
@@ -1010,6 +997,14 @@ PrefabInstance:
       propertyPath: hasLaserSword
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6752406277774274934, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
+      propertyPath: _rayGunDropPrefab
+      value: 
+      objectReference: {fileID: 3445555220356645967, guid: 64f081338b8bb9649b6e2006bb45b695, type: 3}
+    - target: {fileID: 6752406277774274934, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
+      propertyPath: _laserSwordDropPrefab
+      value: 
+      objectReference: {fileID: 834960260479143137, guid: a4089dd61e1919a408b673584c8d4afb, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
 --- !u!1001 &1062077903
@@ -1415,7 +1410,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 2
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0

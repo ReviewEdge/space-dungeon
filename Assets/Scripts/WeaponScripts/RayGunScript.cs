@@ -9,15 +9,12 @@ public class RayGunScript : MonoBehaviour
     public int damage;
     public float attackSpeed;
     private float _timeBtwAttack;
-    //public float coolDownTime = 1;
     private int _bulletSpeed;
-    //private float _lastShot;
 
     // Start is called before the first frame update
     void Start()
     {
         _entityLocation = transform;
-        //_lastShot = Time.time;
         _bulletSpeed = 200;
     }
 
@@ -25,11 +22,6 @@ public class RayGunScript : MonoBehaviour
     void Update()
     {
         _timeBtwAttack -= Time.deltaTime;
-    }
-
-    private void FixedUpdate()
-    {
-
     }
 
     public void ShootRayGun(Vector3 aimingAt) {

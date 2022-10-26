@@ -18,7 +18,10 @@ public class PlayerScript : MonoBehaviour
     public float _SPEED = 5;
     public float moveSpeed; //speed var
     public float roll; //roll distance
+    public int magazineAmmo;
+    public int remainingAmmo;
     [SerializeField] TagList.weaponType weapon;
+
 
     void Start()
     {

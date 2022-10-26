@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 
 public class UIManagerScript : MonoBehaviour
 {
-    public GameObject _player;
+    private PlayerScript _player;
     
     public Text levelText;
     public Text scoreText;
@@ -17,13 +17,16 @@ public class UIManagerScript : MonoBehaviour
 
     void Start()
     {   
-        _player = GameObject.FindWithTag(TagList.playerTag);
+        GameObject player = GameObject.FindWithTag(TagList.playerTag);
+        _player = player.GetComponent<PlayerScript>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdateHealthText(_player.GetComponent<PlayerScript>().health);
+        UpdateHealthText(_player.health);
+        UpdateAmmoText(_player.magazineAmmo, _player.remainingAmmo);
     }
 
     public void UpdateLevelText(int level)
@@ -43,10 +46,14 @@ public class UIManagerScript : MonoBehaviour
         healthText.text = "Health: " + health;
     }
     public void UpdateAmmoText(int magazineAmmo, int remainingAmmo) {
-        ammoText.text = magazineAmmo + " / " + remainingAmmo; 
-    }
-    public void UpdateAmmoText() {
-        ammoText.text = "- / -";
+        if (magazineAmmo >= 0 && remainingAmmo >= 0)
+        {
+            ammoText.text = "- / -";
+        }
+        else
+        {
+            ammoText.text = magazineAmmo + " / " + remainingAmmo;
+        }
     }
     
 }
