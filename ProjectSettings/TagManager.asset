@@ -8,6 +8,8 @@ TagManager:
   - Bullet
   - Enemy
   - Healthpack
+  - Sword
+  - Gun
   layers:
   - Default
   - TransparentFX

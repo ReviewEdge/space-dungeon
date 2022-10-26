@@ -1010,6 +1010,14 @@ PrefabInstance:
       propertyPath: hasLaserSword
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6752406277774274934, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
+      propertyPath: _rayGunDropPrefab
+      value: 
+      objectReference: {fileID: 3445555220356645967, guid: 64f081338b8bb9649b6e2006bb45b695, type: 3}
+    - target: {fileID: 6752406277774274934, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
+      propertyPath: _laserSwordDropPrefab
+      value: 
+      objectReference: {fileID: 834960260479143137, guid: a4089dd61e1919a408b673584c8d4afb, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
 --- !u!1001 &1062077903
