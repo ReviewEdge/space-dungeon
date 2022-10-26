@@ -102,13 +102,22 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    /*public void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag.Equals(TagList.enemyTag))
         {
             //Take some damage from running into Guard?
         }
-    }*/
+
+        if (collision.gameObject.tag.Equals(TagList.swordDropTag))
+        {
+            weapon = TagList.weaponType.LaserSword;
+        }
+        if (collision.gameObject.tag.Equals(TagList.gunDropTag))
+        {
+            weapon = TagList.weaponType.RayGun;
+        }
+    }
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Equals(TagList.healthpackTag))
