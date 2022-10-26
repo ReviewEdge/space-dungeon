@@ -12,15 +12,11 @@ public class GeneralManagerScript : MonoBehaviour
     int score;
     int numofPrisoners;
     int remainingPrisoners;
-    int health;
-    int magazineAmmo;
-    int remainingAmmo;
 
     void Start()
     {
         level = 1;
         score = 0;
-        health = 100;
     }
 
     // Update is called once per frame
@@ -29,16 +25,10 @@ public class GeneralManagerScript : MonoBehaviour
         UpdateUITextElements();
     }
 
-    private void UpdateUITextElements() {
+    private void UpdateUITextElements()
+    {
         UIManager.UpdateLevelText(level);
         UIManager.UpdateScoreText(score);
         UIManager.UpdateFreedText(remainingPrisoners, numofPrisoners);
-        UIManager.UpdateHealthText(_player.health);
-        if (magazineAmmo == 0 && remainingAmmo == 0) {
-            UIManager.UpdateAmmoText();
-        } else {
-            UIManager.UpdateAmmoText(magazineAmmo, remainingAmmo);
-        }
-
     }
 }

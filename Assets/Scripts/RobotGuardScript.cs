@@ -8,8 +8,6 @@ public class RobotGuardScript : MonoBehaviour
     Rigidbody2D _rbody;
 
     public int _health;
-    public bool hasRayGun = false;
-    public bool hasLaserSword = false;
 
     public float _speed;
     public GameObject _player;
@@ -53,10 +51,10 @@ public class RobotGuardScript : MonoBehaviour
 
     void Die()
     {
-        if(hasLaserSword)
+        if(TagList.weaponType.LaserSword == weapon)
         {
             Instantiate(_laserSwordDropPrefab, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
-        } else if(hasRayGun)
+        } else if(TagList.weaponType.RayGun == weapon)
         {
             Instantiate(_rayGunDropPrefab, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
         }
