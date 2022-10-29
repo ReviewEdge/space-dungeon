@@ -13,6 +13,7 @@ public class PlayerScript : MonoBehaviour
     LaserSwordScript _laserSword;
     public Camera _mainCamera;
     public int health = 100;
+    const int maxHealth = 100;
     public int lives = 3;
     public bool _isDead;
     public float _SPEED = 5;
@@ -64,7 +65,7 @@ public class PlayerScript : MonoBehaviour
         MovePlayer();
     }
 
-    private void PlayerDeath()
+    private void PlayerDeath()  
     {
         _isDead = true;
 
@@ -102,7 +103,7 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    /*public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag.Equals(TagList.enemyTag))
         {
@@ -117,18 +118,28 @@ public class PlayerScript : MonoBehaviour
         {
             weapon = TagList.weaponType.RayGun;
         }
-    }
-    public void OnTriggerEnter2D(Collider2D collision)
+    }*/
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag.Equals(TagList.healthpackTag))
+        if (Input.GetKey(KeyCode.E))
         {
-            RestoreHealth(25);
-
-            //destroys Healthpack after it is used
-            Destroy(collision.gameObject);  
+            if (collision.gameObject.tag.Equals(TagList.healthpackTag))
+            {
+                RestoreHealth(25);
+            }
+            if (collision.gameObject.tag.Equals(TagList.swordDropTag))
+            {
+                weapon = TagList.weaponType.LaserSword;
+            }
+            if (collision.gameObject.tag.Equals(TagList.gunDropTag))
+            {
+                weapon = TagList.weaponType.RayGun;
+            }
+            Destroy(collision.gameObject);
         }
     }
     
+
     public void TakeDamage(int damage)
     {
         health -= damage;
@@ -138,6 +149,10 @@ public class PlayerScript : MonoBehaviour
     public void RestoreHealth(int hitpoints)
     {
         health += hitpoints;
+        if(health < maxHealth)
+        {
+            health = maxHealth;
+        }
         print("HP Restored; health is now " + health);
     }
 }
