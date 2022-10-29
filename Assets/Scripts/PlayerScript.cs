@@ -114,16 +114,21 @@ public class PlayerScript : MonoBehaviour
             if (collision.gameObject.tag.Equals(TagList.healthpackTag))
             {
                 RestoreHealth(25);
+                Destroy(collision.gameObject);
             }
             if (collision.gameObject.tag.Equals(TagList.swordDropTag))
             {
                 weapon = TagList.weaponType.LaserSword;
+                Destroy(collision.gameObject);
             }
             if (collision.gameObject.tag.Equals(TagList.gunDropTag))
             {
                 weapon = TagList.weaponType.RayGun;
+                Destroy(collision.gameObject);
             }
-            Destroy(collision.gameObject);
+            if (collision.gameObject.tag.Equals(TagList.NumPadTag)) {
+                collision.GetComponent<NumPadScript>().StartHack();
+            }
         }
     }
     

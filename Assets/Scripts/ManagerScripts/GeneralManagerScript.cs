@@ -17,6 +17,7 @@ public class GeneralManagerScript : MonoBehaviour
     {
         level = 1;
         score = 0;
+        SetPrisoners(3);
     }
 
     // Update is called once per frame
@@ -30,5 +31,13 @@ public class GeneralManagerScript : MonoBehaviour
         UIManager.UpdateLevelText(level);
         UIManager.UpdateScoreText(score);
         UIManager.UpdateFreedText(remainingPrisoners, numofPrisoners);
+    }
+
+    public void SetPrisoners(int prisoners) {
+        numofPrisoners = prisoners;
+        remainingPrisoners = prisoners;
+    }
+    public void FreePrisoner() {
+        remainingPrisoners--;
     }
 }
