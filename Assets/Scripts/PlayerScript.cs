@@ -15,7 +15,7 @@ public class PlayerScript : MonoBehaviour
     public int health = 100;
     const int maxHealth = 100;
     public int lives = 3;
-    public bool _isDead;
+    public bool _isDead = false;
     public float _SPEED = 5;
     public float moveSpeed; //speed var
     public float roll; //roll distance
@@ -65,19 +65,7 @@ public class PlayerScript : MonoBehaviour
         MovePlayer();
     }
 
-    private void PlayerDeath()  
-    {
-        _isDead = true;
-
-        //implement some function that waits for a few seconds before player respawns?
-        //Task.Delay(3000);
-
-        lives--;
-        _rbody.position = new Vector2(0, 0);
-        health = 100;
-
-        _isDead = false;
-    }
+    
     private void MovePlayer()
     {
         float x = _SPEED * Input.GetAxis("Horizontal");
@@ -152,7 +140,24 @@ public class PlayerScript : MonoBehaviour
         if(health < maxHealth)
         {
             health = maxHealth;
+        } else if(health < 0)
+        {
+            health = 0;
         }
         print("HP Restored; health is now " + health);
+    }
+    private void PlayerDeath()
+    {
+        _isDead = true;
+
+        Invoke("RespawnPlayer", 3);
+
+        _isDead = false;
+    }
+    private void RespawnPlayer()
+    {
+        lives--;
+        _rbody.position = new Vector2(0, 0);
+        health = 100;
     }
 }
