@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CircleCollider2D))]
@@ -149,10 +150,9 @@ public class PlayerScript : MonoBehaviour
     private void PlayerDeath()
     {
         _isDead = true;
-
-        Invoke("RespawnPlayer", 3);
-
-        _isDead = false;
+        /*Invoke("RespawnPlayer", 3);
+        _isDead = false;*/
+        SceneManager.LoadScene("TitleScene");
     }
     private void RespawnPlayer()
     {
