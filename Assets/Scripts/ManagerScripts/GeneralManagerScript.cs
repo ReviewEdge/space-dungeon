@@ -31,4 +31,8 @@ public class GeneralManagerScript : MonoBehaviour
         UIManager.UpdateScoreText(score);
         UIManager.UpdateFreedText(remainingPrisoners, numofPrisoners);
     }
+
+    public void FreePrisoner() {
+        remainingPrisoners--;
+    }
 }
