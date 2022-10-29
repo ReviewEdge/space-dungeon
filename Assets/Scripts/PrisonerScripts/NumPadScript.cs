@@ -23,14 +23,22 @@ public class NumPadScript : MonoBehaviour
         }
     }
 
-    private void OnStartHack() {
+    public void StartHack() {
+        if (_isHacking) {
+            return;
+        }
+
+        _isHacking = true;
         Invoke("OnFinishHack", 2);
     }
 
-    private void OnFinishHack() {
-        if (!_isHacking) {
+    private void OnFinishHack()
+    {
+        if (!_isHacking)
+        {
             return;
         }
+
         Destroy(cellDoor);
         generalManagerScript.FreePrisoner();
         prisoner.Freed();

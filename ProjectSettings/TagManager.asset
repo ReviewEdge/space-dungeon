@@ -10,6 +10,7 @@ TagManager:
   - Healthpack
   - Sword
   - Gun
+  - NumPad
   layers:
   - Default
   - TransparentFX
