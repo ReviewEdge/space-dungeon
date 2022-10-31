@@ -509,6 +509,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIManager: {fileID: 777927512}
   _player: {fileID: 872344631}
+  level: 0
 --- !u!1 &777927510
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,6 +558,7 @@ MonoBehaviour:
   freedText: {fileID: 1596188685}
   healthText: {fileID: 1920409887}
   ammoText: {fileID: 153470709}
+  livesText: {fileID: 0}
 --- !u!1 &790013774
 GameObject:
   m_ObjectHideFlags: 0
@@ -810,11 +812,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1445601283105510868, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.21
+      value: -6.7
       objectReference: {fileID: 0}
     - target: {fileID: 1445601283105510868, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.71
+      value: -4.09
       objectReference: {fileID: 0}
     - target: {fileID: 1445601283105510868, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
       propertyPath: m_LocalPosition.z
@@ -881,9 +883,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3445555220356645967, guid: 64f081338b8bb9649b6e2006bb45b695, type: 3}
     - target: {fileID: 6752406277774274934, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
+      propertyPath: _floatingDamageText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752406277774274934, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
       propertyPath: _laserSwordDropPrefab
       value: 
       objectReference: {fileID: 834960260479143137, guid: a4089dd61e1919a408b673584c8d4afb, type: 3}
+    - target: {fileID: 6752406277774274934, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
+      propertyPath: _floatingTextParentPrefab
+      value: 
+      objectReference: {fileID: 7591584769268283073, guid: aed8138092e07774bb3b7403cf39021d, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
 --- !u!1001 &1062077903

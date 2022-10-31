@@ -75,6 +75,10 @@ PrefabInstance:
       propertyPath: _health
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 6752406277774274934, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
+      propertyPath: _floatingTextParentPrefab
+      value: 
+      objectReference: {fileID: 7591584769268283073, guid: aed8138092e07774bb3b7403cf39021d, type: 3}
     - target: {fileID: 7240229077711682514, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
       propertyPath: m_Color.b
       value: 0.4669811

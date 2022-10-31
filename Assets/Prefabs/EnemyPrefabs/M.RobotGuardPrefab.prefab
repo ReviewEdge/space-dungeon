@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1491508084977974494}
   - component: {fileID: 3546520973089827931}
   m_Layer: 10
-  m_Name: M
+  m_Name: M.RobotGuardPrefab
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,6 +142,7 @@ MonoBehaviour:
   _laserSwordDropPrefab: {fileID: 834960260479143137, guid: a4089dd61e1919a408b673584c8d4afb, type: 3}
   _rayGunDropPrefab: {fileID: 3445555220356645967, guid: 64f081338b8bb9649b6e2006bb45b695, type: 3}
   weapon: 0
+  _floatingTextParentPrefab: {fileID: 7591584769268283073, guid: aed8138092e07774bb3b7403cf39021d, type: 3}
 --- !u!114 &1491508084977974494
 MonoBehaviour:
   m_ObjectHideFlags: 0
