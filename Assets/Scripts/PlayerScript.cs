@@ -12,20 +12,23 @@ public class PlayerScript : MonoBehaviour
     RayGunScript _rayGun;
     LaserSwordScript _laserSword;
     public Camera _mainCamera;
+
     public int health = 100;
     const int maxHealth = 100;
-    public int lives = 3;
     public bool _isDead = false;
     public float _SPEED = 5;
     public float moveSpeed; //speed var
     public float roll; //roll distance
     public int magazineAmmo;
-    public int remainingAmmo;
+    public int remainingAmmo = 0;
+    const int maxMagSize = 30;
+
     [SerializeField] TagList.weaponType weapon;
 
 
     void Start()
     {
+
         _rbody = GetComponent<Rigidbody2D>();
         _srender = GetComponent<SpriteRenderer>();
         _rayGun = GetComponent<RayGunScript>();
@@ -44,7 +47,14 @@ public class PlayerScript : MonoBehaviour
                     _laserSword.SwingLaserSword(mouseLocation);
                     break;
                 case TagList.weaponType.RayGun:
-                    _rayGun.ShootRayGun(mouseLocation);
+                    remainingAmmo--;
+                    if(remainingAmmo > 0)
+                    {
+                        _rayGun.ShootRayGun(mouseLocation);
+                    }
+                    else {
+                        weapon = TagList.weaponType.LaserSword;
+                    }
                     break;
             }
         }
@@ -124,6 +134,8 @@ public class PlayerScript : MonoBehaviour
             if (collision.gameObject.tag.Equals(TagList.gunDropTag))
             {
                 weapon = TagList.weaponType.RayGun;
+                remainingAmmo = maxMagSize;
+
                 Destroy(collision.gameObject);
             }
             if (collision.gameObject.tag.Equals(TagList.NumPadTag)) {
@@ -159,9 +171,7 @@ public class PlayerScript : MonoBehaviour
     }
     private void RespawnPlayer()
     {
-        _isDead = false;
-        lives--;
-        // _srender.enabled = true;
+    
         _rbody.position = new Vector2(0, 0);
         health = 100;
     }
