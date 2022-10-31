@@ -54,10 +54,10 @@ public class PlayerScript : MonoBehaviour
             PlayerDeath();
         }
 
-        while (_isDead)
-        {
-            _srender.enabled = false;
-        }
+        // if(_isDead)
+        // {
+        //     _srender.enabled = false;
+        // }
 
     }
     void FixedUpdate()
@@ -155,13 +155,14 @@ public class PlayerScript : MonoBehaviour
     {
         _isDead = true;
 
-        Invoke("RespawnPlayer", 3);
+        Invoke("RespawnPlayer", 0);
     }
     private void RespawnPlayer()
     {
+        _isDead = false;
         lives--;
+        // _srender.enabled = true;
         _rbody.position = new Vector2(0, 0);
         health = 100;
-        _isDead = false;
     }
 }
