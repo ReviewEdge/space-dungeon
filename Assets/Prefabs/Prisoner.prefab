@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2818636695194186405}
   m_Layer: 0
   m_Name: Prisoner
-  m_TagString: Untagged
+  m_TagString: Prisoner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

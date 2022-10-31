@@ -156,13 +156,12 @@ public class PlayerScript : MonoBehaviour
         _isDead = true;
 
         Invoke("RespawnPlayer", 3);
-
-        _isDead = false;
     }
     private void RespawnPlayer()
     {
         lives--;
         _rbody.position = new Vector2(0, 0);
         health = 100;
+        _isDead = false;
     }
 }
