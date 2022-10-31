@@ -13,6 +13,7 @@ public class TagList
     public const string gunDropTag = "Gun";
     public const string swordDropTag = "Sword";
     public const string NumPadTag = "NumPad";
+    public const string PrisonerTag = "Prisoner";
 
     public const string playerBulletLayer = "Player Bullet";
     public const string enemyBulletLayer = "Enemy Bullet";
