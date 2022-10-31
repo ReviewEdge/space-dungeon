@@ -61,11 +61,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5301700170056371205, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
       propertyPath: m_Name
-      value: RobotGuardPrefab (1)
+      value: R.RapidRobotGuardPrefab (1) Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6752406277774274934, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
       propertyPath: weapon
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752406277774274934, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
+      propertyPath: _health
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 7240229077711682514, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
       propertyPath: m_Color.b
