@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1491508084977974494}
   - component: {fileID: 3546520973089827931}
   m_Layer: 10
-  m_Name: RobotGuardPrefab
+  m_Name: M
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletPrefab: {fileID: 2146386861331672398, guid: c9fc1c82975dcc74586ee53d3ca749be, type: 3}
-  damage: 0
+  damage: 15
   attackSpeed: 1
 --- !u!114 &3546520973089827931
 MonoBehaviour:
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eb4c434a5d973545ae195bd1a6761bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 0
+  _damage: 25
   attackSpeed: 1
   _foesLayer:
     serializedVersion: 2

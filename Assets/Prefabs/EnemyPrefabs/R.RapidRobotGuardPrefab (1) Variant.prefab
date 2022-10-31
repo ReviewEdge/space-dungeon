@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &4391483157586484719
+--- !u!1001 &8179933953970752013
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -12,20 +12,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1445601283105510868, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445601283105510868, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445601283105510868, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.939894
+      value: -7.24
       objectReference: {fileID: 0}
     - target: {fileID: 1445601283105510868, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.4590313
+      value: 7.07
       objectReference: {fileID: 0}
     - target: {fileID: 1445601283105510868, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
       propertyPath: m_LocalPosition.z
@@ -59,25 +51,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1491508084977974494, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
+      propertyPath: damage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491508084977974494, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
+      propertyPath: attackSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5301700170056371205, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
       propertyPath: m_Name
-      value: FastRobotGuardPrefab Variant
+      value: RobotGuardPrefab (1)
       objectReference: {fileID: 0}
     - target: {fileID: 6752406277774274934, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
-      propertyPath: _speed
-      value: 2.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 6752406277774274934, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
-      propertyPath: _health
-      value: 50
+      propertyPath: weapon
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7240229077711682514, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
       propertyPath: m_Color.b
-      value: 0.4669811
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7240229077711682514, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
       propertyPath: m_Color.g
-      value: 0.4669811
+      value: 0.7533275
       objectReference: {fileID: 0}
     - target: {fileID: 7240229077711682514, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
       propertyPath: m_Color.r
