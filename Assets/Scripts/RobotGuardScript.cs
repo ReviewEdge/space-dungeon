@@ -6,9 +6,7 @@ using UnityEngine;
 public class RobotGuardScript : MonoBehaviour
 {
     Rigidbody2D _rbody;
-
     public int _health;
-
     public float _speed;
     public GameObject _player;
     RayGunScript _rayGun;
@@ -16,6 +14,7 @@ public class RobotGuardScript : MonoBehaviour
     public GameObject _laserSwordDropPrefab;
     public GameObject _rayGunDropPrefab;
     [SerializeField] TagList.weaponType weapon;
+    public GameObject _floatingTextParentPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +28,6 @@ public class RobotGuardScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         Transform target = _player.transform;
         transform.position = Vector2.MoveTowards(transform.position, target.position, _speed * Time.deltaTime);
 
@@ -41,11 +39,6 @@ public class RobotGuardScript : MonoBehaviour
             case TagList.weaponType.RayGun:
                 _rayGun.ShootRayGun(target.position);
                 break;
-        }
-
-        if (_health <= 0)
-        {
-            Die();
         }
     }
 
@@ -64,6 +57,13 @@ public class RobotGuardScript : MonoBehaviour
 
     public void TakeDamage(int damage) {
         _health -= damage;
+        GameObject floatingDamageText = Instantiate(_floatingTextParentPrefab, _rbody.position, Quaternion.identity);
+        floatingDamageText.GetComponentInChildren<TextMesh>().text = "-" + damage;
+
+        if (_health <= 0)
+        {
+            Die();
+        }
     }
 
 }

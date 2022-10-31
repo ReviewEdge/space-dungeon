@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class UIManagerScript : MonoBehaviour
 {
@@ -12,7 +11,7 @@ public class UIManagerScript : MonoBehaviour
     public Text levelText;
     public Text scoreText;
     public Text freedText;
-    public Text healthText;
+    public Image healthImage;
     public Text ammoText;
 
     void Start()
@@ -43,7 +42,7 @@ public class UIManagerScript : MonoBehaviour
         freedText.text = numofRescuedPrisoners + " out of " + totalPrisoners + " rescued";
     }
     public void UpdateHealthText(int health) {
-        healthText.text = "Health: " + health;
+        healthImage.fillAmount = health/100f;
     }
     public void UpdateAmmoText(int magazineAmmo, int remainingAmmo) {
         if (magazineAmmo >= 0 && remainingAmmo >= 0)

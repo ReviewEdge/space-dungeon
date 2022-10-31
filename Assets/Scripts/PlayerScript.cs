@@ -13,20 +13,23 @@ public class PlayerScript : MonoBehaviour
     RayGunScript _rayGun;
     LaserSwordScript _laserSword;
     public Camera _mainCamera;
+
     public int health = 100;
     const int maxHealth = 100;
-    public int lives = 3;
     public bool _isDead = false;
     public float _SPEED = 5;
     public float moveSpeed; //speed var
     public float roll; //roll distance
     public int magazineAmmo;
-    public int remainingAmmo;
+    public int remainingAmmo = 0;
+    const int maxMagSize = 30;
+
     [SerializeField] TagList.weaponType weapon;
 
 
     void Start()
     {
+
         _rbody = GetComponent<Rigidbody2D>();
         _srender = GetComponent<SpriteRenderer>();
         _rayGun = GetComponent<RayGunScript>();
@@ -45,7 +48,14 @@ public class PlayerScript : MonoBehaviour
                     _laserSword.SwingLaserSword(mouseLocation);
                     break;
                 case TagList.weaponType.RayGun:
-                    _rayGun.ShootRayGun(mouseLocation);
+                    remainingAmmo--;
+                    if(remainingAmmo > 0)
+                    {
+                        _rayGun.ShootRayGun(mouseLocation);
+                    }
+                    else {
+                        weapon = TagList.weaponType.LaserSword;
+                    }
                     break;
             }
         }
@@ -55,10 +65,10 @@ public class PlayerScript : MonoBehaviour
             PlayerDeath();
         }
 
-        while (_isDead)
-        {
-            _srender.enabled = false;
-        }
+        // if(_isDead)
+        // {
+        //     _srender.enabled = false;
+        // }
 
     }
     void FixedUpdate()
@@ -115,16 +125,23 @@ public class PlayerScript : MonoBehaviour
             if (collision.gameObject.tag.Equals(TagList.healthpackTag))
             {
                 RestoreHealth(25);
+                Destroy(collision.gameObject);
             }
             if (collision.gameObject.tag.Equals(TagList.swordDropTag))
             {
                 weapon = TagList.weaponType.LaserSword;
+                Destroy(collision.gameObject);
             }
             if (collision.gameObject.tag.Equals(TagList.gunDropTag))
             {
                 weapon = TagList.weaponType.RayGun;
+                remainingAmmo = maxMagSize;
+
+                Destroy(collision.gameObject);
             }
-            Destroy(collision.gameObject);
+            if (collision.gameObject.tag.Equals(TagList.NumPadTag)) {
+                collision.GetComponent<NumPadScript>().StartHack();
+            }
         }
     }
     
@@ -132,6 +149,10 @@ public class PlayerScript : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+
+        if (health < 0) {
+            health = 0;
+        }
         print("Oww! My health is now " + health);
     }
 
@@ -141,22 +162,19 @@ public class PlayerScript : MonoBehaviour
         if(health < maxHealth)
         {
             health = maxHealth;
-        } else if(health < 0)
-        {
-            health = 0;
-        }
+        } 
         print("HP Restored; health is now " + health);
     }
     private void PlayerDeath()
     {
         _isDead = true;
-        /*Invoke("RespawnPlayer", 3);
-        _isDead = false;*/
-        SceneManager.LoadScene("TitleScene");
+        //SceneManager.LoadScene("TitleScene");
+
+        Invoke("RespawnPlayer", 0);
     }
     private void RespawnPlayer()
     {
-        lives--;
+    
         _rbody.position = new Vector2(0, 0);
         health = 100;
     }
