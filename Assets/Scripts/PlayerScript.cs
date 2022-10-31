@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CircleCollider2D))]
@@ -167,6 +168,7 @@ public class PlayerScript : MonoBehaviour
     private void PlayerDeath()
     {
         _isDead = true;
+        //SceneManager.LoadScene("TitleScene");
 
         Invoke("RespawnPlayer", 0);
     }
