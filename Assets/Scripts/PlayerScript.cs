@@ -148,6 +148,10 @@ public class PlayerScript : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+
+        if (health < 0) {
+            health = 0;
+        }
         print("Oww! My health is now " + health);
     }
 
@@ -157,10 +161,7 @@ public class PlayerScript : MonoBehaviour
         if(health < maxHealth)
         {
             health = maxHealth;
-        } else if(health < 0)
-        {
-            health = 0;
-        }
+        } 
         print("HP Restored; health is now " + health);
     }
     private void PlayerDeath()
