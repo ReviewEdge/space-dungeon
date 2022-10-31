@@ -14,6 +14,7 @@ public class RobotGuardScript : MonoBehaviour
     public GameObject _laserSwordDropPrefab;
     public GameObject _rayGunDropPrefab;
     [SerializeField] TagList.weaponType weapon;
+    public GameObject _floatingTextParentPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -39,11 +40,6 @@ public class RobotGuardScript : MonoBehaviour
                 _rayGun.ShootRayGun(target.position);
                 break;
         }
-
-        if (_health <= 0)
-        {
-            Die();
-        }
     }
 
     void Die()
@@ -61,6 +57,13 @@ public class RobotGuardScript : MonoBehaviour
 
     public void TakeDamage(int damage) {
         _health -= damage;
+        GameObject floatingDamageText = Instantiate(_floatingTextParentPrefab, _rbody.position, Quaternion.identity);
+        floatingDamageText.GetComponentInChildren<TextMesh>().text = "-" + damage;
+
+        if (_health <= 0)
+        {
+            Die();
+        }
     }
 
 }

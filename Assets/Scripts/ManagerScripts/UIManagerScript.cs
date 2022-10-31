@@ -64,7 +64,7 @@ public class UIManagerScript : MonoBehaviour
     }
     public void UpdateLivesText(int livesInput)
     {
-        livesText.text = "Lives: " + livesInput;
+        //livesText.text = "Lives: " + livesInput;
     }
     
 }
