@@ -14,6 +14,7 @@ public class UIManagerScript : MonoBehaviour
     public Text freedText;
     public Text healthText;
     public Text ammoText;
+    public Text livesText;
 
     void Start()
     {   
@@ -26,6 +27,7 @@ public class UIManagerScript : MonoBehaviour
     void Update()
     {
         UpdateHealthText(_player.health);
+        UpdateLivesText(_player.lives);
         UpdateAmmoText(_player.magazineAmmo, _player.remainingAmmo);
     }
 
@@ -43,7 +45,12 @@ public class UIManagerScript : MonoBehaviour
         freedText.text = numofRescuedPrisoners + " out of " + totalPrisoners + " rescued";
     }
     public void UpdateHealthText(int health) {
-        healthText.text = "Health: " + health;
+        if(health <= 0){
+            healthText.text = "Health: 0";
+        } else 
+        {
+            healthText.text = "Health: " + health;
+        }
     }
     public void UpdateAmmoText(int magazineAmmo, int remainingAmmo) {
         if (magazineAmmo >= 0 && remainingAmmo >= 0)
@@ -54,6 +61,10 @@ public class UIManagerScript : MonoBehaviour
         {
             ammoText.text = magazineAmmo + " / " + remainingAmmo;
         }
+    }
+    public void UpdateLivesText(int livesInput)
+    {
+        livesText.text = "Lives: " + livesInput;
     }
     
 }

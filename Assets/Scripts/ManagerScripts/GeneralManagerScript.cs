@@ -8,16 +8,18 @@ public class GeneralManagerScript : MonoBehaviour
     public UIManagerScript UIManager;
     public PlayerScript _player;
 
-    int level;
-    int score;
+    public int level;
     int numofPrisoners;
+    int score;
     int remainingPrisoners;
 
     void Start()
     {
-        level = 1;
         score = 0;
-        SetPrisoners(3);
+
+        numofPrisoners = GameObject.FindGameObjectsWithTag(TagList.PrisonerTag).Length;
+
+        SetPrisoners(numofPrisoners);
     }
 
     // Update is called once per frame
@@ -34,7 +36,6 @@ public class GeneralManagerScript : MonoBehaviour
     }
 
     public void SetPrisoners(int prisoners) {
-        numofPrisoners = prisoners;
         remainingPrisoners = prisoners;
     }
     public void FreePrisoner() {
