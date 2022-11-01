@@ -9,9 +9,9 @@ using UnityEngine.SceneManagement;
 public class PlayerScript : MonoBehaviour
 {
     Rigidbody2D _rbody;
-    SpriteRenderer _srender;
     RayGunScript _rayGun;
     LaserSwordScript _laserSword;
+    Animator _swordSwipe;
     public Camera _mainCamera;
     GeneralManagerScript _generalManager;
 
@@ -30,13 +30,14 @@ public class PlayerScript : MonoBehaviour
     public GameObject LeftAnim;
     public GameObject DownAnim;
 
+    Color32 _defaultColor;
+
     [SerializeField] TagList.weaponType weapon;
     [SerializeField] TagList.directions direction;
 
     void Start()
     {
         _rbody = GetComponent<Rigidbody2D>();
-        _srender = GetComponent<SpriteRenderer>();
         _rayGun = GetComponent<RayGunScript>();
         _laserSword = GetComponent<LaserSwordScript>();
         _generalManager = FindObjectOfType<GeneralManagerScript>();
@@ -67,6 +68,7 @@ public class PlayerScript : MonoBehaviour
         }
 
     }
+
     void FixedUpdate()
     {
         MovePlayer();
@@ -179,6 +181,24 @@ public class PlayerScript : MonoBehaviour
             health = 0;
             PlayerDeath();
         }
+        print("Oww! My health is now " + health);
+
+        StartCoroutine(AnimationColorFlash(Color.red, 0.1f));
+    }
+
+    IEnumerator AnimationColorFlash(Color32 flashColor, float flashTime)
+    {
+        SpriteRenderer[] sprites = GetComponentsInChildren<SpriteRenderer>();
+        // gets child (animation) sprite renderers
+        foreach(SpriteRenderer sprite in sprites) 
+        {
+            sprite.color = flashColor;
+        }
+        yield return new WaitForSeconds(flashTime);
+        foreach(SpriteRenderer sprite in sprites) 
+        {
+            sprite.color = Color.white;
+        }
     }
 
     public void RestoreHealth(int hitpoints)
@@ -189,11 +209,21 @@ public class PlayerScript : MonoBehaviour
         {
             health = maxHealth;
         }
+
+        StartCoroutine(AnimationColorFlash(Color.green, 1.5f));
     }
     private void PlayerDeath()
     {
         _isDead = true;
-        _generalManager.GameOver();
+
+
+
+
+        // auto respawns for testing purposes
+
+        RespawnPlayer();
+
+        // _generalManager.GameOver();
     }
     private void RespawnPlayer()
     {
