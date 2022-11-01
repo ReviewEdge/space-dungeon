@@ -189,6 +189,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8956273381456746266, guid: a4d82364c8982e449a5e1bd4c1b02daa, type: 3}
   m_PrefabInstance: {fileID: 29354624}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &140443942 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1030587192412474727, guid: 395841453c19ff84bac35b492a4fbb2d, type: 3}
+  m_PrefabInstance: {fileID: 249793316}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2dd19a5ebd16a2428af0afea307eb0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &175938004
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2512,10 +2523,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIManager: {fileID: 1910048144}
+  Player: {fileID: 140443942}
   level: 1
   numofPrisoners: 0
   score: 0
   remainingPrisoners: 0
+  _enemyExplosionPrefab: {fileID: 4370606475505516139, guid: 627a56d17ed9fb74d98f6e93ec110807, type: 3}
 --- !u!1001 &1849046383
 PrefabInstance:
   m_ObjectHideFlags: 0

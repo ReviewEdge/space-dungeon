@@ -52,19 +52,22 @@ public class RobotGuardScript : MonoBehaviour
         int ran = Random.Range(1, 7);
 
         // occasionally drop health pack
-        if (ran == 1) {
-            Instantiate(_healthPackDropPrefab, gameObject.transform.position, Quaternion.identity);
-        } else
+        if (ran == 1)
         {
-            if(TagList.weaponType.LaserSword == weapon)
+            Instantiate(_healthPackDropPrefab, gameObject.transform.position, Quaternion.identity);
+        }
+        else
+        {
+            if (TagList.weaponType.LaserSword == weapon)
             {
                 Instantiate(_laserSwordDropPrefab, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
-            } else if(TagList.weaponType.RayGun == weapon)
+            }
+            else if (TagList.weaponType.RayGun == weapon)
             {
                 Instantiate(_rayGunDropPrefab, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
             }
         }
-        
+
 
         _generalManager.IncrementScore(50);
 
