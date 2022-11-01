@@ -113,7 +113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 732299d37701f0942878dfbbb790fe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generalManagerScript: {fileID: 0}
   cellDoor: {fileID: 0}
   prisoner: {fileID: 0}
 --- !u!1 &3564958145279465141
