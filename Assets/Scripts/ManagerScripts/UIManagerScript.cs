@@ -27,7 +27,7 @@ public class UIManagerScript : MonoBehaviour
     void Update()
     {
         UpdateHealthText(_player.health);
-        UpdateLivesText(_player.lives);
+        // UpdateLivesText(_player.lives);
         UpdateAmmoText(_player.magazineAmmo, _player.remainingAmmo);
     }
 
@@ -55,7 +55,7 @@ public class UIManagerScript : MonoBehaviour
     public void UpdateAmmoText(int magazineAmmo, int remainingAmmo) {
         if (magazineAmmo >= 0 && remainingAmmo >= 0)
         {
-            ammoText.text = "- / -";
+            ammoText.text = "Ammo: " + remainingAmmo;
         }
         else
         {
