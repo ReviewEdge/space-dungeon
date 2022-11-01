@@ -35,8 +35,6 @@ public class RayGunScript : MonoBehaviour
 
         bullet.SetDamage(damage);
         bullet.GetComponent<Rigidbody2D>().AddForce(directionalVector * _bulletSpeed);
-        
-        //bullet.GetComponent<Rigidbody2D>().AddForce(directionalVector * _bulletSpeed);
 
         _timeBtwAttack = attackSpeed;
     }

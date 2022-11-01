@@ -17,14 +17,21 @@ public class BulletScript : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.collider.tag == TagList.enemyTag) {
-            collision.collider.GetComponent<RobotGuardScript>().TakeDamage(_damage);
-        } else if (collision.collider.tag == TagList.playerTag) {
-            collision.collider.GetComponent<PlayerScript>().TakeDamage(_damage);
+        switch (collision.tag) {
+            case TagList.enemyTag:
+                collision.GetComponent<RobotGuardScript>().TakeDamage(_damage);
+                Destroy(gameObject);
+                break;
+            case TagList.playerTag:
+                collision.GetComponent<PlayerScript>().TakeDamage(_damage);
+                Destroy(gameObject);
+                break;
+            case TagList.wallTag:
+                Destroy(gameObject);
+                break;
         }
-        Destroy(gameObject);
     }
 
     public void SetDamage(int damage) {
