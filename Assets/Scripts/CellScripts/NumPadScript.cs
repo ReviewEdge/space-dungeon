@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
+using UnityEngine.UI;
 
 public class NumPadScript : MonoBehaviour
 {
@@ -9,12 +9,17 @@ public class NumPadScript : MonoBehaviour
     public PrisonerScript prisoner;
     private bool _isHacking;
     private MeshRenderer _popupText;
-    GeneralManagerScript _generalManager;
+    public Image _progressBar;
+    private Canvas _canvas;
+    private GeneralManagerScript _generalManager;
+    private int unlockTime = 2;
+    private float _progressBarTime = 0;
     // Start is called before the first frame update
     void Start()
     {
         _isHacking = false;
         _popupText = GetComponentInChildren<MeshRenderer>();
+        _canvas = GetComponentInChildren<Canvas>();
         _generalManager = FindObjectOfType<GeneralManagerScript>();
     }
 
@@ -23,6 +28,12 @@ public class NumPadScript : MonoBehaviour
     {
         if (_isHacking && !Input.GetKey(KeyCode.E)) {
             _isHacking = false;
+            _canvas.enabled = false;
+            _progressBarTime = 0;
+        }
+        if (_isHacking) {
+            _progressBar.fillAmount = _progressBarTime/unlockTime;
+            _progressBarTime += Time.deltaTime;
         }
     }
 
@@ -31,8 +42,10 @@ public class NumPadScript : MonoBehaviour
             return;
         }
 
+        _canvas.enabled = true;
+
         _isHacking = true;
-        Invoke("OnFinishHack", 2);
+        Invoke("OnFinishHack", unlockTime);
     }
 
     private void OnFinishHack()
@@ -42,6 +55,7 @@ public class NumPadScript : MonoBehaviour
             return;
         }
 
+        _canvas.enabled = false;
         Destroy(cellDoor);
         _generalManager.IncrementScore(1000);
         _generalManager.FreePrisoner();

@@ -239,6 +239,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2206341998829745148, guid: e9897dbf36bfac94d8ed9e89ef5b8e8c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2891248196449524949, guid: e9897dbf36bfac94d8ed9e89ef5b8e8c, type: 3}
       propertyPath: cellDoor
       value: 
@@ -297,6 +301,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2891248196449524971, guid: e9897dbf36bfac94d8ed9e89ef5b8e8c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6082616269565190196, guid: e9897dbf36bfac94d8ed9e89ef5b8e8c, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1808343017}
+    - target: {fileID: 6082616269565190196, guid: e9897dbf36bfac94d8ed9e89ef5b8e8c, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6246530962628919801, guid: e9897dbf36bfac94d8ed9e89ef5b8e8c, type: 3}
@@ -495,8 +507,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIManager: {fileID: 777927512}
-  _player: {fileID: 872344631}
   level: 0
+  numofPrisoners: 0
+  score: 0
+  remainingPrisoners: 0
 --- !u!1 &777927510
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,17 +625,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &872344631 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1030587192412474727, guid: 395841453c19ff84bac35b492a4fbb2d, type: 3}
-  m_PrefabInstance: {fileID: 1030587192687124816}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2dd19a5ebd16a2428af0afea307eb0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &891693248
 GameObject:
   m_ObjectHideFlags: 0
@@ -1390,6 +1393,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
+--- !u!20 &1808343017 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1030587192866199855, guid: 395841453c19ff84bac35b492a4fbb2d, type: 3}
+  m_PrefabInstance: {fileID: 1030587192687124816}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1976427320
 PrefabInstance:
   m_ObjectHideFlags: 0
