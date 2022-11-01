@@ -25,6 +25,8 @@ public class PlayerScript : MonoBehaviour
     public int remainingAmmo = 0;
     const int maxMagSize = 30;
 
+    Color32 _defaultColor;
+
     [SerializeField] TagList.weaponType weapon;
 
 
@@ -33,6 +35,7 @@ public class PlayerScript : MonoBehaviour
 
         _rbody = GetComponent<Rigidbody2D>();
         _srender = GetComponent<SpriteRenderer>();
+        _defaultColor = _srender.color;
         _rayGun = GetComponent<RayGunScript>();
         _laserSword = GetComponent<LaserSwordScript>();
         _generalManager = FindObjectOfType<GeneralManagerScript>();
@@ -129,6 +132,17 @@ public class PlayerScript : MonoBehaviour
             health = 0;
             PlayerDeath();
         }
+        print("Oww! My health is now " + health);
+
+        StartCoroutine(ColorFlash());
+    }
+
+    IEnumerator ColorFlash()
+    {
+        _srender.color = new Color32(92, 17, 25, 255);
+        //Wait for .1 seconds
+        yield return new WaitForSeconds(.1f);
+        _srender.color = _defaultColor;
     }
 
     public void RestoreHealth(int hitpoints)
