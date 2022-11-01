@@ -35,7 +35,6 @@ public class PlayerScript : MonoBehaviour
 
     void Start()
     {
-
         _rbody = GetComponent<Rigidbody2D>();
         _srender = GetComponent<SpriteRenderer>();
         _rayGun = GetComponent<RayGunScript>();
@@ -71,34 +70,7 @@ public class PlayerScript : MonoBehaviour
     void FixedUpdate()
     {
         MovePlayer();
-
-        switch (direction)
-        {
-            case TagList.directions.right:
-                RightAnim.SetActive(true);
-                UpAnim.SetActive(false);
-                LeftAnim.SetActive(false);
-                DownAnim.SetActive(false);
-                break;
-            case TagList.directions.up:
-                RightAnim.SetActive(false);
-                UpAnim.SetActive(true);
-                LeftAnim.SetActive(false);
-                DownAnim.SetActive(false);
-                break;
-            case TagList.directions.left:
-                RightAnim.SetActive(false);
-                UpAnim.SetActive(false);
-                LeftAnim.SetActive(true);
-                DownAnim.SetActive(false);
-                break;
-            case TagList.directions.down:
-                RightAnim.SetActive(false);
-                UpAnim.SetActive(false);
-                LeftAnim.SetActive(false);
-                DownAnim.SetActive(true);
-                break;
-        }
+        ChangePlayerDirection();
     }
     
     private void MovePlayer()
@@ -139,6 +111,36 @@ public class PlayerScript : MonoBehaviour
             _rbody.velocity = new Vector2(_rbody.velocity.x, (x * moveSpeed) * roll);
             // play roll sprite animation
         }*/
+    }
+    private void ChangePlayerDirection()
+    {
+        switch (direction)
+        {
+            case TagList.directions.right:
+                RightAnim.SetActive(true);
+                UpAnim.SetActive(false);
+                LeftAnim.SetActive(false);
+                DownAnim.SetActive(false);
+                break;
+            case TagList.directions.up:
+                RightAnim.SetActive(false);
+                UpAnim.SetActive(true);
+                LeftAnim.SetActive(false);
+                DownAnim.SetActive(false);
+                break;
+            case TagList.directions.left:
+                RightAnim.SetActive(false);
+                UpAnim.SetActive(false);
+                LeftAnim.SetActive(true);
+                DownAnim.SetActive(false);
+                break;
+            case TagList.directions.down:
+                RightAnim.SetActive(false);
+                UpAnim.SetActive(false);
+                LeftAnim.SetActive(false);
+                DownAnim.SetActive(true);
+                break;
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
