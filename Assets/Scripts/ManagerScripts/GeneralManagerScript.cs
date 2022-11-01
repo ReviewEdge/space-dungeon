@@ -14,6 +14,7 @@ public class GeneralManagerScript : MonoBehaviour
     public int numofPrisoners;
     public int score;
     public int remainingPrisoners;
+    public GameObject _enemyExplosionPrefab;
 
     void Start()
     {
@@ -56,6 +57,11 @@ public class GeneralManagerScript : MonoBehaviour
         {
             SceneManager.LoadScene("TitleScene");
         }
+    }
+
+    public void EnemyDeath(Vector3 spot)
+    {
+        Instantiate(_enemyExplosionPrefab, spot, Quaternion.identity);
     }
 
     public void GameOver() {

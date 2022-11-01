@@ -13,6 +13,7 @@ public class RobotGuardScript : MonoBehaviour
     LaserSwordScript _laserSword;
     public GameObject _laserSwordDropPrefab;
     public GameObject _rayGunDropPrefab;
+    public GameObject _healthPackDropPrefab;
     [SerializeField] TagList.weaponType weapon;
     public GameObject _floatingTextDamagePrefab;
     GeneralManagerScript _generalManager;
@@ -46,13 +47,24 @@ public class RobotGuardScript : MonoBehaviour
 
     void Die()
     {
-        if(TagList.weaponType.LaserSword == weapon)
+        _generalManager.EnemyDeath(transform.position);
+
+        int ran = Random.Range(1, 7);
+
+        // occasionally drop health pack
+        if (ran == 1) {
+            Instantiate(_healthPackDropPrefab, gameObject.transform.position, Quaternion.identity);
+        } else
         {
-            Instantiate(_laserSwordDropPrefab, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
-        } else if(TagList.weaponType.RayGun == weapon)
-        {
-            Instantiate(_rayGunDropPrefab, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+            if(TagList.weaponType.LaserSword == weapon)
+            {
+                Instantiate(_laserSwordDropPrefab, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+            } else if(TagList.weaponType.RayGun == weapon)
+            {
+                Instantiate(_rayGunDropPrefab, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+            }
         }
+        
 
         _generalManager.IncrementScore(50);
 
