@@ -15,7 +15,7 @@ public class RayGunScript : MonoBehaviour
     void Start()
     {
         _entityLocation = transform;
-        _bulletSpeed = 200;
+        _bulletSpeed = 400;
     }
 
     // Update is called once per frame
@@ -35,6 +35,8 @@ public class RayGunScript : MonoBehaviour
 
         bullet.SetDamage(damage);
         bullet.GetComponent<Rigidbody2D>().AddForce(directionalVector * _bulletSpeed);
+        
+        //bullet.GetComponent<Rigidbody2D>().AddForce(directionalVector * _bulletSpeed);
 
         _timeBtwAttack = attackSpeed;
     }
