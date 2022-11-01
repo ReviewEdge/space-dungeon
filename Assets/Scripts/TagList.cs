@@ -26,4 +26,11 @@ public class TagList
         LaserSword,
         RayGun
     }
+    public enum directions
+    {
+        right,
+        up,
+        down,
+        left
+    }
 }

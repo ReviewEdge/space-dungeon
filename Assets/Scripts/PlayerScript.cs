@@ -26,10 +26,15 @@ public class PlayerScript : MonoBehaviour
     public int remainingAmmo = 0;
     const int maxMagSize = 30;
 
+    public GameObject RightAnim;
+    public GameObject UpAnim;
+    public GameObject LeftAnim;
+    public GameObject DownAnim;
+
     Color32 _defaultColor;
 
     [SerializeField] TagList.weaponType weapon;
-
+    [SerializeField] TagList.directions direction;
 
     void Start()
     {
@@ -88,6 +93,7 @@ public class PlayerScript : MonoBehaviour
     void FixedUpdate()
     {
         MovePlayer();
+        ChangePlayerDirection();
     }
     
     private void MovePlayer()
@@ -99,8 +105,23 @@ public class PlayerScript : MonoBehaviour
         Vector2 movement = new Vector2(x, y);
         _rbody.velocity = movement * moveSpeed;
 
-
-        //check for shift key to roll player
+        if (Input.GetKey(KeyCode.D))
+        {
+            direction = TagList.directions.right;
+        } 
+        else if (Input.GetKey(KeyCode.W))
+        {
+            direction = TagList.directions.up;
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            direction = TagList.directions.left;
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            direction = TagList.directions.down;
+        }
+        /*//check for shift key to roll player
         if (Input.GetKeyDown(KeyCode.LeftShift) && movement.x != 0)
         {
             // dodge/roll player left/right
@@ -112,6 +133,36 @@ public class PlayerScript : MonoBehaviour
             // dodge/roll player up/down
             _rbody.velocity = new Vector2(_rbody.velocity.x, (x * moveSpeed) * roll);
             // play roll sprite animation
+        }*/
+    }
+    private void ChangePlayerDirection()
+    {
+        switch (direction)
+        {
+            case TagList.directions.right:
+                RightAnim.SetActive(true);
+                UpAnim.SetActive(false);
+                LeftAnim.SetActive(false);
+                DownAnim.SetActive(false);
+                break;
+            case TagList.directions.up:
+                RightAnim.SetActive(false);
+                UpAnim.SetActive(true);
+                LeftAnim.SetActive(false);
+                DownAnim.SetActive(false);
+                break;
+            case TagList.directions.left:
+                RightAnim.SetActive(false);
+                UpAnim.SetActive(false);
+                LeftAnim.SetActive(true);
+                DownAnim.SetActive(false);
+                break;
+            case TagList.directions.down:
+                RightAnim.SetActive(false);
+                UpAnim.SetActive(false);
+                LeftAnim.SetActive(false);
+                DownAnim.SetActive(true);
+                break;
         }
     }
 
