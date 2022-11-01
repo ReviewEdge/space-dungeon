@@ -5,16 +5,17 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class NumPadScript : MonoBehaviour
 {
-    public GeneralManagerScript generalManagerScript;
     public GameObject cellDoor;
     public PrisonerScript prisoner;
     private bool _isHacking;
     private MeshRenderer _popupText;
+    GeneralManagerScript _generalManager;
     // Start is called before the first frame update
     void Start()
     {
         _isHacking = false;
         _popupText = GetComponentInChildren<MeshRenderer>();
+        _generalManager = FindObjectOfType<GeneralManagerScript>();
     }
 
     // Update is called once per frame
@@ -42,7 +43,8 @@ public class NumPadScript : MonoBehaviour
         }
 
         Destroy(cellDoor);
-        generalManagerScript.FreePrisoner();
+        _generalManager.IncrementScore(1000);
+        _generalManager.FreePrisoner();
         prisoner.Freed();
     }
 
