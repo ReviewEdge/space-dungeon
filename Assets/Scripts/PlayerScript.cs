@@ -30,8 +30,6 @@ public class PlayerScript : MonoBehaviour
     public GameObject LeftAnim;
     public GameObject DownAnim;
 
-    Color32 _defaultColor;
-
     [SerializeField] TagList.weaponType weapon;
     [SerializeField] TagList.directions direction;
 
