@@ -142,9 +142,9 @@ MonoBehaviour:
   _player: {fileID: 0}
   _laserSwordDropPrefab: {fileID: 7687307533725574365, guid: 13e4408e237264a468ab429e80d99625, type: 3}
   _rayGunDropPrefab: {fileID: 1217331699187338907, guid: 285d3f4abf35a844392b5b336a45b115, type: 3}
+  _healthPackDropPrefab: {fileID: 3393466565807309861, guid: d4f3bce7695294d4f9aa516de74b0b16, type: 3}
   weapon: 0
   _floatingTextDamagePrefab: {fileID: 7591584769268283073, guid: aed8138092e07774bb3b7403cf39021d, type: 3}
-  _explosion: {fileID: 4370606475505516139, guid: 627a56d17ed9fb74d98f6e93ec110807, type: 3}
 --- !u!114 &1491508084977974494
 MonoBehaviour:
   m_ObjectHideFlags: 0
