@@ -46,6 +46,8 @@ public class RobotGuardScript : MonoBehaviour
 
     void Die()
     {
+        _generalManager.EnemyDeath(transform.position);
+        
         if(TagList.weaponType.LaserSword == weapon)
         {
             Instantiate(_laserSwordDropPrefab, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
