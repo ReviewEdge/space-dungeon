@@ -14,7 +14,8 @@ public class DropScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // spinny spinny
+        gameObject.transform.Rotate( 0, Time.deltaTime*96f, 0);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
