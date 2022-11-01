@@ -9,7 +9,6 @@ using UnityEngine.SceneManagement;
 public class PlayerScript : MonoBehaviour
 {
     Rigidbody2D _rbody;
-    SpriteRenderer _srender;
     RayGunScript _rayGun;
     LaserSwordScript _laserSword;
     Animator _swordSwipe;
@@ -30,8 +29,6 @@ public class PlayerScript : MonoBehaviour
     public GameObject UpAnim;
     public GameObject LeftAnim;
     public GameObject DownAnim;
-    
-    // public GameObject SwordSwipe8; 
 
     Color32 _defaultColor;
 
@@ -41,8 +38,6 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         _rbody = GetComponent<Rigidbody2D>();
-        _srender = GetComponent<SpriteRenderer>();
-        _defaultColor = _srender.color;
         _rayGun = GetComponent<RayGunScript>();
         _laserSword = GetComponent<LaserSwordScript>();
         _generalManager = FindObjectOfType<GeneralManagerScript>();
@@ -188,15 +183,22 @@ public class PlayerScript : MonoBehaviour
         }
         print("Oww! My health is now " + health);
 
-        StartCoroutine(ColorFlash());
+        StartCoroutine(AnimationColorFlash(Color.red, 0.1f));
     }
 
-    IEnumerator ColorFlash()
+    IEnumerator AnimationColorFlash(Color32 flashColor, float flashTime)
     {
-        _srender.color = new Color32(92, 17, 25, 255);
-        //Wait for .1 seconds
-        yield return new WaitForSeconds(.1f);
-        _srender.color = _defaultColor;
+        SpriteRenderer[] sprites = GetComponentsInChildren<SpriteRenderer>();
+        // gets child (animation) sprite renderers
+        foreach(SpriteRenderer sprite in sprites) 
+        {
+            sprite.color = flashColor;
+        }
+        yield return new WaitForSeconds(flashTime);
+        foreach(SpriteRenderer sprite in sprites) 
+        {
+            sprite.color = Color.white;
+        }
     }
 
     public void RestoreHealth(int hitpoints)
@@ -207,6 +209,8 @@ public class PlayerScript : MonoBehaviour
         {
             health = maxHealth;
         }
+
+        StartCoroutine(AnimationColorFlash(Color.green, 1.5f));
     }
     private void PlayerDeath()
     {
