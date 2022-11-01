@@ -41,4 +41,8 @@ public class GeneralManagerScript : MonoBehaviour
     public void FreePrisoner() {
         remainingPrisoners--;
     }
+
+    public void IncrementScore(int points) {
+        score += points;
+    }
 }

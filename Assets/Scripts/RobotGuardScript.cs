@@ -14,7 +14,8 @@ public class RobotGuardScript : MonoBehaviour
     public GameObject _laserSwordDropPrefab;
     public GameObject _rayGunDropPrefab;
     [SerializeField] TagList.weaponType weapon;
-    public GameObject _floatingTextParentPrefab;
+    public GameObject _floatingTextDamagePrefab;
+    GeneralManagerScript _generalManager;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,7 @@ public class RobotGuardScript : MonoBehaviour
         _rayGun = GetComponent<RayGunScript>();
         _laserSword = GetComponent<LaserSwordScript>();
         _player = GameObject.FindWithTag(TagList.playerTag);
+        _generalManager = FindObjectOfType<GeneralManagerScript>();
     }
 
     // Update is called once per frame
@@ -52,13 +54,16 @@ public class RobotGuardScript : MonoBehaviour
             Instantiate(_rayGunDropPrefab, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
         }
 
+        _generalManager.IncrementScore(50);
+
         Destroy(gameObject);
     }
 
     public void TakeDamage(int damage) {
         _health -= damage;
-        GameObject floatingDamageText = Instantiate(_floatingTextParentPrefab, _rbody.position, Quaternion.identity);
+        GameObject floatingDamageText = Instantiate(_floatingTextDamagePrefab, _rbody.position, Quaternion.identity);
         floatingDamageText.GetComponentInChildren<TextMesh>().text = "-" + damage;
+        _generalManager.IncrementScore(damage);
 
         if (_health <= 0)
         {
