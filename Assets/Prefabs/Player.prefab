@@ -139,9 +139,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainCamera: {fileID: 1030587192866199855}
   health: 100
-  lives: 3
   _isDead: 0
-  _SPEED: 5
+  _SPEED: 4
   moveSpeed: 1
   roll: 5
   magazineAmmo: 0
