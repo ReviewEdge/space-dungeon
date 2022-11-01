@@ -12,6 +12,7 @@ public class PlayerScript : MonoBehaviour
     SpriteRenderer _srender;
     RayGunScript _rayGun;
     LaserSwordScript _laserSword;
+    Animator _swordSwipe;
     public Camera _mainCamera;
     GeneralManagerScript _generalManager;
 
@@ -32,7 +33,6 @@ public class PlayerScript : MonoBehaviour
 
     void Start()
     {
-
         _rbody = GetComponent<Rigidbody2D>();
         _srender = GetComponent<SpriteRenderer>();
         _defaultColor = _srender.color;
@@ -40,6 +40,10 @@ public class PlayerScript : MonoBehaviour
         _laserSword = GetComponent<LaserSwordScript>();
         _generalManager = FindObjectOfType<GeneralManagerScript>();
         _isDead = false;
+
+        _swordSwipe = gameObject.GetComponent<Animator>();
+        _swordSwipe.Play("Base Layer.Rest");
+        // _swordSwipe.enabled = false;
     }
 
     private void Update()
@@ -51,6 +55,11 @@ public class PlayerScript : MonoBehaviour
             {
                 case TagList.weaponType.LaserSword:
                     _laserSword.SwingLaserSword(mouseLocation);
+
+                    _swordSwipe.Play("Base Layer.SwordSwipe6");
+                    // StartCoroutine(SwordSwipeAnime());
+
+
                     break;
                 case TagList.weaponType.RayGun:
                     remainingAmmo--;
@@ -66,6 +75,16 @@ public class PlayerScript : MonoBehaviour
         }
 
     }
+
+    // IEnumerator SwordSwipeAnime()
+    // {
+    //     _swordSwipe.enabled = true;
+    //     // _swordSwipe.Play("Base Layer.SwordSwipe5");
+    //     //Wait for .1 seconds
+    //     yield return new WaitForSeconds(.5f);
+    //     _swordSwipe.enabled = false;
+    // }
+
     void FixedUpdate()
     {
         MovePlayer();
@@ -157,7 +176,15 @@ public class PlayerScript : MonoBehaviour
     private void PlayerDeath()
     {
         _isDead = true;
-        _generalManager.GameOver();
+
+
+
+
+        // auto respawns for testing purposes
+
+        RespawnPlayer();
+
+        // _generalManager.GameOver();
     }
     private void RespawnPlayer()
     {

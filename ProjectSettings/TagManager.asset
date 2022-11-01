@@ -11,6 +11,8 @@ TagManager:
   - Sword
   - Gun
   - NumPad
+  - Prisoner
+  - SwordSwipe4
   layers:
   - Default
   - TransparentFX

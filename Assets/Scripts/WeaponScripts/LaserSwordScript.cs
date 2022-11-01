@@ -9,6 +9,7 @@ public class LaserSwordScript : MonoBehaviour
     public LayerMask _foesLayer;
     private float _timeBtwAttack;
     private Transform _entityLocation;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +30,7 @@ public class LaserSwordScript : MonoBehaviour
 
         Vector3 directionalVector = (aimingAt + (-_entityLocation.position)).normalized;
         
-        Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(_entityLocation.position + directionalVector, 1f, _foesLayer);
+        Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(_entityLocation.position + directionalVector, .6f, _foesLayer);
         for (int i = 0; i < enemiesToDamage.Length; i++) {
             if (enemiesToDamage[i].tag == TagList.enemyTag)
             {

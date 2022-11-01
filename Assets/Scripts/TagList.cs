@@ -18,6 +18,8 @@ public class TagList
     public const string playerBulletLayer = "Player Bullet";
     public const string enemyBulletLayer = "Enemy Bullet";
 
+    public const string swordSwipe4 = "SwordSwipe4";
+
     //weapons
     public enum weaponType
     {
