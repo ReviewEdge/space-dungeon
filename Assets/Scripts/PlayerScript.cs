@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CircleCollider2D))]
@@ -148,6 +149,10 @@ public class PlayerScript : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+
+        if (health < 0) {
+            health = 0;
+        }
         print("Oww! My health is now " + health);
     }
 
@@ -157,16 +162,14 @@ public class PlayerScript : MonoBehaviour
         if(health < maxHealth)
         {
             health = maxHealth;
-        } else if(health < 0)
-        {
-            health = 0;
-        }
+        } 
         print("HP Restored; health is now " + health);
     }
     private void PlayerDeath()
     {
         _isDead = true;
-        
+        //SceneManager.LoadScene("TitleScene");
+
         Invoke("RespawnPlayer", 0);
     }
     private void RespawnPlayer()
