@@ -166,7 +166,7 @@ public class PlayerScript : MonoBehaviour
     private void PlayerDeath()
     {
         _isDead = true;
-
+        
         Invoke("RespawnPlayer", 0);
     }
     private void RespawnPlayer()
