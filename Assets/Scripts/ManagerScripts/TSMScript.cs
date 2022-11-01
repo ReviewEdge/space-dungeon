@@ -16,7 +16,7 @@ public class TSMScript : MonoBehaviour
         }
         else
         {
-            _highScoreText.text = "No Stored Value";
+            _highScoreText.text = "High Score: 0";
         }
     }
 
@@ -28,10 +28,6 @@ public class TSMScript : MonoBehaviour
 
     public void onStartButtonClick()
     {
-        SceneManager.LoadScene("Level1_Scene");
-        if (PlayerPrefs.HasKey("HighScore"))
-        {
-            print("High Score: " + PlayerPrefs.GetInt("HighScore"));
-        }
+        SceneManager.LoadScene("Level1");
     }
 }

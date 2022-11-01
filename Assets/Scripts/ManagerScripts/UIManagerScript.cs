@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class UIManagerScript : MonoBehaviour
 {
     private PlayerScript _player;
-    
+    private GeneralManagerScript _generalManager;
     public Text levelText;
     public Text scoreText;
     public Text freedText;
@@ -18,6 +18,7 @@ public class UIManagerScript : MonoBehaviour
     {   
         GameObject player = GameObject.FindWithTag(TagList.playerTag);
         _player = player.GetComponent<PlayerScript>();
+        _generalManager = FindObjectOfType<GeneralManagerScript>();
 
     }
 
@@ -28,6 +29,8 @@ public class UIManagerScript : MonoBehaviour
         // UpdateLivesText(_player.lives);
         
         UpdateAmmoText(_player.magazineAmmo, _player.remainingAmmo);
+        UpdateScoreText(_generalManager.score);
+        UpdateFreedText(_generalManager.remainingPrisoners, _generalManager.numofPrisoners);
     }
 
     public void UpdateLevelText(int level)

@@ -13,6 +13,7 @@ public class PlayerScript : MonoBehaviour
     RayGunScript _rayGun;
     LaserSwordScript _laserSword;
     public Camera _mainCamera;
+    GeneralManagerScript _generalManager;
 
     public int health = 100;
     const int maxHealth = 100;
@@ -34,6 +35,7 @@ public class PlayerScript : MonoBehaviour
         _srender = GetComponent<SpriteRenderer>();
         _rayGun = GetComponent<RayGunScript>();
         _laserSword = GetComponent<LaserSwordScript>();
+        _generalManager = FindObjectOfType<GeneralManagerScript>();
         _isDead = false;
     }
 
@@ -60,22 +62,11 @@ public class PlayerScript : MonoBehaviour
             }
         }
 
-        if(health <= 0)
-        {
-            PlayerDeath();
-        }
-
-        // if(_isDead)
-        // {
-        //     _srender.enabled = false;
-        // }
-
     }
     void FixedUpdate()
     {
         MovePlayer();
     }
-
     
     private void MovePlayer()
     {
@@ -102,22 +93,6 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    /*public void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag.Equals(TagList.enemyTag))
-        {
-            //Take some damage from running into Guard?
-        }
-
-        if (collision.gameObject.tag.Equals(TagList.swordDropTag))
-        {
-            weapon = TagList.weaponType.LaserSword;
-        }
-        if (collision.gameObject.tag.Equals(TagList.gunDropTag))
-        {
-            weapon = TagList.weaponType.RayGun;
-        }
-    }*/
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (Input.GetKey(KeyCode.E))
@@ -150,31 +125,28 @@ public class PlayerScript : MonoBehaviour
     {
         health -= damage;
 
-        if (health < 0) {
+        if (health <= 0) {
             health = 0;
+            PlayerDeath();
         }
-        print("Oww! My health is now " + health);
     }
 
     public void RestoreHealth(int hitpoints)
     {
         health += hitpoints;
+
         if(health < maxHealth)
         {
             health = maxHealth;
-        } 
-        print("HP Restored; health is now " + health);
+        }
     }
     private void PlayerDeath()
     {
         _isDead = true;
-        //SceneManager.LoadScene("TitleScene");
-
-        Invoke("RespawnPlayer", 0);
+        _generalManager.GameOver();
     }
     private void RespawnPlayer()
     {
-    
         _rbody.position = new Vector2(0, 0);
         health = 100;
     }
