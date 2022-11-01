@@ -346,7 +346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIManager: {fileID: 547155709}
-  _player: {fileID: 588604982}
+  Player: {fileID: 1323030811}
   level: 1
   numofPrisoners: 0
   score: 0
@@ -1685,6 +1685,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 395841453c19ff84bac35b492a4fbb2d, type: 3}
+--- !u!114 &1323030811 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1030587192412474727, guid: 395841453c19ff84bac35b492a4fbb2d, type: 3}
+  m_PrefabInstance: {fileID: 1323030810}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2dd19a5ebd16a2428af0afea307eb0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1335468950
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2641,6 +2652,10 @@ PrefabInstance:
     - target: {fileID: 3569003263642601100, guid: ca55d7233a30b314783a59feef9fba09, type: 3}
       propertyPath: m_Name
       value: laser barrier_0 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569003263642601100, guid: ca55d7233a30b314783a59feef9fba09, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 3569003263642601102, guid: ca55d7233a30b314783a59feef9fba09, type: 3}
       propertyPath: m_FlipX

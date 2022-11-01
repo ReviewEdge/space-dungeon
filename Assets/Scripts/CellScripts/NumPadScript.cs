@@ -34,6 +34,9 @@ public class NumPadScript : MonoBehaviour
         if (_isHacking) {
             _progressBar.fillAmount = _progressBarTime/unlockTime;
             _progressBarTime += Time.deltaTime;
+            if (_progressBarTime >= unlockTime) {
+                OnFinishHack();
+            }
         }
     }
 
@@ -43,9 +46,7 @@ public class NumPadScript : MonoBehaviour
         }
 
         _canvas.enabled = true;
-
         _isHacking = true;
-        Invoke("OnFinishHack", unlockTime);
     }
 
     private void OnFinishHack()
@@ -60,6 +61,7 @@ public class NumPadScript : MonoBehaviour
         _generalManager.IncrementScore(1000);
         _generalManager.FreePrisoner();
         prisoner.Freed();
+        this.enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

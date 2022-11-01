@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -30,7 +31,7 @@ public class PlayerScript : MonoBehaviour
     public GameObject LeftAnim;
     public GameObject DownAnim;
 
-    [SerializeField] TagList.weaponType weapon;
+    public TagList.weaponType weapon;
     [SerializeField] TagList.directions direction;
 
     void Start()
@@ -50,11 +51,12 @@ public class PlayerScript : MonoBehaviour
             switch (weapon)
             {
                 case TagList.weaponType.LaserSword:
+                    remainingAmmo = 0;
                     _laserSword.SwingLaserSword(mouseLocation);
                     break;
                 case TagList.weaponType.RayGun:
                     remainingAmmo--;
-                    if(remainingAmmo > 0)
+                    if (remainingAmmo > 0)
                     {
                         _rayGun.ShootRayGun(mouseLocation);
                     }
@@ -72,7 +74,7 @@ public class PlayerScript : MonoBehaviour
         MovePlayer();
         ChangePlayerDirection();
     }
-    
+
     private void MovePlayer()
     {
         float x = _SPEED * Input.GetAxis("Horizontal");
@@ -85,7 +87,7 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             direction = TagList.directions.right;
-        } 
+        }
         else if (Input.GetKey(KeyCode.W))
         {
             direction = TagList.directions.up;
@@ -98,19 +100,6 @@ public class PlayerScript : MonoBehaviour
         {
             direction = TagList.directions.down;
         }
-        /*//check for shift key to roll player
-        if (Input.GetKeyDown(KeyCode.LeftShift) && movement.x != 0)
-        {
-            // dodge/roll player left/right
-            _rbody.velocity = new Vector2((x * moveSpeed) * roll, _rbody.velocity.y);
-            // play roll sprite animation
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftShift) && movement.y != 0)
-        {
-            // dodge/roll player up/down
-            _rbody.velocity = new Vector2(_rbody.velocity.x, (x * moveSpeed) * roll);
-            // play roll sprite animation
-        }*/
     }
     private void ChangePlayerDirection()
     {
@@ -169,7 +158,7 @@ public class PlayerScript : MonoBehaviour
             }
         }
     }
-    
+
 
     public void TakeDamage(int damage)
     {
@@ -203,7 +192,7 @@ public class PlayerScript : MonoBehaviour
     {
         health += hitpoints;
 
-        if(health < maxHealth)
+        if (health > maxHealth)
         {
             health = maxHealth;
         }
