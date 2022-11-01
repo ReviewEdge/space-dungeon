@@ -1,31 +1,34 @@
 fileFormatVersion: 2
-guid: dc1c2c0a5c488fa4fba26bf7fb17e22a
+guid: 5e4ab0b3b0287d342900ce6a31b9b436
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3299977030978399453
-    second: sword swipe sprite no circle_0
+      213: -7130838274005712850
+    second: sword swipe no player
   - first:
-      213: 7493571307329304509
-    second: sword swipe sprite no circle_1
+      213: -8596139167805577350
+    second: sword swipe no player_1
   - first:
-      213: -7160228973003485047
-    second: sword swipe sprite no circle_2
+      213: -5518708117992450290
+    second: sword swipe no player_2
   - first:
-      213: -1424870166597658977
-    second: sword swipe sprite no circle_3
+      213: 6348896103210952739
+    second: sword swipe no player_3
   - first:
-      213: 4607597314647502735
-    second: sword swipe sprite no circle_4
+      213: 8989667969770386997
+    second: sword swipe no player_4
   - first:
-      213: 7024375543195462214
-    second: sword swipe sprite no circle_5
+      213: 8693545675205620262
+    second: sword swipe no player_5
   - first:
-      213: 558427829126065665
-    second: sword swipe sprite no circle_6
+      213: 1980559681010443372
+    second: sword swipe no player_6
   - first:
-      213: -2160652473443538617
-    second: sword swipe sprite no circle_7
+      213: 7959474792580936373
+    second: sword swipe no player_7
+  - first:
+      213: -5747655570428753848
+    second: sword swipe no player_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -115,7 +118,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sword swipe sprite no circle_0
+      name: sword swipe no player
       rect:
         serializedVersion: 2
         x: 0
@@ -123,20 +126,20 @@ TextureImporter:
         width: 563
         height: 563
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3239595df502432d0800000000000000
-      internalID: -3299977030978399453
+      spriteID: e20412fde5c2a0d90800000000000000
+      internalID: -7130838274005712850
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sword swipe sprite no circle_1
+      name: sword swipe no player_1
       rect:
         serializedVersion: 2
         x: 563
@@ -144,20 +147,20 @@ TextureImporter:
         width: 563
         height: 563
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db73c60c6638ef760800000000000000
-      internalID: 7493571307329304509
+      spriteID: a77602f98f064b880800000000000000
+      internalID: -8596139167805577350
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sword swipe sprite no circle_2
+      name: sword swipe no player_2
       rect:
         serializedVersion: 2
         x: 1126
@@ -165,20 +168,20 @@ TextureImporter:
         width: 563
         height: 563
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 980daa18fa1c1ac90800000000000000
-      internalID: -7160228973003485047
+      spriteID: e07deffb43c9963b0800000000000000
+      internalID: -5518708117992450290
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sword swipe sprite no circle_3
+      name: sword swipe no player_3
       rect:
         serializedVersion: 2
         x: 0
@@ -186,20 +189,20 @@ TextureImporter:
         width: 563
         height: 563
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f9615ecf128d93ce0800000000000000
-      internalID: -1424870166597658977
+      spriteID: 32820c33e5fcb1850800000000000000
+      internalID: 6348896103210952739
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sword swipe sprite no circle_4
+      name: sword swipe no player_4
       rect:
         serializedVersion: 2
         x: 563
@@ -207,20 +210,20 @@ TextureImporter:
         width: 563
         height: 563
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f8fab97785971ff30800000000000000
-      internalID: 4607597314647502735
+      spriteID: 536fed2a367b1cc70800000000000000
+      internalID: 8989667969770386997
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sword swipe sprite no circle_5
+      name: sword swipe no player_5
       rect:
         serializedVersion: 2
         x: 1126
@@ -228,20 +231,20 @@ TextureImporter:
         width: 563
         height: 563
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 64a6b1df6589b7160800000000000000
-      internalID: 7024375543195462214
+      spriteID: 622b3413bbda5a870800000000000000
+      internalID: 8693545675205620262
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sword swipe sprite no circle_6
+      name: sword swipe no player_6
       rect:
         serializedVersion: 2
         x: 0
@@ -249,20 +252,20 @@ TextureImporter:
         width: 563
         height: 563
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 10e60c3e62fefb700800000000000000
-      internalID: 558427829126065665
+      spriteID: c64a613598c5c7b10800000000000000
+      internalID: 1980559681010443372
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sword swipe sprite no circle_7
+      name: sword swipe no player_7
       rect:
         serializedVersion: 2
         x: 563
@@ -270,14 +273,35 @@ TextureImporter:
         width: 563
         height: 563
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7492455e502d302e0800000000000000
-      internalID: -2160652473443538617
+      spriteID: 5b2767a172cb57e60800000000000000
+      internalID: 7959474792580936373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword swipe no player_8
+      rect:
+        serializedVersion: 2
+        x: 1126
+        y: 0
+        width: 563
+        height: 563
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8488c4906b93c30b0800000000000000
+      internalID: -5747655570428753848
       vertices: []
       indices: 
       edges: []

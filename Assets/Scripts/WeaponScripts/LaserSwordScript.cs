@@ -10,6 +10,8 @@ public class LaserSwordScript : MonoBehaviour
     private float _timeBtwAttack;
     private Transform _entityLocation;
 
+    public GameObject SwordSwipe8; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +28,11 @@ public class LaserSwordScript : MonoBehaviour
         if (_timeBtwAttack > 0)
         {
             return;
+        }
+
+        if (SwordSwipe8 != null)
+        {
+            SwordSwipe8.GetComponent<Animator>().Play("Base Layer.SwordSwipe8");
         }
 
         Vector3 directionalVector = (aimingAt + (-_entityLocation.position)).normalized;

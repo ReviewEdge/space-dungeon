@@ -30,6 +30,8 @@ public class PlayerScript : MonoBehaviour
     public GameObject UpAnim;
     public GameObject LeftAnim;
     public GameObject DownAnim;
+    
+    // public GameObject SwordSwipe8; 
 
     Color32 _defaultColor;
 
@@ -45,10 +47,6 @@ public class PlayerScript : MonoBehaviour
         _laserSword = GetComponent<LaserSwordScript>();
         _generalManager = FindObjectOfType<GeneralManagerScript>();
         _isDead = false;
-
-        _swordSwipe = gameObject.GetComponent<Animator>();
-        _swordSwipe.Play("Base Layer.Rest");
-        // _swordSwipe.enabled = false;
     }
 
     private void Update()
@@ -60,11 +58,6 @@ public class PlayerScript : MonoBehaviour
             {
                 case TagList.weaponType.LaserSword:
                     _laserSword.SwingLaserSword(mouseLocation);
-
-                    _swordSwipe.Play("Base Layer.SwordSwipe6");
-                    // StartCoroutine(SwordSwipeAnime());
-
-
                     break;
                 case TagList.weaponType.RayGun:
                     remainingAmmo--;
@@ -80,15 +73,6 @@ public class PlayerScript : MonoBehaviour
         }
 
     }
-
-    // IEnumerator SwordSwipeAnime()
-    // {
-    //     _swordSwipe.enabled = true;
-    //     // _swordSwipe.Play("Base Layer.SwordSwipe5");
-    //     //Wait for .1 seconds
-    //     yield return new WaitForSeconds(.5f);
-    //     _swordSwipe.enabled = false;
-    // }
 
     void FixedUpdate()
     {
