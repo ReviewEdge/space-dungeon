@@ -1459,6 +1459,7 @@ MonoBehaviour:
   numofPrisoners: 0
   score: 0
   remainingPrisoners: 0
+  _enemyExplosionPrefab: {fileID: 4370606475505516139, guid: 627a56d17ed9fb74d98f6e93ec110807, type: 3}
 --- !u!4 &1113367576
 Transform:
   m_ObjectHideFlags: 0
