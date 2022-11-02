@@ -14,6 +14,7 @@ public class NumPadScript : MonoBehaviour
     private GeneralManagerScript _generalManager;
     private int unlockTime = 2;
     private float _progressBarTime = 0;
+    private AudioSource _audioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,7 @@ public class NumPadScript : MonoBehaviour
         _popupText = GetComponentInChildren<MeshRenderer>();
         _canvas = GetComponentInChildren<Canvas>();
         _generalManager = FindObjectOfType<GeneralManagerScript>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -30,6 +32,7 @@ public class NumPadScript : MonoBehaviour
             _isHacking = false;
             _canvas.enabled = false;
             _progressBarTime = 0;
+            _audioSource.Stop();
         }
         if (_isHacking) {
             _progressBar.fillAmount = _progressBarTime/unlockTime;
@@ -45,6 +48,7 @@ public class NumPadScript : MonoBehaviour
             return;
         }
 
+        _audioSource.Play();
         _canvas.enabled = true;
         _isHacking = true;
     }
@@ -57,6 +61,7 @@ public class NumPadScript : MonoBehaviour
         }
 
         _canvas.enabled = false;
+        _audioSource.Stop();
         Destroy(cellDoor);
         _generalManager.IncrementScore(1000);
         _generalManager.FreePrisoner();
@@ -66,7 +71,7 @@ public class NumPadScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == TagList.playerTag) 
+        if (collision.tag == TagList.playerTag && this.enabled) 
         {
             _popupText.enabled = true;
         }

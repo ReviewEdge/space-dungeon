@@ -17,6 +17,8 @@ public class RobotGuardScript : MonoBehaviour
     [SerializeField] TagList.weaponType weapon;
     public GameObject _floatingTextDamagePrefab;
     GeneralManagerScript _generalManager;
+    AudioSource _audioSource;
+    public AudioClip DeathNoise;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +28,7 @@ public class RobotGuardScript : MonoBehaviour
         _laserSword = GetComponent<LaserSwordScript>();
         _player = GameObject.FindWithTag(TagList.playerTag);
         _generalManager = FindObjectOfType<GeneralManagerScript>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -34,10 +37,13 @@ public class RobotGuardScript : MonoBehaviour
         Transform target = _player.transform;
         transform.position = Vector2.MoveTowards(transform.position, target.position, _speed * Time.deltaTime);
 
+        
         switch (weapon)
         {
             case TagList.weaponType.LaserSword:
-                _laserSword.SwingLaserSword(target.position);
+                if ((_rbody.position.x - target.position.x) < 1 && (_rbody.position.y - target.position.y) < 1) {
+                    _laserSword.SwingLaserSword(target.position);
+                }
                 break;
             case TagList.weaponType.RayGun:
                 _rayGun.ShootRayGun(target.position);
@@ -71,7 +77,12 @@ public class RobotGuardScript : MonoBehaviour
 
         _generalManager.IncrementScore(50);
 
-        Destroy(gameObject);
+        _audioSource.volume = 0.75f;
+        _audioSource.PlayOneShot(DeathNoise);
+        _rbody.tag = "Untagged";
+        GetComponent<SpriteRenderer>().enabled = false;
+        this.enabled = false;
+        Destroy(gameObject, 2);
     }
 
     public void TakeDamage(int damage) {
