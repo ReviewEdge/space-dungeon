@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class DropScript : MonoBehaviour
 {
-    private MeshRenderer _popupText;
+    MeshRenderer _popupText;
     GameObject _popupChild;
+
     // Start is called before the first frame update
     void Start()
     {

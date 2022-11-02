@@ -34,12 +34,17 @@ public class PlayerScript : MonoBehaviour
     public TagList.weaponType weapon;
     [SerializeField] TagList.directions direction;
 
+    AudioSource _audioSource;
+    public AudioClip HealthPickupSound;
+    public AudioClip WeaponPickupSound;
+
     void Start()
     {
         _rbody = GetComponent<Rigidbody2D>();
         _rayGun = GetComponent<RayGunScript>();
         _laserSword = GetComponent<LaserSwordScript>();
         _generalManager = FindObjectOfType<GeneralManagerScript>();
+        _audioSource = GetComponent<AudioSource>();
         _isDead = false;
     }
 
@@ -139,11 +144,14 @@ public class PlayerScript : MonoBehaviour
             if (collision.gameObject.tag.Equals(TagList.healthpackTag))
             {
                 RestoreHealth(25);
+                _audioSource.PlayOneShot(HealthPickupSound);
                 Destroy(collision.gameObject);
             }
             if (collision.gameObject.tag.Equals(TagList.swordDropTag))
             {
                 weapon = TagList.weaponType.LaserSword;
+
+                _audioSource.PlayOneShot(WeaponPickupSound);
                 Destroy(collision.gameObject);
             }
             if (collision.gameObject.tag.Equals(TagList.gunDropTag))
@@ -151,6 +159,7 @@ public class PlayerScript : MonoBehaviour
                 weapon = TagList.weaponType.RayGun;
                 remainingAmmo = maxMagSize;
 
+                _audioSource.PlayOneShot(WeaponPickupSound);
                 Destroy(collision.gameObject);
             }
             if (collision.gameObject.tag.Equals(TagList.NumPadTag)) {
@@ -168,7 +177,6 @@ public class PlayerScript : MonoBehaviour
             health = 0;
             PlayerDeath();
         }
-        print("Oww! My health is now " + health);
 
         StartCoroutine(AnimationColorFlash(Color.red, 0.1f));
     }
