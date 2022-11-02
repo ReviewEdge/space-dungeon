@@ -50,13 +50,6 @@ public class PlayerScript : MonoBehaviour
 
     private void Update()
     {
-        while(_rbody.velocity.x == 0 && _rbody.velocity.y == 0)
-        {
-            RightAnim.SetActive(false);
-            UpAnim.SetActive(false);
-            LeftAnim.SetActive(false);
-            DownAnim.SetActive(false);
-        }
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 mouseLocation = _mainCamera.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, -_mainCamera.transform.position.z);
