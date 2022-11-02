@@ -629,6 +629,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3491361566159880364, guid: dd086103966d2df4a8bd3a9686ef35c3, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3491361566159880364, guid: dd086103966d2df4a8bd3a9686ef35c3, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3491361566159880364, guid: dd086103966d2df4a8bd3a9686ef35c3, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 3491361566159880364, guid: dd086103966d2df4a8bd3a9686ef35c3, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 9037076593475465578, guid: dd086103966d2df4a8bd3a9686ef35c3, type: 3}
       propertyPath: m_Name
       value: MakesTheGameWork
