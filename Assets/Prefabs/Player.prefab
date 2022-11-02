@@ -601,7 +601,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   SwordSwipe8: {fileID: 782003246459835987, guid: f91c3a1c17f1e9e428b07fcf65170a36, type: 3}
-  SwordSwingNoise: {fileID: 8300000, guid: 2e85e740191f65f44872158b62d4fd32, type: 3}
+  SwordSwingNoise: {fileID: 8300000, guid: 2a9310307eeca4d4d9618a6ea1828432, type: 3}
 --- !u!82 &372675082037317671
 AudioSource:
   m_ObjectHideFlags: 0
