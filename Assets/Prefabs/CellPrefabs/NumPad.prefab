@@ -194,6 +194,7 @@ MonoBehaviour:
   cellDoor: {fileID: 0}
   prisoner: {fileID: 0}
   _progressBar: {fileID: 5894418846822211178}
+  _deactivateSound: {fileID: 8300000, guid: 60b66a67b8ed3f24ebf7d46424e520cc, type: 3}
 --- !u!82 &5695042710129730903
 AudioSource:
   m_ObjectHideFlags: 0
@@ -206,7 +207,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 58298ef3780a6044e96be91460b3cedd, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 0.714
   m_Pitch: 1
   Loop: 0
   Mute: 0
