@@ -277,6 +277,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 372675082037317671, guid: 395841453c19ff84bac35b492a4fbb2d, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1030587192412474724, guid: 395841453c19ff84bac35b492a4fbb2d, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1638,6 +1642,14 @@ PrefabInstance:
     - target: {fileID: 3393466565807309861, guid: d4f3bce7695294d4f9aa516de74b0b16, type: 3}
       propertyPath: m_Name
       value: HealthPackDropPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 4057505165456475549, guid: d4f3bce7695294d4f9aa516de74b0b16, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4057505165456475549, guid: d4f3bce7695294d4f9aa516de74b0b16, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4f3bce7695294d4f9aa516de74b0b16, type: 3}
