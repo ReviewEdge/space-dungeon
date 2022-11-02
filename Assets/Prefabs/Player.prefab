@@ -596,7 +596,7 @@ MonoBehaviour:
   _foesLayer:
     serializedVersion: 2
     m_Bits: 1024
-  SwordSwipe8: {fileID: 782003246459835987, guid: f91c3a1c17f1e9e428b07fcf65170a36, type: 3}
+  SwordSwipe8: {fileID: 0}
 --- !u!1 &1030587192866199852
 GameObject:
   m_ObjectHideFlags: 0
