@@ -11,11 +11,14 @@ public class LaserSwordScript : MonoBehaviour
     private Transform _entityLocation;
 
     public GameObject SwordSwipe8; 
+    AudioSource _audioSource;
+    public AudioClip SwordSwingNoise;
 
     // Start is called before the first frame update
     void Start()
     {
         _entityLocation = transform;
+        _audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -34,6 +37,9 @@ public class LaserSwordScript : MonoBehaviour
         {
             SwordSwipe8.GetComponent<Animator>().Play("Base Layer.SwordSwipe8");
         }
+
+        _audioSource.PlayOneShot(SwordSwingNoise);
+        
 
         Vector3 directionalVector = (aimingAt + (-_entityLocation.position)).normalized;
         
