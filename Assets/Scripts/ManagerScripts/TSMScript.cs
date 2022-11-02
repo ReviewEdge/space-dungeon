@@ -26,8 +26,18 @@ public class TSMScript : MonoBehaviour
 
     }
 
-    public void onStartButtonClick()
+    public void onStartButtonClick(int gameModeIndex)
     {
+        switch (gameModeIndex) {
+            case 0:
+                //standard hardcore mode
+                PlayerPrefs.SetInt("Gamemode", 0);
+                break;
+            case 1:
+                //explore mode
+                PlayerPrefs.SetInt("Gamemode", 1);
+                break;
+        }
         SceneManager.LoadScene("Level1");
     }
 }
