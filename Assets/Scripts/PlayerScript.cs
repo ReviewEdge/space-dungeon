@@ -211,16 +211,9 @@ public class PlayerScript : MonoBehaviour
     {
         _isDead = true;
 
-
-
-
-        // auto respawns for testing purposes
-
-        RespawnPlayer();
-
-        // _generalManager.GameOver();
+        _generalManager.GameOver();
     }
-    private void RespawnPlayer()
+    public  void RespawnPlayer()
     {
         _rbody.position = new Vector2(0, 0);
         health = 100;
