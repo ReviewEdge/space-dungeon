@@ -15,6 +15,8 @@ public class NumPadScript : MonoBehaviour
     private int unlockTime = 2;
     private float _progressBarTime = 0;
     private AudioSource _audioSource;
+    public AudioClip _deactivateSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,6 +64,7 @@ public class NumPadScript : MonoBehaviour
 
         _canvas.enabled = false;
         _audioSource.Stop();
+        _audioSource.PlayOneShot(_deactivateSound);
         Destroy(cellDoor);
         _generalManager.IncrementScore(1000);
         _generalManager.FreePrisoner();
