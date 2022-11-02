@@ -10,12 +10,15 @@ public class RayGunScript : MonoBehaviour
     public float attackSpeed;
     private float _timeBtwAttack;
     private int _bulletSpeed;
+    AudioSource _audioSource;
+    public AudioClip RayGunNoise;
 
     // Start is called before the first frame update
     void Start()
     {
         _entityLocation = transform;
         _bulletSpeed = 400;
+        _audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -28,6 +31,9 @@ public class RayGunScript : MonoBehaviour
         if (_timeBtwAttack > 0) {
             return;
         }
+
+        _audioSource.PlayOneShot(RayGunNoise);
+        
 
         Vector3 directionalVector = (aimingAt + (-_entityLocation.position)).normalized;
 
