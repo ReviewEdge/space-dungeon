@@ -10,6 +10,7 @@ public class TagList
     public const string wallTag = "Wall";
     public const string weaponTag = "Weapon";
     public const string healthpackTag = "Healthpack";
+    public const string speedUpTag = "SpeedUp";
     public const string gunDropTag = "Gun";
     public const string swordDropTag = "Sword";
     public const string NumPadTag = "NumPad";
