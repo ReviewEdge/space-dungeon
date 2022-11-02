@@ -147,6 +147,11 @@ public class PlayerScript : MonoBehaviour
                 _audioSource.PlayOneShot(HealthPickupSound);
                 Destroy(collision.gameObject);
             }
+            if (collision.gameObject.tag.Equals(TagList.speedUpTag))
+            {
+                _SPEED = _SPEED * 1.5f;
+                Invoke("ResetSpeed", 10);
+            }
             if (collision.gameObject.tag.Equals(TagList.swordDropTag))
             {
                 weapon = TagList.weaponType.LaserSword;
@@ -217,5 +222,9 @@ public class PlayerScript : MonoBehaviour
     {
         _rbody.position = new Vector2(0, 0);
         health = 100;
+    }
+    private void ResetSpeed()
+    {
+        _SPEED = 5;
     }
 }
