@@ -50,7 +50,7 @@ public class PlayerScript : MonoBehaviour
 
     private void Update()
     {
-        while(_rbody.velocity.x == 0 && _rbody.velocity.y == 0)
+        if(_rbody.velocity.x == 0 && _rbody.velocity.y == 0)
         {
             RightAnim.SetActive(false);
             UpAnim.SetActive(false);
