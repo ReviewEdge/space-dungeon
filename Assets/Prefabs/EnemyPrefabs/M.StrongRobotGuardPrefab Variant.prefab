@@ -13,19 +13,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1445601283105510868, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1445601283105510868, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1445601283105510868, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.8109055
+      value: -4.38
       objectReference: {fileID: 0}
     - target: {fileID: 1445601283105510868, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.5561101
+      value: 2.46
       objectReference: {fileID: 0}
     - target: {fileID: 1445601283105510868, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
       propertyPath: m_LocalPosition.z
@@ -61,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5301700170056371205, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
       propertyPath: m_Name
-      value: StrongRobotGuardPrefab Variant
+      value: M.StrongRobotGuardPrefab Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6752406277774274934, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
       propertyPath: _speed
