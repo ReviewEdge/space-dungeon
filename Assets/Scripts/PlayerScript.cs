@@ -88,6 +88,13 @@ public class PlayerScript : MonoBehaviour
 
         Vector2 movement = new Vector2(x, y);
         _rbody.velocity = movement * moveSpeed;
+        if(_rbody.velocity.x == 0 && _rbody.velocity.y == 0)
+        {
+            RightAnim.SetActive(false);
+            UpAnim.SetActive(false);
+            LeftAnim.SetActive(false);
+            DownAnim.SetActive(false);
+        }
 
         if (Input.GetKey(KeyCode.D))
         {
