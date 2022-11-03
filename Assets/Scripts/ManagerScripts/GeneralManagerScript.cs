@@ -32,7 +32,7 @@ public class GeneralManagerScript : MonoBehaviour
             //set to explore if gamemode is unselected, used for dev stuff
             _gamemode = 1;
         }
-        LoadStoredData();
+        LoadCurrentScore();
     }
 
     // Update is called once per frame
@@ -59,8 +59,6 @@ public class GeneralManagerScript : MonoBehaviour
         if (SceneManager.sceneCountInBuildSettings > level + 1)
         {
             PlayerPrefs.SetInt("Score", score);
-            PlayerPrefs.SetInt("Ammo", Player.remainingAmmo);
-            PlayerPrefs.SetInt("Weapon", ((int)Player.weapon));
             SceneManager.LoadScene("Level" + (level + 1));
         }
         else
@@ -77,85 +75,48 @@ public class GeneralManagerScript : MonoBehaviour
     public void GameOver() {
         if (_gamemode == 1)
         {
-            if (level == 5 && remainingPrisoners == 0) //if last level
+            if (level == 10 && remainingPrisoners == 0) //if last level
             {
-                int prevHighScore = 0;
-                if (PlayerPrefs.HasKey("HighScore"))
-                {
-                    prevHighScore = PlayerPrefs.GetInt("HighScore");
-                }
-                //deletes all stored data about that run, still saving HighScore
-                PlayerPrefs.DeleteAll();
-                PlayerPrefs.SetInt("HighScore", prevHighScore);
+                ClearRunData();
                 SceneManager.LoadScene("TitleScene");
             }
-            // auto respawns for testing purposes
-            // and explore gamemode
 
             Player.RespawnPlayer();
         }
         else if (_gamemode == 0)
         {
-
-            //Some code here can be moved when we add the countinue Screen
-            int prevHighScore = 0;
-            if (PlayerPrefs.HasKey("HighScore"))
-            {
-                prevHighScore = PlayerPrefs.GetInt("HighScore");
-            }
-
-            //deletes all stored data about that run, still saving HighScore
-            PlayerPrefs.DeleteAll();
-
-            if (prevHighScore < score)
+            if (GetHighScore() < score)
             {
                 PlayerPrefs.SetInt("HighScore", score);
             }
-            else
-            {
-                PlayerPrefs.SetInt("HighScore", prevHighScore);
-            }
 
+            ClearRunData();
             SceneManager.LoadScene("TitleScene");
         }
     }
 
-    private void LoadStoredData()
+    private void LoadCurrentScore()
     {
+        score = 0;
         if (PlayerPrefs.HasKey("Score"))
         {
             score = PlayerPrefs.GetInt("Score");
         }
-        else
+    }
+
+    private int GetHighScore() {
+        int prevHighScore = 0;
+        if (PlayerPrefs.HasKey("HighScore"))
         {
-            score = 0;
+            prevHighScore = PlayerPrefs.GetInt("HighScore");
         }
-        if (PlayerPrefs.HasKey("Ammo"))
-        {
-            Player.remainingAmmo = PlayerPrefs.GetInt("Ammo");
-        }
-        else
-        {
-            Player.remainingAmmo = 0;
-        }
-        if (PlayerPrefs.HasKey("Weapon"))
-        {
-            int test = ((int)Player.weapon);
-            if (((int)TagList.weaponType.LaserSword) == test) {
-            
-            }
-            switch (PlayerPrefs.GetInt("Weapon")) {
-                case ((int)TagList.weaponType.LaserSword):
-                    Player.weapon = TagList.weaponType.LaserSword;
-                    break;
-                case ((int)TagList.weaponType.RayGun):
-                    Player.weapon = TagList.weaponType.RayGun;
-                    break;
-            }
-        }
-        else
-        {
-            Player.remainingAmmo = 0;
-        }
+        return prevHighScore;
+    }
+
+    private void ClearRunData()
+    {
+        //deletes all stored data about that run, still saving HighScore
+        PlayerPrefs.DeleteKey("Score");
+        PlayerPrefs.DeleteKey("Gamemode");
     }
 }
