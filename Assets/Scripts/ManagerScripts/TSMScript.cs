@@ -7,9 +7,15 @@ public class TSMScript : MonoBehaviour
 {
     public Text _highScoreText;
     int oldVal = 0;
+    AudioSource _audioSource;
+    public AudioClip _buttonClickSound;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
+
         if (PlayerPrefs.HasKey("HighScore"))
         {
             _highScoreText.text = "High Score: " + PlayerPrefs.GetInt("HighScore");
@@ -28,6 +34,7 @@ public class TSMScript : MonoBehaviour
 
     public void onStartButtonClick(int gameModeIndex)
     {
+        _audioSource.PlayOneShot(_buttonClickSound);
         switch (gameModeIndex) {
             case 0:
                 //standard hardcore mode
@@ -38,6 +45,6 @@ public class TSMScript : MonoBehaviour
                 PlayerPrefs.SetInt("Gamemode", 1);
                 break;
         }
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("StoryScene");
     }
 }
