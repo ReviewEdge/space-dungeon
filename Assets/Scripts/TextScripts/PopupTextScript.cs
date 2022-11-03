@@ -19,14 +19,9 @@ public class PopupTextScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("thing detected");
         if (collision.tag == TagList.playerTag) {
             _text.enabled = true;
         }
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        print("hey");
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -35,14 +30,5 @@ public class PopupTextScript : MonoBehaviour
         {
             _text.enabled = false;
         }
-    }
-
-    private void ShowPopUpText()
-    {
-
-    }
-
-    private void HidePopUpText() {
-    
     }
 }
