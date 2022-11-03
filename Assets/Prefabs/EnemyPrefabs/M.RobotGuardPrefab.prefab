@@ -146,6 +146,7 @@ MonoBehaviour:
   _laserSwordDropPrefab: {fileID: 7687307533725574365, guid: 13e4408e237264a468ab429e80d99625, type: 3}
   _rayGunDropPrefab: {fileID: 1217331699187338907, guid: 285d3f4abf35a844392b5b336a45b115, type: 3}
   _healthPackDropPrefab: {fileID: 3393466565807309861, guid: d4f3bce7695294d4f9aa516de74b0b16, type: 3}
+  _speedUpDropPrefab: {fileID: 3649381136527375742, guid: 16ff845e07ec3f947bb52218b103d9c2, type: 3}
   weapon: 0
   _floatingTextDamagePrefab: {fileID: 7591584769268283073, guid: aed8138092e07774bb3b7403cf39021d, type: 3}
   DeathNoise: {fileID: 8300000, guid: 134145415a48cf34abffa6ed0ef3a15b, type: 3}

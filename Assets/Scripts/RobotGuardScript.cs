@@ -14,6 +14,7 @@ public class RobotGuardScript : MonoBehaviour
     public GameObject _laserSwordDropPrefab;
     public GameObject _rayGunDropPrefab;
     public GameObject _healthPackDropPrefab;
+    public GameObject _speedUpDropPrefab;
     [SerializeField] TagList.weaponType weapon;
     public GameObject _floatingTextDamagePrefab;
     GeneralManagerScript _generalManager;
@@ -55,14 +56,16 @@ public class RobotGuardScript : MonoBehaviour
     {
         _generalManager.EnemyDeath(transform.position);
 
-        int ran = Random.Range(1, 7);
+        int ran = Random.Range(1, 78);
 
         // occasionally drop health pack
-        if (ran == 1)
+        if (ran <= 11)
         {
             Instantiate(_healthPackDropPrefab, gameObject.transform.position, Quaternion.identity);
-        }
-        else
+        } else if(ran >= 72)
+        {
+            Instantiate(_speedUpDropPrefab, gameObject.transform.position, Quaternion.identity);
+        } else
         {
             if (TagList.weaponType.LaserSword == weapon)
             {
@@ -91,11 +94,19 @@ public class RobotGuardScript : MonoBehaviour
         GameObject floatingDamageText = Instantiate(_floatingTextDamagePrefab, _rbody.position, Quaternion.identity);
         floatingDamageText.GetComponentInChildren<TextMesh>().text = "-" + damage;
         _generalManager.IncrementScore(damage);
-
+        StartCoroutine(ColorFlash(Color.red, 0.075f));
         if (_health <= 0)
         {
             Die();
         }
+    }
+
+    IEnumerator ColorFlash(Color32 flashColor, float flashTime)
+    {
+        Color32 originalColor = GetComponent<SpriteRenderer>().color;
+        GetComponent<SpriteRenderer>().color = flashColor;
+        yield return new WaitForSeconds(flashTime);
+        GetComponent<SpriteRenderer>().color = originalColor;
     }
 
 }
