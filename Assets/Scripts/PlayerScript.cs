@@ -149,8 +149,8 @@ public class PlayerScript : MonoBehaviour
             }
             if (collision.gameObject.tag.Equals(TagList.speedUpTag))
             {
-                _SPEED = _SPEED * 1.5f;
-                Invoke("ResetSpeed", 10);
+                SpeedUp();
+                Destroy(collision.gameObject);
             }
             if (collision.gameObject.tag.Equals(TagList.swordDropTag))
             {
@@ -210,7 +210,7 @@ public class PlayerScript : MonoBehaviour
             health = maxHealth;
         }
 
-        StartCoroutine(AnimationColorFlash(Color.green, 1.5f));
+        StartCoroutine(AnimationColorFlash(Color.green, 0.3f));
     }
     private void PlayerDeath()
     {
@@ -223,6 +223,14 @@ public class PlayerScript : MonoBehaviour
         _rbody.position = new Vector2(0, 0);
         health = 100;
     }
+
+    private void SpeedUp()
+    {
+        _SPEED = 12;
+        StartCoroutine(AnimationColorFlash(Color.yellow, 3f));
+        Invoke("ResetSpeed", 3);
+    }
+
     private void ResetSpeed()
     {
         _SPEED = 5;
