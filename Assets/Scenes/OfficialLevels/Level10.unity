@@ -1012,6 +1012,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: PrisonerCell (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5838384778560633554, guid: 6ccb2c8346dcd13498764d1ea7145520, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838384778560633554, guid: 6ccb2c8346dcd13498764d1ea7145520, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 15.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838384778560633555, guid: 6ccb2c8346dcd13498764d1ea7145520, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 10c52581af3693b4fad2c698f89d98b2, type: 3}
+    - target: {fileID: 5838384778560633555, guid: 6ccb2c8346dcd13498764d1ea7145520, type: 3}
+      propertyPath: m_Color.b
+      value: 0.26210397
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838384778560633555, guid: 6ccb2c8346dcd13498764d1ea7145520, type: 3}
+      propertyPath: m_Color.g
+      value: 0.3058749
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838384778560633555, guid: 6ccb2c8346dcd13498764d1ea7145520, type: 3}
+      propertyPath: m_Color.r
+      value: 0.3584906
+      objectReference: {fileID: 0}
     - target: {fileID: 6774563707833737566, guid: 6ccb2c8346dcd13498764d1ea7145520, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
