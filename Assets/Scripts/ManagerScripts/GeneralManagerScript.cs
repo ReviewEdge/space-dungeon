@@ -74,12 +74,12 @@ public class GeneralManagerScript : MonoBehaviour
     }
 
     public void GameOver() {
+        PlayerPrefs.SetInt("Score", score);
         if (_gamemode == 1)
         {
             if (level == 10 && remainingPrisoners == 0) //if last level
             {
-                ClearRunData();
-                SceneManager.LoadScene("TitleScene");
+                SceneManager.LoadScene("ScoreScene");
             }
 
             Player.RespawnPlayer();
@@ -91,8 +91,7 @@ public class GeneralManagerScript : MonoBehaviour
                 PlayerPrefs.SetInt("HighScore", score);
             }
 
-            ClearRunData();
-            SceneManager.LoadScene("TitleScene");
+            SceneManager.LoadScene("ScoreScene");
         }
     }
 
@@ -112,12 +111,5 @@ public class GeneralManagerScript : MonoBehaviour
             prevHighScore = PlayerPrefs.GetInt("HighScore");
         }
         return prevHighScore;
-    }
-
-    private void ClearRunData()
-    {
-        //deletes all stored data about that run, still saving HighScore
-        PlayerPrefs.DeleteKey("Score");
-        PlayerPrefs.DeleteKey("Gamemode");
     }
 }
