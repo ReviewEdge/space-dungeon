@@ -20,7 +20,8 @@ public class GeneralManagerScript : MonoBehaviour
     void Start()
     {
         Player = GameObject.FindWithTag(TagList.playerTag).GetComponent<PlayerScript>();
-        level = SceneManager.GetActiveScene().buildIndex;
+        // level = SceneManager.GetActiveScene().buildIndex;
+        level = int.Parse(SceneManager.GetActiveScene().name.Substring(5));
         numofPrisoners = GameObject.FindGameObjectsWithTag(TagList.PrisonerTag).Length;
         SetPrisoners(numofPrisoners);
         UIManager.UpdateLevelText(level);
