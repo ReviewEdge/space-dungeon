@@ -336,8 +336,9 @@ MonoBehaviour:
     m_LineSpacing: 1.37
   m_Text: "\tIt's been ten years since your people were taken. The wretched Sting-bots
     invaded your planet, snatching up your friends, family, and fellow soldiers. 
-    The time has come to bring them home. You've boarded the sting-bots' ship are
-    going to free as many prisoners as you can.  but can you make it out alive yourself?"
+    The time has come to bring them home. You've boarded the sting-bots' ship and
+    are going to free as many prisoners as you can.  but can you make it out alive
+    yourself?"
 --- !u!222 &697928755
 CanvasRenderer:
   m_ObjectHideFlags: 0
