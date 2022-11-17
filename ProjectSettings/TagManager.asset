@@ -13,11 +13,12 @@ TagManager:
   - NumPad
   - Prisoner
   - SwordSwipe4
+  - SpeedUp
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Window
   - Water
   - UI
   - Player Bullet
