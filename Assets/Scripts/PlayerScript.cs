@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CircleCollider2D))]
@@ -13,8 +14,10 @@ public class PlayerScript : MonoBehaviour
     RayGunScript _rayGun;
     LaserSwordScript _laserSword;
     Animator _swordSwipe;
+    Animator _walkingAnim;
     public Camera _mainCamera;
     GeneralManagerScript _generalManager;
+    Transform _transform;
 
     public int health = 100;
     const int maxHealth = 100;
@@ -26,13 +29,14 @@ public class PlayerScript : MonoBehaviour
     public int remainingAmmo = 0;
     const int maxMagSize = 30;
 
-    public GameObject RightAnim;
+   /* public GameObject RightAnim;
     public GameObject UpAnim;
     public GameObject LeftAnim;
-    public GameObject DownAnim;
+    public GameObject DownAnim;*/
 
     public TagList.weaponType weapon;
-    [SerializeField] TagList.directions direction;
+    //[SerializeField] TagList.directions direction;
+    Vector2 direction = Vector2.zero;
 
     AudioSource _audioSource;
     public AudioClip HealthPickupSound;
@@ -46,6 +50,9 @@ public class PlayerScript : MonoBehaviour
         _generalManager = FindObjectOfType<GeneralManagerScript>();
         _audioSource = GetComponent<AudioSource>();
         _isDead = false;
+        _transform = GetComponent<Transform>();
+        _walkingAnim = GetComponent<Animator>();
+
     }
 
     private void Update()
@@ -89,60 +96,18 @@ public class PlayerScript : MonoBehaviour
 
         Vector2 movement = new Vector2(x, y);
         _rbody.velocity = movement * moveSpeed;
-        if(_rbody.velocity.x == 0 && _rbody.velocity.y == 0)
-        {
-            RightAnim.SetActive(false);
-            UpAnim.SetActive(false);
-            LeftAnim.SetActive(false);
-            DownAnim.SetActive(false);
-        }
 
-        if (Input.GetKey(KeyCode.D))
-        {
-            direction = TagList.directions.right;
-        }
-        else if (Input.GetKey(KeyCode.W))
-        {
-            direction = TagList.directions.up;
-        }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            direction = TagList.directions.left;
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            direction = TagList.directions.down;
+        if (x != 0 || y != 0) {
+            direction = new Vector2(x, y);
         }
     }
     private void ChangePlayerDirection()
     {
-        switch (direction)
-        {
-            case TagList.directions.right:
-                RightAnim.SetActive(true);
-                UpAnim.SetActive(false);
-                LeftAnim.SetActive(false);
-                DownAnim.SetActive(false);
-                break;
-            case TagList.directions.up:
-                RightAnim.SetActive(false);
-                UpAnim.SetActive(true);
-                LeftAnim.SetActive(false);
-                DownAnim.SetActive(false);
-                break;
-            case TagList.directions.left:
-                RightAnim.SetActive(false);
-                UpAnim.SetActive(false);
-                LeftAnim.SetActive(true);
-                DownAnim.SetActive(false);
-                break;
-            case TagList.directions.down:
-                RightAnim.SetActive(false);
-                UpAnim.SetActive(false);
-                LeftAnim.SetActive(false);
-                DownAnim.SetActive(true);
-                break;
-        }
+        float degress = Mathf.Rad2Deg * Mathf.Atan2(direction.y, direction.x);
+        _transform.eulerAngles = new Vector3(0, 0, degress - 90);
+        _mainCamera.transform.eulerAngles = new Vector3(0, 0, 0);
+
+        _walkingAnim.SetBool("isMoving", _rbody.velocity.magnitude != 0);
     }
 
     private void OnTriggerStay2D(Collider2D collision)

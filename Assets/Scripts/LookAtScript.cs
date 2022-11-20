@@ -28,6 +28,7 @@ public class LookAtScript : MonoBehaviour
         float degress = Mathf.Rad2Deg * Mathf.Atan2(desiredVector.y, desiredVector.x);
         _transform.eulerAngles = new Vector3(0, 0, degress);
         _transform.localPosition = desiredVector.normalized;
+
         if (desiredVector.x <= 0)
         {
             _spriteRenderer.flipY = true;
