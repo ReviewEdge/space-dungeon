@@ -6,9 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class GeneralManagerScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public UIManagerScript UIManager;
-    public PlayerScript Player;
+    UIManagerScript UIManager;
+    PlayerScript Player;
 
     public int level;
     public int numofPrisoners;
@@ -17,9 +16,11 @@ public class GeneralManagerScript : MonoBehaviour
     public GameObject _enemyExplosionPrefab;
     private int _gamemode;
 
+    // Start is called before the first frame update
     void Start()
     {
-        Player = GameObject.FindWithTag(TagList.playerTag).GetComponent<PlayerScript>();
+        UIManager = FindObjectOfType<UIManagerScript>();
+        Player = FindObjectOfType<PlayerScript>();
         // level = SceneManager.GetActiveScene().buildIndex;
         level = int.Parse(SceneManager.GetActiveScene().name.Substring(5));
         numofPrisoners = GameObject.FindGameObjectsWithTag(TagList.PrisonerTag).Length;
@@ -70,7 +71,8 @@ public class GeneralManagerScript : MonoBehaviour
 
     public void EnemyDeath(Vector3 spot)
     {
-        Instantiate(_enemyExplosionPrefab, spot, Quaternion.identity);
+        GameObject enemyDeath = Instantiate(_enemyExplosionPrefab, spot, Quaternion.identity);
+        Destroy(enemyDeath, 1);
     }
 
     public void GameOver() {
