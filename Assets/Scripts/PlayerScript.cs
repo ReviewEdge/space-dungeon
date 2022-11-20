@@ -29,13 +29,7 @@ public class PlayerScript : MonoBehaviour
     public int remainingAmmo = 0;
     const int maxMagSize = 30;
 
-   /* public GameObject RightAnim;
-    public GameObject UpAnim;
-    public GameObject LeftAnim;
-    public GameObject DownAnim;*/
-
     public TagList.weaponType weapon;
-    //[SerializeField] TagList.directions direction;
     Vector2 direction = Vector2.zero;
 
     AudioSource _audioSource;
@@ -64,17 +58,14 @@ public class PlayerScript : MonoBehaviour
             switch (weapon)
             {
                 case TagList.weaponType.LaserSword:
-                    remainingAmmo = 0;
                     _laserSword.SwingLaserSword(mouseLocation);
                     break;
                 case TagList.weaponType.RayGun:
+                    _rayGun.ShootRayGun(mouseLocation);
                     remainingAmmo--;
-                    if (remainingAmmo > 0)
+                    if (remainingAmmo <= 0)
                     {
-                        _rayGun.ShootRayGun(mouseLocation);
-                    }
-                    else {
-                        weapon = TagList.weaponType.LaserSword;
+                        ChangeWeapon(TagList.weaponType.LaserSword);
                     }
                     break;
             }
@@ -127,17 +118,13 @@ public class PlayerScript : MonoBehaviour
             }
             if (collision.gameObject.tag.Equals(TagList.swordDropTag))
             {
-                weapon = TagList.weaponType.LaserSword;
-                remainingAmmo = 0;
-                _rayGun.GetComponent<SpriteRenderer>().enabled = false;
+                ChangeWeapon(TagList.weaponType.LaserSword);
                 _audioSource.PlayOneShot(WeaponPickupSound);
                 Destroy(collision.gameObject);
             }
             if (collision.gameObject.tag.Equals(TagList.gunDropTag))
             {
-                weapon = TagList.weaponType.RayGun;
-                remainingAmmo = maxMagSize;
-                _rayGun.GetComponent<SpriteRenderer>().enabled = true;
+                ChangeWeapon(TagList.weaponType.RayGun);
                 _audioSource.PlayOneShot(WeaponPickupSound);
                 Destroy(collision.gameObject);
             }
@@ -158,6 +145,21 @@ public class PlayerScript : MonoBehaviour
         }
 
         StartCoroutine(AnimationColorFlash(Color.red, 0.1f));
+    }
+
+    private void ChangeWeapon(TagList.weaponType weapon) {
+        this.weapon = weapon;
+        switch (weapon)
+        {
+            case TagList.weaponType.LaserSword:
+                remainingAmmo = 0;
+                _rayGun.GetComponent<SpriteRenderer>().enabled = false;
+                break;
+            case TagList.weaponType.RayGun:
+                remainingAmmo = maxMagSize;
+                _rayGun.GetComponent<SpriteRenderer>().enabled = true;
+                break;
+        }
     }
 
     IEnumerator AnimationColorFlash(Color32 flashColor, float flashTime)

@@ -13,24 +13,27 @@ public class UIManagerScript : MonoBehaviour
     public Text freedText;
     public Image healthImage;
     public Text ammoText;
+    public Sprite[] weaponSprites;
+    public Image weaponImage;
+    public Image secondayWeaponImage;
 
     void Start()
     {   
         GameObject player = GameObject.FindWithTag(TagList.playerTag);
         _player = player.GetComponent<PlayerScript>();
         _generalManager = FindObjectOfType<GeneralManagerScript>();
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdateHealthText(_player.health);
+        UpdateHealthImage(_player.health);
         // UpdateLivesText(_player.lives);
         
         UpdateAmmoText(_player.magazineAmmo, _player.remainingAmmo);
         UpdateScoreText(_generalManager.score);
         UpdateFreedText(_generalManager.remainingPrisoners, _generalManager.numofPrisoners);
+        UpdateWeaponImage(_player.weapon);
     }
 
     public void UpdateLevelText(int level)
@@ -46,7 +49,7 @@ public class UIManagerScript : MonoBehaviour
         int numofRescuedPrisoners = totalPrisoners - remainingPrisoners;
         freedText.text = numofRescuedPrisoners + " out of " + totalPrisoners + " rescued";
     }
-    public void UpdateHealthText(int health) {
+    public void UpdateHealthImage(int health) {
         healthImage.fillAmount = health/100f;
     }
     public void UpdateAmmoText(int magazineAmmo, int remainingAmmo) {
@@ -59,5 +62,18 @@ public class UIManagerScript : MonoBehaviour
             ammoText.text = magazineAmmo + " / " + remainingAmmo;
         }
     }
-    
+
+    public void UpdateWeaponImage(TagList.weaponType weapon) {
+        switch (weapon)
+        {
+            case TagList.weaponType.LaserSword:
+                weaponImage.sprite = weaponSprites[0];
+                secondayWeaponImage.sprite = weaponSprites[1];
+                break;
+            case TagList.weaponType.RayGun:
+                weaponImage.sprite = weaponSprites[1];
+                secondayWeaponImage.sprite = weaponSprites[0];
+                break;
+        }
+    }
 }
