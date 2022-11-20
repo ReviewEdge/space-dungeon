@@ -41,7 +41,7 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         _rbody = GetComponent<Rigidbody2D>();
-        _rayGun = GetComponent<RayGunScript>();
+        _rayGun = GetComponentInChildren<RayGunScript>();
         _laserSword = GetComponent<LaserSwordScript>();
         _generalManager = FindObjectOfType<GeneralManagerScript>();
         _audioSource = GetComponent<AudioSource>();
@@ -50,6 +50,7 @@ public class PlayerScript : MonoBehaviour
 
     private void Update()
     {
+
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 mouseLocation = _mainCamera.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, -_mainCamera.transform.position.z);
@@ -162,7 +163,8 @@ public class PlayerScript : MonoBehaviour
             if (collision.gameObject.tag.Equals(TagList.swordDropTag))
             {
                 weapon = TagList.weaponType.LaserSword;
-
+                remainingAmmo = 0;
+                _rayGun.GetComponent<SpriteRenderer>().enabled = false;
                 _audioSource.PlayOneShot(WeaponPickupSound);
                 Destroy(collision.gameObject);
             }
@@ -170,7 +172,7 @@ public class PlayerScript : MonoBehaviour
             {
                 weapon = TagList.weaponType.RayGun;
                 remainingAmmo = maxMagSize;
-
+                _rayGun.GetComponent<SpriteRenderer>().enabled = true;
                 _audioSource.PlayOneShot(WeaponPickupSound);
                 Destroy(collision.gameObject);
             }

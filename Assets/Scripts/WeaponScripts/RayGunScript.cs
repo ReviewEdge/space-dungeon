@@ -18,7 +18,7 @@ public class RayGunScript : MonoBehaviour
     {
         _entityLocation = transform;
         _bulletSpeed = 400;
-        _audioSource = GetComponent<AudioSource>();
+        _audioSource = GetComponentInParent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -33,7 +33,7 @@ public class RayGunScript : MonoBehaviour
         }
 
         _audioSource.PlayOneShot(RayGunNoise);
-        
+
 
         Vector3 directionalVector = (aimingAt + (-_entityLocation.position)).normalized;
 
@@ -44,4 +44,5 @@ public class RayGunScript : MonoBehaviour
 
         _timeBtwAttack = attackSpeed;
     }
+
 }

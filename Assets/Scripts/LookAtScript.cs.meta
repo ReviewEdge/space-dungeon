@@ -1,11 +1,9 @@
 fileFormatVersion: 2
-guid: aa6bf6233228321478e0a1859ab084b3
+guid: 8d8b844550951754091497ab9683fc3f
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - _bulletPrefab: {instanceID: 0}
-  - RayGunNoise: {fileID: 8300000, guid: c241a86f9c09fbd4ab8ba44812c2bad3, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
