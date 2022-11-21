@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4739548455013842523}
   - component: {fileID: 3636623749802768593}
   m_Layer: 5
-  m_Name: WeaponBackround
+  m_Name: PrimaryWeaponBackround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 8034448380931743090}
   - component: {fileID: 3795545011648342754}
   m_Layer: 5
-  m_Name: WeaponImage
+  m_Name: PrimaryWeaponImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -281,7 +281,7 @@ MonoBehaviour:
   weaponSprites:
   - {fileID: 21300000, guid: 163c9c29f3fae5f428d743324ed61300, type: 3}
   - {fileID: 21300000, guid: 62567436537d80046ad143699d0355d5, type: 3}
-  weaponImage: {fileID: 3795545011648342754}
+  primaryWeaponImage: {fileID: 3795545011648342754}
   secondayWeaponImage: {fileID: 9136693002751681281}
 --- !u!1 &3491361565877914824
 GameObject:
@@ -1045,8 +1045,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01470667bde82f44abd955fd68957a96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIManager: {fileID: 3491361565662077542}
-  Player: {fileID: 0}
   level: 1
   numofPrisoners: 0
   score: 0

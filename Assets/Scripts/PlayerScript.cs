@@ -46,7 +46,7 @@ public class PlayerScript : MonoBehaviour
         _isDead = false;
         _transform = GetComponent<Transform>();
         _walkingAnim = GetComponent<Animator>();
-
+        LoadPrevData();
     }
 
     private void Update()
@@ -147,7 +147,7 @@ public class PlayerScript : MonoBehaviour
         StartCoroutine(AnimationColorFlash(Color.red, 0.1f));
     }
 
-    private void ChangeWeapon(TagList.weaponType weapon) {
+    public void ChangeWeapon(TagList.weaponType weapon, int ammo = -1) {
         this.weapon = weapon;
         switch (weapon)
         {
@@ -156,7 +156,14 @@ public class PlayerScript : MonoBehaviour
                 _rayGun.GetComponent<SpriteRenderer>().enabled = false;
                 break;
             case TagList.weaponType.RayGun:
-                remainingAmmo = maxMagSize;
+                if (ammo == -1)
+                {
+                    remainingAmmo = maxMagSize;
+                }
+                else 
+                {
+                    remainingAmmo = ammo;
+                }
                 _rayGun.GetComponent<SpriteRenderer>().enabled = true;
                 break;
         }
@@ -210,5 +217,35 @@ public class PlayerScript : MonoBehaviour
     private void ResetSpeed()
     {
         _SPEED = 5;
+    }
+
+    private void LoadPrevData() {
+        int weapon = 0;
+        if (PlayerPrefs.HasKey("Weapon"))
+        {
+            weapon = PlayerPrefs.GetInt("Weapon");
+        }
+        switch (weapon)
+        {
+            case 0:
+                ChangeWeapon(TagList.weaponType.LaserSword);
+                break;
+            case 1:
+                int ammo = -1;
+                if (PlayerPrefs.HasKey("Ammo"))
+                {
+                    ammo = PlayerPrefs.GetInt("Ammo");
+                }
+
+                ChangeWeapon(TagList.weaponType.RayGun, ammo);
+                break;
+        }
+
+        int health = 100;
+        if (PlayerPrefs.HasKey("Health"))
+        {
+            health = PlayerPrefs.GetInt("Health");
+        }
+        this.health = health;
     }
 }

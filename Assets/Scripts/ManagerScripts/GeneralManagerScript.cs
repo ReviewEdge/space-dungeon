@@ -21,7 +21,6 @@ public class GeneralManagerScript : MonoBehaviour
     {
         UIManager = FindObjectOfType<UIManagerScript>();
         Player = FindObjectOfType<PlayerScript>();
-        // level = SceneManager.GetActiveScene().buildIndex;
         level = int.Parse(SceneManager.GetActiveScene().name.Substring(5));
         numofPrisoners = GameObject.FindGameObjectsWithTag(TagList.PrisonerTag).Length;
         SetPrisoners(numofPrisoners);
@@ -34,7 +33,7 @@ public class GeneralManagerScript : MonoBehaviour
             //set to explore if gamemode is unselected, used for dev stuff
             _gamemode = 1;
         }
-        LoadCurrentScore();
+        LoadScore();
     }
 
     // Update is called once per frame
@@ -61,6 +60,9 @@ public class GeneralManagerScript : MonoBehaviour
         if (SceneManager.sceneCountInBuildSettings > level + 1)
         {
             PlayerPrefs.SetInt("Score", score);
+            PlayerPrefs.SetInt("Weapon", (int)Player.weapon);
+            PlayerPrefs.SetInt("Ammo", Player.remainingAmmo);
+            PlayerPrefs.SetInt("Health", Player.health);
             SceneManager.LoadScene("Level" + (level + 1));
         }
         else
@@ -76,6 +78,10 @@ public class GeneralManagerScript : MonoBehaviour
     }
 
     public void GameOver() {
+        PlayerPrefs.DeleteKey("Weapon");
+        PlayerPrefs.DeleteKey("Ammo");
+        PlayerPrefs.DeleteKey("Health");
+
         PlayerPrefs.SetInt("Score", score);
         if (_gamemode == 1)
         {
@@ -97,7 +103,7 @@ public class GeneralManagerScript : MonoBehaviour
         }
     }
 
-    private void LoadCurrentScore()
+    private void LoadScore()
     {
         score = 0;
         if (PlayerPrefs.HasKey("Score"))

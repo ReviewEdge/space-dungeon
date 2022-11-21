@@ -14,7 +14,7 @@ public class UIManagerScript : MonoBehaviour
     public Image healthImage;
     public Text ammoText;
     public Sprite[] weaponSprites;
-    public Image weaponImage;
+    public Image primaryWeaponImage;
     public Image secondayWeaponImage;
 
     void Start()
@@ -67,11 +67,11 @@ public class UIManagerScript : MonoBehaviour
         switch (weapon)
         {
             case TagList.weaponType.LaserSword:
-                weaponImage.sprite = weaponSprites[0];
+                primaryWeaponImage.sprite = weaponSprites[0];
                 secondayWeaponImage.sprite = weaponSprites[1];
                 break;
             case TagList.weaponType.RayGun:
-                weaponImage.sprite = weaponSprites[1];
+                primaryWeaponImage.sprite = weaponSprites[1];
                 secondayWeaponImage.sprite = weaponSprites[0];
                 break;
         }
