@@ -6,9 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class GeneralManagerScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public UIManagerScript UIManager;
-    public PlayerScript Player;
+    UIManagerScript UIManager;
+    PlayerScript Player;
 
     public int level;
     public int numofPrisoners;
@@ -17,10 +16,11 @@ public class GeneralManagerScript : MonoBehaviour
     public GameObject _enemyExplosionPrefab;
     private int _gamemode;
 
+    // Start is called before the first frame update
     void Start()
     {
-        Player = GameObject.FindWithTag(TagList.playerTag).GetComponent<PlayerScript>();
-        // level = SceneManager.GetActiveScene().buildIndex;
+        UIManager = FindObjectOfType<UIManagerScript>();
+        Player = FindObjectOfType<PlayerScript>();
         level = int.Parse(SceneManager.GetActiveScene().name.Substring(5));
         numofPrisoners = GameObject.FindGameObjectsWithTag(TagList.PrisonerTag).Length;
         SetPrisoners(numofPrisoners);
@@ -33,7 +33,7 @@ public class GeneralManagerScript : MonoBehaviour
             //set to explore if gamemode is unselected, used for dev stuff
             _gamemode = 1;
         }
-        LoadCurrentScore();
+        LoadScore();
     }
 
     // Update is called once per frame
@@ -60,6 +60,9 @@ public class GeneralManagerScript : MonoBehaviour
         if (SceneManager.sceneCountInBuildSettings > level + 1)
         {
             PlayerPrefs.SetInt("Score", score);
+            PlayerPrefs.SetInt("Weapon", (int)Player.weapon);
+            PlayerPrefs.SetInt("Ammo", Player.remainingAmmo);
+            PlayerPrefs.SetInt("Health", Player.health);
             SceneManager.LoadScene("Level" + (level + 1));
         }
         else
@@ -70,10 +73,15 @@ public class GeneralManagerScript : MonoBehaviour
 
     public void EnemyDeath(Vector3 spot)
     {
-        Instantiate(_enemyExplosionPrefab, spot, Quaternion.identity);
+        GameObject enemyDeath = Instantiate(_enemyExplosionPrefab, spot, Quaternion.identity);
+        Destroy(enemyDeath, 1);
     }
 
     public void GameOver() {
+        PlayerPrefs.DeleteKey("Weapon");
+        PlayerPrefs.DeleteKey("Ammo");
+        PlayerPrefs.DeleteKey("Health");
+
         PlayerPrefs.SetInt("Score", score);
         if (_gamemode == 1)
         {
@@ -95,7 +103,7 @@ public class GeneralManagerScript : MonoBehaviour
         }
     }
 
-    private void LoadCurrentScore()
+    private void LoadScore()
     {
         score = 0;
         if (PlayerPrefs.HasKey("Score"))

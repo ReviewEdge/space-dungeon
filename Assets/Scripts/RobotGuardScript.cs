@@ -79,14 +79,7 @@ public class RobotGuardScript : MonoBehaviour
 
 
         _generalManager.IncrementScore(50);
-
-        _audioSource.volume = 0.75f;
-        _audioSource.PlayOneShot(DeathNoise);
-        _rbody.tag = "Untagged";
-        transform.position = new Vector3(_rbody.position.x, _rbody.position.y, -1);
-        GetComponent<SpriteRenderer>().enabled = false;
-        this.enabled = false;
-        Destroy(gameObject, 2);
+        Destroy(gameObject);
     }
 
     public void TakeDamage(int damage) {

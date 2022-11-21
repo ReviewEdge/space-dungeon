@@ -8,6 +8,9 @@ public class FloatingDamageTextScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject parent = this.transform.parent.gameObject;
+        
+        Destroy(parent, _lifeTime);
         Destroy(gameObject, _lifeTime);
     }
 
