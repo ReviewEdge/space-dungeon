@@ -15,7 +15,7 @@ public class RobotGuardScript : MonoBehaviour
     public GameObject _rayGunDropPrefab;
     public GameObject _healthPackDropPrefab;
     public GameObject _speedUpDropPrefab;
-    [SerializeField] TagList.weaponType weapon;
+    [SerializeField] WeaponType weapon;
     public GameObject _floatingTextDamagePrefab;
     GeneralManagerScript _generalManager;
     AudioSource _audioSource;
@@ -41,12 +41,12 @@ public class RobotGuardScript : MonoBehaviour
         
         switch (weapon)
         {
-            case TagList.weaponType.LaserSword:
+            case WeaponType.LaserSword:
                 if ((_rbody.position.x - target.position.x) < 1 && (_rbody.position.y - target.position.y) < 1) {
                     _laserSword.SwingLaserSword(target.position);
                 }
                 break;
-            case TagList.weaponType.RayGun:
+            case WeaponType.RayGun:
                 _rayGun.ShootRayGun(target.position);
                 break;
         }
@@ -67,11 +67,11 @@ public class RobotGuardScript : MonoBehaviour
             Instantiate(_speedUpDropPrefab, gameObject.transform.position, Quaternion.identity);
         } else
         {
-            if (TagList.weaponType.LaserSword == weapon)
+            if (WeaponType.LaserSword == weapon)
             {
                 Instantiate(_laserSwordDropPrefab, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
             }
-            else if (TagList.weaponType.RayGun == weapon)
+            else if (WeaponType.RayGun == weapon)
             {
                 Instantiate(_rayGunDropPrefab, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
             }

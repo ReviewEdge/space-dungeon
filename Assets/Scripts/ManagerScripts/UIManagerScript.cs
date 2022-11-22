@@ -13,9 +13,9 @@ public class UIManagerScript : MonoBehaviour
     public Text freedText;
     public Image healthImage;
     public Text ammoText;
+    public Image[] weaponFrames;
+    public Image[] weaponImages;
     public Sprite[] weaponSprites;
-    public Image primaryWeaponImage;
-    public Image secondayWeaponImage;
 
     void Start()
     {   
@@ -30,10 +30,10 @@ public class UIManagerScript : MonoBehaviour
         UpdateHealthImage(_player.health);
         // UpdateLivesText(_player.lives);
         
-        UpdateAmmoText(_player.magazineAmmo, _player.remainingAmmo);
+        UpdateAmmoText(_player.currentWeapon.ammo);
         UpdateScoreText(_generalManager.score);
         UpdateFreedText(_generalManager.remainingPrisoners, _generalManager.numofPrisoners);
-        UpdateWeaponImage(_player.weapon);
+        UpdateWeaponImages(_player.weapons, _player.currentWeapon);
     }
 
     public void UpdateLevelText(int level)
@@ -52,28 +52,23 @@ public class UIManagerScript : MonoBehaviour
     public void UpdateHealthImage(int health) {
         healthImage.fillAmount = health/100f;
     }
-    public void UpdateAmmoText(int magazineAmmo, int remainingAmmo) {
-        if (magazineAmmo >= 0 && remainingAmmo >= 0)
-        {
-            ammoText.text = "Ammo: " + remainingAmmo;
-        }
-        else
-        {
-            ammoText.text = magazineAmmo + " / " + remainingAmmo;
-        }
+    public void UpdateAmmoText(int ammo) {
+        ammoText.text = "Ammo: " + ammo;
     }
 
-    public void UpdateWeaponImage(TagList.weaponType weapon) {
-        switch (weapon)
+    public void UpdateWeaponImages(Weapon[] weapons, Weapon currentWeapon) {
+
+        for (int i = 0; i < weapons.Length; i++)
         {
-            case TagList.weaponType.LaserSword:
-                primaryWeaponImage.sprite = weaponSprites[0];
-                secondayWeaponImage.sprite = weaponSprites[1];
-                break;
-            case TagList.weaponType.RayGun:
-                primaryWeaponImage.sprite = weaponSprites[1];
-                secondayWeaponImage.sprite = weaponSprites[0];
-                break;
+            //highlight selected weapon
+            weaponFrames[i].color = Color.white;
+            if (weapons[i].Equals(currentWeapon))
+            {
+                weaponFrames[i].color = Color.gray;
+            }
+
+            //fill images with weapins
+            weaponImages[i].sprite = weaponSprites[(int)weapons[i].weaponType];
         }
     }
 }

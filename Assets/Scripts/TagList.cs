@@ -20,18 +20,23 @@ public class TagList
     public const string enemyBulletLayer = "Enemy Bullet";
 
     public const string swordSwipe4 = "SwordSwipe4";
+    
+}
+public enum WeaponType
+{
+    LaserSword,
+    RayGun,
+    Sniper,
+    Punch
+}
 
-    //weapons
-    public enum weaponType
-    {
-        LaserSword,
-        RayGun
-    }
-    public enum directions
-    {
-        right,
-        up,
-        down,
-        left
+public class Weapon {
+    public WeaponType weaponType;
+    public int ammo;
+
+    public Weapon(WeaponType weaponType, int ammo = 0) {
+        this.weaponType = weaponType;
+        this.ammo = ammo;
     }
 }
+

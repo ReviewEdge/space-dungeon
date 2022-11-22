@@ -60,8 +60,8 @@ public class GeneralManagerScript : MonoBehaviour
         if (SceneManager.sceneCountInBuildSettings > level + 1)
         {
             PlayerPrefs.SetInt("Score", score);
-            PlayerPrefs.SetInt("Weapon", (int)Player.weapon);
-            PlayerPrefs.SetInt("Ammo", Player.remainingAmmo);
+/*            PlayerPrefs.SetInt("Weapon", (int)Player.weapon);
+            PlayerPrefs.SetInt("Ammo", Player.remainingAmmo);*/
             PlayerPrefs.SetInt("Health", Player.health);
             SceneManager.LoadScene("Level" + (level + 1));
         }
