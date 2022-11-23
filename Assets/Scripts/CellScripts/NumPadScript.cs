@@ -46,7 +46,7 @@ public class NumPadScript : MonoBehaviour
     }
 
     public void StartHack() {
-        if (_isHacking) {
+        if (_isHacking && this.enabled) {
             return;
         }
 
@@ -69,6 +69,7 @@ public class NumPadScript : MonoBehaviour
         _generalManager.IncrementScore(1000);
         _generalManager.FreePrisoner();
         prisoner.Freed();
+        _popupText.enabled = false;
         this.enabled = false;
     }
 
@@ -85,6 +86,7 @@ public class NumPadScript : MonoBehaviour
         if (collision.tag == TagList.playerTag)
         {
             _popupText.enabled = false;
+            _isHacking = false;
         }
     }
 }
