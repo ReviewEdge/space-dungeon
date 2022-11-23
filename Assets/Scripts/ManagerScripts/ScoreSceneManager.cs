@@ -42,7 +42,6 @@ public class ScoreSceneManager : MonoBehaviour
         _audioSource.PlayOneShot(_clickSound);
         //deletes all stored data about that run, still saving HighScore
         PlayerPrefs.DeleteKey("Score");
-        PlayerPrefs.DeleteKey("Gamemode");
         SceneManager.LoadScene("TitleScene");
     }
 

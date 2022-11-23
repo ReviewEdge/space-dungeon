@@ -10,7 +10,8 @@ public class UIManagerScript : MonoBehaviour
     private GeneralManagerScript _generalManager;
     public Text levelText;
     public Text scoreText;
-    public Text freedText;
+    public Text livesText;
+    public Text prisonersText;
     public Image healthImage;
     public Text ammoText;
     public Image[] weaponFrames;
@@ -28,12 +29,13 @@ public class UIManagerScript : MonoBehaviour
     void Update()
     {
         UpdateHealthImage(_player.health);
-        // UpdateLivesText(_player.lives);
-        
-        UpdateAmmoText(_player.currentWeapon.ammo);
+        UpdatePlayerPrisonerText(_generalManager.playerLives);
+        UpdatePrisonerText(_generalManager.remainingPrisoners, _generalManager.numofPrisoners);
         UpdateScoreText(_generalManager.score);
-        UpdateFreedText(_generalManager.remainingPrisoners, _generalManager.numofPrisoners);
-        UpdateWeaponImages(_player.weapons, _player.currentWeapon);
+        if (_player.currentWeapon != null) {
+            UpdateAmmoText(_player.currentWeapon.ammo);
+            UpdateWeaponImages(_player.weapons, _player.currentWeapon);
+        }
     }
 
     public void UpdateLevelText(int level)
@@ -44,10 +46,13 @@ public class UIManagerScript : MonoBehaviour
     {
         scoreText.text = "Score: " + score;
     }
-    public void UpdateFreedText(int remainingPrisoners, int totalPrisoners)
+    public void UpdatePrisonerText(int remainingPrisoners, int numofPrisoners) 
     {
-        int numofRescuedPrisoners = totalPrisoners - remainingPrisoners;
-        freedText.text = numofRescuedPrisoners + " out of " + totalPrisoners + " rescued";
+        prisonersText.text = numofPrisoners - remainingPrisoners + " out of " + numofPrisoners + " rescued";
+    }
+    public void UpdatePlayerPrisonerText(int playerLives)
+    {
+        livesText.text = "Lives: " + playerLives;
     }
     public void UpdateHealthImage(int health) {
         healthImage.fillAmount = health/100f;

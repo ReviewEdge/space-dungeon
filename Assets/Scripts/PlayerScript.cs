@@ -28,7 +28,7 @@ public class PlayerScript : MonoBehaviour
     public float roll; //roll distance
     const int maxMagSize = 30;
 
-    public Weapon[] weapons = {new Weapon(WeaponType.LaserSword), new Weapon(WeaponType.LaserSword), new Weapon(WeaponType.LaserSword)};
+    public Weapon[] weapons= {null,null,null};
     public Weapon currentWeapon;
 
     Vector2 direction = Vector2.zero;
@@ -44,37 +44,44 @@ public class PlayerScript : MonoBehaviour
         _laserSword = GetComponent<LaserSwordScript>();
         _generalManager = FindObjectOfType<GeneralManagerScript>();
         _audioSource = GetComponent<AudioSource>();
-        _isDead = false;
         _transform = GetComponent<Transform>();
         _walkingAnim = GetComponent<Animator>();
-        currentWeapon = weapons[0];
 
-        LoadPrevData();
+        LoadPlayerData();
     }
 
     private void Update()
     {
-        //attack
-        if (Input.GetMouseButtonDown(0))
+        if (!_isDead)
         {
-            Attack();
-        }
+            //attack
+            if (Input.GetMouseButtonDown(0))
+            {
+                Attack();
+            }
 
-        //change weapon selection
-        if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            ChangeSelectedWeapon(0);
-        } else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            ChangeSelectedWeapon(1);
-        } else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            ChangeSelectedWeapon(2);
+            //change weapon selection
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                ChangeSelectedWeapon(0);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                ChangeSelectedWeapon(1);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                ChangeSelectedWeapon(2);
+            }
         }
     }
 
     void FixedUpdate()
     {
-        MovePlayer();
+        if (!_isDead)
+        {
+            MovePlayer();
+        }
     }
 
     private void MovePlayer()
@@ -154,7 +161,7 @@ public class PlayerScript : MonoBehaviour
     {
         health -= damage;
 
-        if (health <= 0) {
+        if (health <= 0 && !_isDead) {
             health = 0;
             PlayerDeath();
         }
@@ -221,11 +228,12 @@ public class PlayerScript : MonoBehaviour
     {
         _isDead = true;
 
-        _generalManager.GameOver();
+        StartCoroutine(_generalManager.GameOver());
     }
 
     public  void RespawnPlayer()
     {
+        _isDead = false;
         _rbody.position = new Vector2(0, 0);
         health = 100;
     }
@@ -242,33 +250,37 @@ public class PlayerScript : MonoBehaviour
         _SPEED = 5;
     }
 
-    private void LoadPrevData() {
-        /*int weapon = 0;
-        if (PlayerPrefs.HasKey("Weapon"))
-        {
-            weapon = PlayerPrefs.GetInt("Weapon");
-        }
-        switch (weapon)
-        {
-            case 0:
-                ChangeSelectedWeapon(WeaponType.LaserSword);
-                break;
-            case 1:
-                int ammo = -1;
-                if (PlayerPrefs.HasKey("Ammo"))
-                {
-                    ammo = PlayerPrefs.GetInt("Ammo");
-                }
-
-                ChangeSelectedWeapon(WeaponType.RayGun);
-                break;
-        }*/
-
+    private void LoadPlayerData()
+    {
         int health = 100;
         if (PlayerPrefs.HasKey("Health"))
         {
             health = PlayerPrefs.GetInt("Health");
         }
         this.health = health;
+
+        for (int i = 0; i < weapons.Length; i++)
+        {
+            int weaponEnumNumber = 0;
+            if (PlayerPrefs.HasKey("Weapon" + (i + 1)))
+            {
+                weaponEnumNumber = PlayerPrefs.GetInt("Weapon" + (i + 1));
+            }
+
+            int weaponAmmo = 0;
+            if (PlayerPrefs.HasKey("Ammo" + (i + 1)))
+            {
+                weaponAmmo = PlayerPrefs.GetInt("Ammo" + (i + 1));
+            }
+
+            this.weapons[i] = new Weapon((WeaponType)weaponEnumNumber, weaponAmmo);
+        }
+
+        int selectedWeaponIndex = 0;
+        if (PlayerPrefs.HasKey("selectedWeaponIndex"))
+        {
+            selectedWeaponIndex = PlayerPrefs.GetInt("selectedWeaponIndex");
+        }
+        this.currentWeapon = weapons[selectedWeaponIndex];
     }
 }

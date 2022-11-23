@@ -79,7 +79,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 10c52581af3693b4fad2c698f89d98b2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -145,11 +145,9 @@ MonoBehaviour:
   _isDead: 0
   _SPEED: 4
   moveSpeed: 1
-  magazineAmmo: 0
-  remainingAmmo: 0
+  roll: 0
   HealthPickupSound: {fileID: 8300000, guid: 589ca12a97efc334a92007b27c34038d, type: 3}
   WeaponPickupSound: {fileID: 8300000, guid: e556ecd68a6555b4f9a18b60d8947336, type: 3}
-  weapon: 0
 --- !u!114 &1030587192412474731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -439,7 +437,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 2fd396ce3ae253847b2c20c8815b00a7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -492,7 +490,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 782003246459835996, guid: f91c3a1c17f1e9e428b07fcf65170a36, type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 782003246459835998, guid: f91c3a1c17f1e9e428b07fcf65170a36, type: 3}
       propertyPath: m_RootOrder
