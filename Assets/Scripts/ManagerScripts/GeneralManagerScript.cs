@@ -1,8 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using TMPro.EditorUtilities;
-using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -61,7 +57,7 @@ public class GeneralManagerScript : MonoBehaviour
 
     public void LoadNextLevel() {
 
-        if (SceneManager.sceneCountInBuildSettings > level + 1)
+        if (!SceneManager.GetActiveScene().name.Equals("Level10"))
         {
             SavePlayerData(Player.weapons, Player.currentWeapon);
 
