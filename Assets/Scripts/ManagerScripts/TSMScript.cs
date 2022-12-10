@@ -32,19 +32,15 @@ public class TSMScript : MonoBehaviour
 
     }
 
-    public void onStartButtonClick(int gameModeIndex)
+    public void onStartButtonClick()
     {
         _audioSource.PlayOneShot(_buttonClickSound);
-        switch (gameModeIndex) {
-            case 0:
-                //standard hardcore mode
-                PlayerPrefs.SetInt("Gamemode", 0);
-                break;
-            case 1:
-                //explore mode
-                PlayerPrefs.SetInt("Gamemode", 1);
-                break;
-        }
         SceneManager.LoadScene("StoryScene");
+    }
+
+    public void onHowToPlayButtonClick() 
+    {
+        _audioSource.PlayOneShot(_buttonClickSound);
+        SceneManager.LoadScene("InstructionsScene");
     }
 }

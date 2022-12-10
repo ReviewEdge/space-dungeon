@@ -16,13 +16,14 @@ public class NumPadScript : MonoBehaviour
     private float _progressBarTime = 0;
     private AudioSource _audioSource;
     public AudioClip _deactivateSound;
+    bool _hasBeenHacked = false;
 
     // Start is called before the first frame update
     void Start()
     {
         _isHacking = false;
-        _popupText = GetComponentInChildren<MeshRenderer>();
         _canvas = GetComponentInChildren<Canvas>();
+        _popupText = GetComponentInChildren<MeshRenderer>();
         _generalManager = FindObjectOfType<GeneralManagerScript>();
         _audioSource = GetComponent<AudioSource>();
     }
@@ -46,7 +47,7 @@ public class NumPadScript : MonoBehaviour
     }
 
     public void StartHack() {
-        if (_isHacking && this.enabled) {
+        if (_isHacking || _hasBeenHacked) {
             return;
         }
 
@@ -70,7 +71,7 @@ public class NumPadScript : MonoBehaviour
         _generalManager.FreePrisoner();
         prisoner.Freed();
         _popupText.enabled = false;
-        this.enabled = false;
+        _hasBeenHacked = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
