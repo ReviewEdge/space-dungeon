@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8614545799647811858, guid: a4d82364c8982e449a5e1bd4c1b02daa, type: 3}
       propertyPath: m_Name
-      value: WallPrefab
+      value: 20WallPrefab Variant 1
       objectReference: {fileID: 0}
     - target: {fileID: 8956273381456746266, guid: a4d82364c8982e449a5e1bd4c1b02daa, type: 3}
       propertyPath: m_RootOrder

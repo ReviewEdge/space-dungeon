@@ -44,14 +44,16 @@ public class LaserSwordScript : MonoBehaviour
         Vector3 directionalVector = (aimingAt + (-_entityLocation.position)).normalized;
         
         Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(_entityLocation.position + directionalVector, .6f * _entityLocation.localScale.y, _foesLayer);
-        for (int i = 0; i < enemiesToDamage.Length; i++) {
+        for (int i = 0; i < enemiesToDamage.Length; i++)
+        {
+            int damage = _damage + Random.Range(-5, 6);
             if (enemiesToDamage[i].tag == TagList.enemyTag)
             {
-                enemiesToDamage[i].GetComponent<RobotGuardScript>().TakeDamage(_damage);
+                enemiesToDamage[i].GetComponent<RobotGuardScript>().TakeDamage(damage);
             }
             else if (enemiesToDamage[i].tag == TagList.playerTag)
             {
-                enemiesToDamage[i].GetComponent<PlayerScript>().TakeDamage(_damage);
+                enemiesToDamage[i].GetComponent<PlayerScript>().TakeDamage(damage);
             }
         }
 
