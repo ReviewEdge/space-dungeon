@@ -14,6 +14,8 @@ public class GeneralManagerScript : MonoBehaviour
     public int score;
     public GameObject _enemyExplosionPrefab;
     public int playerLives = 0;
+    public GameObject pauseMenu;
+    public bool gamePaused = false;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +33,15 @@ public class GeneralManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            if (gamePaused)
+            {
+                UnPauseGame();
+            } else
+            {
+                PauseGame();
+            }
+        }
     }
 
     public void SetPrisoners(int prisoners) {
@@ -130,10 +140,9 @@ public class GeneralManagerScript : MonoBehaviour
                 selectedWeaponIndex = i;
             }
             PlayerPrefs.SetInt("Weapon" + (i + 1), (int)weapons[i].weaponType);
-            PlayerPrefs.SetInt("Ammo" + (i+1), (int)weapons[i].weaponType);
+            PlayerPrefs.SetInt("Ammo" + (i+1), weapons[i].ammo);
         }
         PlayerPrefs.SetInt("selectedWeaponIndex", selectedWeaponIndex);
-        print(selectedWeaponIndex);
     }
 
     private void LoadPlayerData()
@@ -169,5 +178,32 @@ public class GeneralManagerScript : MonoBehaviour
         }
 
         return highScore;
+    }
+
+    public void PauseGame() {
+        Time.timeScale = 0;
+        pauseMenu.SetActive(true);
+        gamePaused = true;
+    }
+
+    public void UnPauseGame() {
+        Time.timeScale = 1;
+        pauseMenu.SetActive(false);
+        gamePaused = false;
+    }
+
+    public void LoadMenuScene()
+    {
+        ClearPlayerData();
+        PlayerPrefs.DeleteKey("Score");
+        Time.timeScale = 1;
+
+        SceneManager.LoadScene("TitleScene");
+    }
+
+    public void QuitGame() { 
+        ClearPlayerData();
+        PlayerPrefs.DeleteKey("Score");
+        Application.Quit();
     }
 }
