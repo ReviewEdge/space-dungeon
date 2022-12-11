@@ -52,7 +52,7 @@ public class PlayerScript : MonoBehaviour
 
     private void Update()
     {
-        if (!_isDead)
+        if (!_isDead && !_generalManager.gamePaused)
         {
             //attack
             if (Input.GetMouseButtonDown(0))
@@ -73,6 +73,10 @@ public class PlayerScript : MonoBehaviour
             {
                 ChangeSelectedWeapon(2);
             }
+        }
+        else {
+            //stop player movement
+            _rbody.velocity = new Vector2(0, 0);
         }
     }
 
@@ -273,7 +277,7 @@ public class PlayerScript : MonoBehaviour
                 weaponAmmo = PlayerPrefs.GetInt("Ammo" + (i + 1));
             }
 
-            this.weapons[i] = new Weapon((WeaponType)weaponEnumNumber, weaponAmmo);
+            weapons[i] = new Weapon((WeaponType)weaponEnumNumber, weaponAmmo);
         }
 
         int selectedWeaponIndex = 0;
@@ -281,6 +285,6 @@ public class PlayerScript : MonoBehaviour
         {
             selectedWeaponIndex = PlayerPrefs.GetInt("selectedWeaponIndex");
         }
-        this.currentWeapon = weapons[selectedWeaponIndex];
+        ChangeSelectedWeapon(selectedWeaponIndex);
     }
 }

@@ -8,18 +8,25 @@ public class LookAtScript : MonoBehaviour
     Camera _mainCamera;
     Transform _transform;
     SpriteRenderer _spriteRenderer;
+    PlayerScript _player;
+    GeneralManagerScript _generalManager;
     // Start is called before the first frame update
     void Start()
     {
         _mainCamera = Camera.main;
         _transform = transform;
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _player = FindObjectOfType<PlayerScript>();
+        _generalManager = FindObjectOfType<GeneralManagerScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        LookAt();
+        if (!_player._isDead && !_generalManager.gamePaused)
+        {
+            LookAt();
+        }
     }
 
     private void LookAt() {

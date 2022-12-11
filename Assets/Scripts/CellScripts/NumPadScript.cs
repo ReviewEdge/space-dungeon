@@ -38,7 +38,7 @@ public class NumPadScript : MonoBehaviour
             _audioSource.Stop();
         }
         if (_isHacking) {
-            _progressBar.fillAmount = _progressBarTime/unlockTime;
+            _progressBar.fillAmount = _progressBarTime / unlockTime;
             _progressBarTime += Time.deltaTime;
             if (_progressBarTime >= unlockTime) {
                 OnFinishHack();
@@ -58,7 +58,7 @@ public class NumPadScript : MonoBehaviour
 
     private void OnFinishHack()
     {
-        if (!_isHacking)
+        if (!_isHacking || _hasBeenHacked)
         {
             return;
         }
