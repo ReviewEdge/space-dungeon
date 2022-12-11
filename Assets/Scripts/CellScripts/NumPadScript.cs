@@ -76,7 +76,7 @@ public class NumPadScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == TagList.playerTag && this.enabled) 
+        if (collision.tag == TagList.playerTag && !_hasBeenHacked) 
         {
             _popupText.enabled = true;
         }

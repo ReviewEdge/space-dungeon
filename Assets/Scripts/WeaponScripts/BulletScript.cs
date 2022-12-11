@@ -8,7 +8,7 @@ public class BulletScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _damage = 20;
+        SetDamage(20);
     }
 
     // Update is called once per frame
@@ -36,5 +36,6 @@ public class BulletScript : MonoBehaviour
 
     public void SetDamage(int damage) {
         _damage = damage;
+        _damage += Random.Range(-5, 6);
     }
 }
