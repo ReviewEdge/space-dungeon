@@ -195,8 +195,9 @@ MonoBehaviour:
     m_LineSpacing: 1.5
   m_Text: "Goal:\tRescue fellow prisoners and escape the alien prison ship alive\nLevel
     Progression:\tOnce you have rescued your fellow prisoners you \n\t\t\t\t\t\t\t\tmay
-    enter the door to go to the next level\nMovement:\tWASD \nAttack:\tLeft mouse
-    button\nAiming:\tMouse cursor\nSwitching Weapons:\tNumber Keys 1, 2, and 3"
+    enter the door to go to the next level\n\nMovement:\t\t\t\t\t    WASD \nAttack:\t\t\t\t\t\t\t   
+    Left mouse button\nAiming:\t\t\t\t\t\t\tMouse cursor\nSwitching Weapons:\t\tNumber
+    Keys 1, 2, and 3"
 --- !u!222 &318230430
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -903,7 +904,7 @@ GameObject:
   - component: {fileID: 2042079188}
   - component: {fileID: 2042079187}
   m_Layer: 5
-  m_Name: Intructions
+  m_Name: HowToPlayText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

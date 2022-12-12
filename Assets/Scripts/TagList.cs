@@ -20,6 +20,7 @@ public class TagList
     public const string enemyBulletLayer = "Enemy Bullet";
 
     public const string swordSwipe4 = "SwordSwipe4";
+    public const string finalLevel = "Level11";
     
 }
 public enum WeaponType

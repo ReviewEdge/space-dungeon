@@ -51,8 +51,9 @@ public class GeneralManagerScript : MonoBehaviour
         remainingPrisoners--;
         playerLives++;
 
-        if (remainingPrisoners == 0) {
-            UnlockDoor();
+        if (remainingPrisoners == 0)
+        {
+            door.Open();
         }
     }
 
@@ -60,29 +61,22 @@ public class GeneralManagerScript : MonoBehaviour
         score += points;
     }
 
-    public void UnlockDoor() 
-    {
-        door.Open();
-    }
-
     public void LoadNextLevel() {
+        SavePlayerData(Player.weapons, Player.currentWeapon);
 
-        if (!SceneManager.GetActiveScene().name.Equals("Level10"))
-        {
-            SavePlayerData(Player.weapons, Player.currentWeapon);
-
-            SceneManager.LoadScene("Level" + (level + 1));
-        }
-        else 
-        {
-            LoadScoreScene();
-        }
+        SceneManager.LoadScene("Level" + (level + 1));
     }
 
     public void EnemyDeath(Vector3 spot)
     {
         GameObject enemyDeath = Instantiate(_enemyExplosionPrefab, spot, Quaternion.identity);
         Destroy(enemyDeath, 1);
+    }
+
+    public void Victory() {
+        /*yield return new WaitForSeconds(2);*/
+
+        LoadScoreScene();
     }
 
     public IEnumerator GameOver()

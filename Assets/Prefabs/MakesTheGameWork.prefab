@@ -1140,6 +1140,7 @@ MonoBehaviour:
   _enemyExplosionPrefab: {fileID: 4370606475505516139, guid: 627a56d17ed9fb74d98f6e93ec110807, type: 3}
   playerLives: 0
   pauseMenu: {fileID: 7376201015981016371}
+  gamePaused: 0
 --- !u!1 &3664488855867986181
 GameObject:
   m_ObjectHideFlags: 0
@@ -2078,8 +2079,8 @@ MonoBehaviour:
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Prisoners rescued
 --- !u!1 &8934195704010255660
