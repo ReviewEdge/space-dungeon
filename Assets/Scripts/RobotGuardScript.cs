@@ -100,9 +100,6 @@ public class RobotGuardScript : MonoBehaviour
             Die();
         }
         StartCoroutine(ColorFlash(Color.red, 0.075f));
-
-
-        print(_health); //delete me
     }
 
     IEnumerator ColorFlash(Color32 flashColor, float flashTime)
