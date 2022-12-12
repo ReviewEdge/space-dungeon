@@ -40,6 +40,7 @@ public class PlayerScript : MonoBehaviour
     public AudioClip HealthPickupSound;
     public AudioClip WeaponPickupSound;
     public AudioClip PlayerDeathSound;
+    public AudioClip TakeDamageSound;
 
     void Start()
     {
@@ -188,14 +189,18 @@ public class PlayerScript : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
+        if(!_isDead)
+        {
+            health -= damage;
 
-        if (health <= 0 && !_isDead) {
-            health = 0;
-            PlayerDeath();
+            if (health <= 0 && !_isDead) {
+                health = 0;
+                PlayerDeath();
+            }
+
+            _audioSource.PlayOneShot(TakeDamageSound, 2);
+            StartCoroutine(AnimationColorFlash(Color.red, 0.1f));
         }
-
-        StartCoroutine(AnimationColorFlash(Color.red, 0.1f));
     }
 
     public void ChangeSelectedWeapon(int weaponIndex) {
