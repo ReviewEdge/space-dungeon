@@ -13,6 +13,7 @@ public class RobotGuardScript : MonoBehaviour
     LaserSwordScript _laserSword;
     public GameObject _laserSwordDropPrefab;
     public GameObject _rayGunDropPrefab;
+    public GameObject _sniperDropPrefab;
     public GameObject _healthPackDropPrefab;
     public GameObject _speedUpDropPrefab;
     [SerializeField] WeaponType weapon;
@@ -49,6 +50,9 @@ public class RobotGuardScript : MonoBehaviour
             case WeaponType.RayGun:
                 _rayGun.ShootRayGun(target.position);
                 break;
+            case WeaponType.Sniper:
+                _rayGun.ShootRayGun(target.position);
+                break;
         }
     }
 
@@ -71,6 +75,10 @@ public class RobotGuardScript : MonoBehaviour
             {
                 Instantiate(_laserSwordDropPrefab, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
             }
+            if (WeaponType.Sniper == weapon)
+            {
+                Instantiate(_sniperDropPrefab, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+            }
             else if (WeaponType.RayGun == weapon)
             {
                 Instantiate(_rayGunDropPrefab, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
@@ -87,11 +95,14 @@ public class RobotGuardScript : MonoBehaviour
         GameObject floatingDamageText = Instantiate(_floatingTextDamagePrefab, _rbody.position, Quaternion.identity);
         floatingDamageText.GetComponentInChildren<TextMesh>().text = "-" + damage;
         _generalManager.IncrementScore(damage);
-        StartCoroutine(ColorFlash(Color.red, 0.075f));
         if (_health <= 0)
         {
             Die();
         }
+        StartCoroutine(ColorFlash(Color.red, 0.075f));
+
+
+        print(_health); //delete me
     }
 
     IEnumerator ColorFlash(Color32 flashColor, float flashTime)

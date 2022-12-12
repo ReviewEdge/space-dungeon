@@ -59,6 +59,10 @@ PrefabInstance:
       propertyPath: attackSpeed
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1491508084977974494, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
+      propertyPath: _bulletSpeed
+      value: 400
+      objectReference: {fileID: 0}
     - target: {fileID: 5301700170056371205, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
       propertyPath: m_Name
       value: R.RapidRobotGuardPrefab (1) Variant
