@@ -373,7 +373,7 @@ MonoBehaviour:
   weaponSprites:
   - {fileID: 21300000, guid: 163c9c29f3fae5f428d743324ed61300, type: 3}
   - {fileID: 21300000, guid: 62567436537d80046ad143699d0355d5, type: 3}
-  - {fileID: 7482667652216324306, guid: dcb12f6bf73f71a4690b91fc9a9d12d0, type: 3}
+  - {fileID: 21300000, guid: d8cb8053a2e2f814b99fb771d75a5ba2, type: 3}
   - {fileID: 7482667652216324306, guid: dcb12f6bf73f71a4690b91fc9a9d12d0, type: 3}
 --- !u!1 &3491361565877914824
 GameObject:
@@ -1140,6 +1140,7 @@ MonoBehaviour:
   _enemyExplosionPrefab: {fileID: 4370606475505516139, guid: 627a56d17ed9fb74d98f6e93ec110807, type: 3}
   playerLives: 0
   pauseMenu: {fileID: 7376201015981016371}
+  gamePaused: 0
 --- !u!1 &3664488855867986181
 GameObject:
   m_ObjectHideFlags: 0

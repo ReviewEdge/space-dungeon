@@ -66,13 +66,13 @@ public class UIManagerScript : MonoBehaviour
         for (int i = 0; i < weapons.Length; i++)
         {
             //highlight selected weapon
-            weaponFrames[i].color = Color.white;
+            weaponFrames[i].color = Color.gray;
             if (weapons[i].Equals(currentWeapon))
             {
-                weaponFrames[i].color = Color.gray;
+                weaponFrames[i].color = Color.white;
             }
 
-            //fill images with weapins
+            //fill images with weapons
             weaponImages[i].sprite = weaponSprites[(int)weapons[i].weaponType];
         }
     }

@@ -2,23 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RayGunScript : MonoBehaviour
+public class SniperScript : MonoBehaviour
 {
     public BulletScript _bulletPrefab;
     private Transform _entityLocation;
     public int damage;
-    public float attackSpeed;
+    float attackSpeed;
     private float _timeBtwAttack;
-    public int _bulletSpeed;
+    private int _bulletSpeed;
     AudioSource _audioSource;
-    public AudioClip RayGunNoise;
-    public AudioClip ChargeUpNoise;
+    // get new sound here
+    // public AudioClip RayGunNoise;
 
     // Start is called before the first frame update
     void Start()
     {
         _entityLocation = transform;
+        _bulletSpeed = 1000;
         _audioSource = GetComponentInParent<AudioSource>();
+        attackSpeed = 2f;
     }
 
     // Update is called once per frame
@@ -32,12 +34,7 @@ public class RayGunScript : MonoBehaviour
             return;
         }
 
-        _audioSource.PlayOneShot(RayGunNoise);
-
-        // play charge up sound for sniper
-        if (ChargeUpNoise != null) {
-            _audioSource.PlayOneShot(ChargeUpNoise);
-        }
+        // _audioSource.PlayOneShot(RayGunNoise);
 
 
         Vector3 directionalVector = (aimingAt + (-_entityLocation.position)).normalized;

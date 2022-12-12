@@ -13,6 +13,7 @@ public class PlayerScript : MonoBehaviour
 {
     Rigidbody2D _rbody;
     RayGunScript _rayGun;
+    RayGunScript _sniper;
     LaserSwordScript _laserSword;
     Animator _swordSwipe;
     Animator _walkingAnim;
@@ -40,7 +41,13 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         _rbody = GetComponent<Rigidbody2D>();
-        _rayGun = GetComponentInChildren<RayGunScript>();
+
+        Transform rayGunTransform = gameObject.transform.Find("RayGun");
+        _rayGun = rayGunTransform.GetComponent<RayGunScript>();
+
+        Transform sniperTransform = gameObject.transform.Find("Sniper");
+        _sniper = sniperTransform.GetComponent<RayGunScript>();
+
         _laserSword = GetComponent<LaserSwordScript>();
         _generalManager = FindObjectOfType<GeneralManagerScript>();
         _audioSource = GetComponent<AudioSource>();
@@ -125,6 +132,13 @@ public class PlayerScript : MonoBehaviour
                     currentWeapon.ammo--;
                 }
                 break;
+            case WeaponType.Sniper:
+                if (currentWeapon.ammo > 0)
+                {
+                    _sniper.ShootRayGun(mouseLocation);
+                    currentWeapon.ammo--;
+                }
+                break;
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
@@ -154,6 +168,12 @@ public class PlayerScript : MonoBehaviour
                 _audioSource.PlayOneShot(WeaponPickupSound);
                 Destroy(collision.gameObject);
             }
+            if (collision.gameObject.tag.Equals(TagList.sniperDropTag))
+            {
+                WeaponPickup(WeaponType.Sniper, maxMagSize);
+                _audioSource.PlayOneShot(WeaponPickupSound);
+                Destroy(collision.gameObject);
+            }
             if (collision.gameObject.tag.Equals(TagList.NumPadTag)) {
                 collision.GetComponent<NumPadScript>().StartHack();
             }
@@ -180,15 +200,19 @@ public class PlayerScript : MonoBehaviour
         {
             case WeaponType.LaserSword:
                 _rayGun.GetComponent<SpriteRenderer>().enabled = false;
+                _sniper.GetComponent<SpriteRenderer>().enabled = false;
                 break;
             case WeaponType.RayGun:
                 _rayGun.GetComponent<SpriteRenderer>().enabled = true;
+                _sniper.GetComponent<SpriteRenderer>().enabled = false;
                 break;
             case WeaponType.Sniper:
-                //DO SOMETHING
+                _rayGun.GetComponent<SpriteRenderer>().enabled = false;
+                _sniper.GetComponent<SpriteRenderer>().enabled = true;
                 break;
             case WeaponType.Punch:
                 _rayGun.GetComponent<SpriteRenderer>().enabled = false;
+                _sniper.GetComponent<SpriteRenderer>().enabled = false;
                 break;
         }
     }

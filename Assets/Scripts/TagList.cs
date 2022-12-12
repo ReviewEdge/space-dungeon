@@ -12,6 +12,7 @@ public class TagList
     public const string healthpackTag = "Healthpack";
     public const string speedUpTag = "SpeedUp";
     public const string gunDropTag = "Gun";
+    public const string sniperDropTag = "Sniper";
     public const string swordDropTag = "Sword";
     public const string NumPadTag = "NumPad";
     public const string PrisonerTag = "Prisoner";
