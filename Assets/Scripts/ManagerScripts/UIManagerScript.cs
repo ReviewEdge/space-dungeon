@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
@@ -23,6 +25,10 @@ public class UIManagerScript : MonoBehaviour
         GameObject player = GameObject.FindWithTag(TagList.playerTag);
         _player = player.GetComponent<PlayerScript>();
         _generalManager = FindObjectOfType<GeneralManagerScript>();
+        if (SceneManager.GetActiveScene().name.Equals(TagList.finalLevel))
+        {
+            prisonersText.text = "Escape to the Ship!";
+        }
     }
 
     // Update is called once per frame
@@ -30,7 +36,10 @@ public class UIManagerScript : MonoBehaviour
     {
         UpdateHealthImage(_player.health);
         UpdatePlayerPrisonerText(_generalManager.playerLives);
-        UpdatePrisonerText(_generalManager.remainingPrisoners, _generalManager.numofPrisoners);
+        if (!SceneManager.GetActiveScene().name.Equals(TagList.finalLevel))
+        {
+            UpdatePrisonerText(_generalManager.remainingPrisoners, _generalManager.numofPrisoners);
+        }
         UpdateScoreText(_generalManager.score);
         if (_player.currentWeapon != null) {
             UpdateAmmoText(_player.currentWeapon.ammo);
