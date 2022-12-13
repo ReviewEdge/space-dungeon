@@ -2578,7 +2578,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1880152680}
   - component: {fileID: 1880152679}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: floorTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}

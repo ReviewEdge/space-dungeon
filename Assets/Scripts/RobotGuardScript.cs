@@ -8,7 +8,8 @@ public class RobotGuardScript : MonoBehaviour
     Rigidbody2D _rbody;
     public int _health;
     public float _speed;
-    public GameObject _player;
+    PlayerScript _player;
+    public Transform _playerTransform;
     RayGunScript _rayGun;
     LaserSwordScript _laserSword;
     public GameObject _laserSwordDropPrefab;
@@ -21,6 +22,10 @@ public class RobotGuardScript : MonoBehaviour
     GeneralManagerScript _generalManager;
     AudioSource _audioSource;
     public AudioClip DeathNoise;
+    public LayerMask layerMask;
+    public float _chaseTime;
+    float _lastSpotted;
+
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +33,8 @@ public class RobotGuardScript : MonoBehaviour
         _rbody = gameObject.GetComponent<Rigidbody2D>();
         _rayGun = GetComponent<RayGunScript>();
         _laserSword = GetComponent<LaserSwordScript>();
-        _player = GameObject.FindWithTag(TagList.playerTag);
+        _player = GameObject.FindWithTag(TagList.playerTag).GetComponent<PlayerScript>();
+        _playerTransform = GameObject.FindWithTag(TagList.playerTag).GetComponent<Transform>();
         _generalManager = FindObjectOfType<GeneralManagerScript>();
         _audioSource = GetComponent<AudioSource>();
     }
@@ -36,24 +42,55 @@ public class RobotGuardScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Transform target = _player.transform;
-        transform.position = Vector2.MoveTowards(transform.position, target.position, _speed * Time.deltaTime);
-
-        
+        if ((HasLineOfSight() || _lastSpotted > 0) && !_player._isDead) {
+            Move();
+            Attack();
+        }
+        _lastSpotted -= Time.deltaTime;
+    }
+    void Move()
+    {
         switch (weapon)
         {
             case WeaponType.LaserSword:
-                if ((_rbody.position.x - target.position.x) < 1 && (_rbody.position.y - target.position.y) < 1) {
-                    _laserSword.SwingLaserSword(target.position);
+                transform.position = Vector2.MoveTowards(transform.position, _playerTransform.position, _speed * Time.deltaTime);
+                break;
+            case WeaponType.RayGun:
+                transform.position = Vector2.MoveTowards(transform.position, _playerTransform.position, _speed * Time.deltaTime);
+                break;
+            case WeaponType.Sniper:
+                //stand still and shoot
+                break;
+        }
+    }
+
+    void Attack()
+    {
+        switch (weapon)
+        {
+            case WeaponType.LaserSword:
+                if ((_rbody.position.x - _playerTransform.position.x) < 1 && (_rbody.position.y - _playerTransform.position.y) < 1)
+                {
+                    _laserSword.SwingLaserSword(_playerTransform.position);
                 }
                 break;
             case WeaponType.RayGun:
-                _rayGun.ShootRayGun(target.position);
+                _rayGun.ShootRayGun(_playerTransform.position);
                 break;
             case WeaponType.Sniper:
-                _rayGun.ShootRayGun(target.position);
+                _rayGun.ShootRayGun(_playerTransform.position);
                 break;
         }
+    }
+
+    public bool HasLineOfSight()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(_rbody.position, _playerTransform.position - transform.position, Mathf.Infinity, layerMask);
+        if (hit.collider.tag.Equals(TagList.playerTag)) { 
+            _lastSpotted = _chaseTime;
+            return true;
+        }
+        return false;
     }
 
     void Die()
@@ -71,20 +108,19 @@ public class RobotGuardScript : MonoBehaviour
             Instantiate(_speedUpDropPrefab, gameObject.transform.position, Quaternion.identity);
         } else
         {
-            if (WeaponType.LaserSword == weapon)
+            switch (weapon)
             {
-                Instantiate(_laserSwordDropPrefab, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
-            }
-            if (WeaponType.Sniper == weapon)
-            {
-                Instantiate(_sniperDropPrefab, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
-            }
-            else if (WeaponType.RayGun == weapon)
-            {
-                Instantiate(_rayGunDropPrefab, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+                case WeaponType.LaserSword:
+                    Instantiate(_laserSwordDropPrefab, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+                    break;
+                case WeaponType.RayGun:
+                    Instantiate(_rayGunDropPrefab, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+                    break;
+                case WeaponType.Sniper:
+                    Instantiate(_sniperDropPrefab, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+                    break;
             }
         }
-
 
         _generalManager.IncrementScore(50);
         Destroy(gameObject);
@@ -100,9 +136,6 @@ public class RobotGuardScript : MonoBehaviour
             Die();
         }
         StartCoroutine(ColorFlash(Color.red, 0.075f));
-
-
-        print(_health); //delete me
     }
 
     IEnumerator ColorFlash(Color32 flashColor, float flashTime)

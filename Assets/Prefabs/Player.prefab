@@ -263,6 +263,7 @@ MonoBehaviour:
   roll: 0
   HealthPickupSound: {fileID: 8300000, guid: 589ca12a97efc334a92007b27c34038d, type: 3}
   WeaponPickupSound: {fileID: 8300000, guid: e556ecd68a6555b4f9a18b60d8947336, type: 3}
+  EmptyMagSound: {fileID: 8300000, guid: 0822256d07411774b93b592f5551ed55, type: 3}
 --- !u!114 &1030587192412474731
 MonoBehaviour:
   m_ObjectHideFlags: 0

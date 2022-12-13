@@ -344,7 +344,7 @@ GameObject:
   m_Component:
   - component: {fileID: 98683742}
   - component: {fileID: 98683741}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: floorTile (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -747,7 +747,7 @@ GameObject:
   m_Component:
   - component: {fileID: 270604681}
   - component: {fileID: 270604680}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: floorTile (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1236,7 +1236,7 @@ GameObject:
   m_Component:
   - component: {fileID: 517558914}
   - component: {fileID: 517558913}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: floorTile (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2173,7 +2173,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1144313247}
   - component: {fileID: 1144313246}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: floorTile (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2735,7 +2735,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1465934986}
   - component: {fileID: 1465934985}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: floorTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -886,7 +886,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1683063455}
   - component: {fileID: 1683063454}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: floorTile (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

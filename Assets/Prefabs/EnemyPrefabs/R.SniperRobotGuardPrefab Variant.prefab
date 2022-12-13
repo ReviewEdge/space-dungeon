@@ -75,6 +75,10 @@ PrefabInstance:
       propertyPath: _bulletSpeed
       value: 900
       objectReference: {fileID: 0}
+    - target: {fileID: 1491508084977974494, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
+      propertyPath: ChargeUpNoise
+      value: 
+      objectReference: {fileID: 8300000, guid: 3fb775938c01f944fbcb979a4d80f128, type: 3}
     - target: {fileID: 5301700170056371205, guid: e8748c0d8a34f77438cd3ae2ce6bae45, type: 3}
       propertyPath: m_Name
       value: R.SniperRobotGuardPrefab Variant

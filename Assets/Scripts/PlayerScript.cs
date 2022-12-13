@@ -37,6 +37,7 @@ public class PlayerScript : MonoBehaviour
     AudioSource _audioSource;
     public AudioClip HealthPickupSound;
     public AudioClip WeaponPickupSound;
+    public AudioClip EmptyMagSound;
 
     void Start()
     {
@@ -130,6 +131,9 @@ public class PlayerScript : MonoBehaviour
                 {
                     _rayGun.ShootRayGun(mouseLocation);
                     currentWeapon.ammo--;
+                }
+                else {
+                    _audioSource.PlayOneShot(EmptyMagSound);
                 }
                 break;
             case WeaponType.Sniper:
