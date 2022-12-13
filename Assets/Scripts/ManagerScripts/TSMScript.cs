@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class TSMScript : MonoBehaviour
 {
     public Text _highScoreText;
-    int oldVal = 0;
     AudioSource _audioSource;
     public AudioClip _buttonClickSound;
 
