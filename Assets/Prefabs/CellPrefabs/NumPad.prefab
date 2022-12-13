@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5877069338100173042}
   - component: {fileID: 5982552763564734370}
   - component: {fileID: 1132545819759386608}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: ProgressBarBackround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 6246530962628919801}
   - component: {fileID: 2891248196449524949}
   - component: {fileID: 5695042710129730903}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: NumPad
   m_TagString: NumPad
   m_Icon: {fileID: 0}
@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 6172597101004404853}
   - component: {fileID: 806241851860898965}
   - component: {fileID: 5894418846822211178}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: ProgressBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -377,7 +377,7 @@ GameObject:
   - component: {fileID: 8990140636781791927}
   - component: {fileID: 1492532819065575670}
   - component: {fileID: 4007780895517900506}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: PopupText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -473,7 +473,7 @@ GameObject:
   - component: {fileID: 6082616269565190196}
   - component: {fileID: 8158332153822134395}
   - component: {fileID: 2206341998829745148}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
