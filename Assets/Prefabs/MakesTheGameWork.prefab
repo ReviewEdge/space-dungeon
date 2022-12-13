@@ -2278,6 +2278,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Square
       objectReference: {fileID: 0}
+    - target: {fileID: 3873487689315138871, guid: d6bcc62595978df4796a347da2c88900, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3873487689315138871, guid: d6bcc62595978df4796a347da2c88900, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3873487689315138871, guid: d6bcc62595978df4796a347da2c88900, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3873487689315138872, guid: d6bcc62595978df4796a347da2c88900, type: 3}
       propertyPath: m_SizeDelta.x
       value: 131.41917
