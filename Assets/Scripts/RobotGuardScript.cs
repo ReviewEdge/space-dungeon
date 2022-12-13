@@ -111,7 +111,8 @@ public class RobotGuardScript : MonoBehaviour
             switch (weapon)
             {
                 case WeaponType.LaserSword:
-                    Instantiate(_laserSwordDropPrefab, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+                    // don't drop anything
+                    // Instantiate(_laserSwordDropPrefab, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
                     break;
                 case WeaponType.RayGun:
                     Instantiate(_rayGunDropPrefab, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
