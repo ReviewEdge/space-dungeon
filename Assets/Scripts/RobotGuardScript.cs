@@ -25,6 +25,7 @@ public class RobotGuardScript : MonoBehaviour
     public LayerMask layerMask;
     public float _chaseTime;
     float _lastSpotted;
+    Animator _animator;
 
 
     // Start is called before the first frame update
@@ -37,6 +38,7 @@ public class RobotGuardScript : MonoBehaviour
         _playerTransform = GameObject.FindWithTag(TagList.playerTag).GetComponent<Transform>();
         _generalManager = FindObjectOfType<GeneralManagerScript>();
         _audioSource = GetComponent<AudioSource>();
+        _animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -66,6 +68,7 @@ public class RobotGuardScript : MonoBehaviour
 
     void Attack()
     {
+        _animator.SetBool("isAttacking", true);
         switch (weapon)
         {
             case WeaponType.LaserSword:
