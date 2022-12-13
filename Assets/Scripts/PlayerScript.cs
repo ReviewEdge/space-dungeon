@@ -40,9 +40,6 @@ public class PlayerScript : MonoBehaviour
     public AudioClip HealthPickupSound;
     public AudioClip WeaponPickupSound;
     public AudioClip PlayerDeathSound;
-
-
-
     public AudioClip EmptyMagSound;
 
     void Start()
