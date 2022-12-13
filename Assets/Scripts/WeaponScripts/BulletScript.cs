@@ -21,14 +21,16 @@ public class BulletScript : MonoBehaviour
         switch (collision.tag) {
             case TagList.enemyTag:
                 collision.GetComponent<RobotGuardScript>().TakeDamage(_damage);
+                Destroy(gameObject);
                 break;
             case TagList.playerTag:
                 collision.GetComponent<PlayerScript>().TakeDamage(_damage);
+                Destroy(gameObject);
                 break;
             case TagList.wallTag:
+                Destroy(gameObject);
                 break;
         }
-        Destroy(gameObject);
     }
 
     public void SetDamage(int damage) {

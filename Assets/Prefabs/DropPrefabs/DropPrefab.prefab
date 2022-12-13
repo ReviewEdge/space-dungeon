@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1118587338104089424}
   - component: {fileID: 4469323143476390203}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: DropPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 74995898389672711}
   - component: {fileID: 6660250858273446603}
   - component: {fileID: 8528940571862585966}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: PopupText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
