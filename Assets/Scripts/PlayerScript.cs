@@ -270,6 +270,8 @@ public class PlayerScript : MonoBehaviour
     {
         _isDead = true;
         _srender.enabled = false;
+        _rayGun.GetComponent<SpriteRenderer>().enabled = false;
+        _sniper.GetComponent<SpriteRenderer>().enabled = false;
         _audioSource.PlayOneShot(PlayerDeathSound);
         _generalManager.EnemyDeath(transform.position);
 
@@ -280,6 +282,7 @@ public class PlayerScript : MonoBehaviour
     {
         _isDead = false;
         _srender.enabled = true;
+        ChangeSelectedWeapon(0);
         _rbody.position = new Vector2(0, 0);
         health = 100;
     }
