@@ -36,16 +36,16 @@ EditorBuildSettings:
     path: Assets/Scenes/OfficialLevels/Level7.unity
     guid: 6d40829161b28f843960c554585e4445
   - enabled: 1
-    path: Assets/Scenes/OfficialLevels/Level8.unity
+    path: Assets/Scenes/OfficialLevels/Level9.unity
     guid: 5cffbeeda8420be4fb15c7c1e037c8c8
   - enabled: 1
-    path: Assets/Scenes/OfficialLevels/Level9.unity
+    path: Assets/Scenes/OfficialLevels/Level10.unity
     guid: dbd19aa705aeea44382084cff219ba6a
   - enabled: 1
-    path: Assets/Scenes/OfficialLevels/Level10.unity
+    path: Assets/Scenes/OfficialLevels/Level11.unity
     guid: f1a7c344af497c24d9eddbf47e99e0bb
   - enabled: 1
-    path: Assets/Scenes/OfficialLevels/Level11.unity
+    path: Assets/Scenes/OfficialLevels/Level12.unity
     guid: f7f279b66c5e75b4aaa2dbf5081cd207
   - enabled: 1
     path: Assets/Scenes/ScoreScene.unity
