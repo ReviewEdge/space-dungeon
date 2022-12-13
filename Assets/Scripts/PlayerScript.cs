@@ -32,11 +32,14 @@ public class PlayerScript : MonoBehaviour
     public Weapon[] weapons= {null,null,null};
     public Weapon currentWeapon;
 
+    SpriteRenderer _srender;
+
     Vector2 direction = Vector2.zero;
 
     AudioSource _audioSource;
     public AudioClip HealthPickupSound;
     public AudioClip WeaponPickupSound;
+    public AudioClip PlayerDeathSound;
 
 
 
@@ -45,6 +48,8 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         _rbody = GetComponent<Rigidbody2D>();
+
+        _srender = gameObject.GetComponent<SpriteRenderer>();
 
         Transform rayGunTransform = gameObject.transform.Find("RayGun");
         _rayGun = rayGunTransform.GetComponent<RayGunScript>();
@@ -262,6 +267,9 @@ public class PlayerScript : MonoBehaviour
     private void PlayerDeath()
     {
         _isDead = true;
+        _srender.enabled = false;
+        _audioSource.PlayOneShot(PlayerDeathSound);
+        _generalManager.EnemyDeath(transform.position);
 
         StartCoroutine(_generalManager.GameOver());
     }
@@ -269,6 +277,7 @@ public class PlayerScript : MonoBehaviour
     public  void RespawnPlayer()
     {
         _isDead = false;
+        _srender.enabled = true;
         _rbody.position = new Vector2(0, 0);
         health = 100;
     }
