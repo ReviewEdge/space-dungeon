@@ -27,7 +27,8 @@ public class PlayerScript : MonoBehaviour
     public float _SPEED = 5;
     public float moveSpeed; //speed var
     public float roll; //roll distance
-    const int maxMagSize = 30;
+    const int maxRayGunMagSize = 30;
+    const int maxSniperMagSize = 10;
 
     public Weapon[] weapons= {null,null,null};
     public Weapon currentWeapon;
@@ -174,13 +175,13 @@ public class PlayerScript : MonoBehaviour
             }
             if (collision.gameObject.tag.Equals(TagList.gunDropTag))
             {
-                WeaponPickup(WeaponType.RayGun, maxMagSize);
+                WeaponPickup(WeaponType.RayGun, maxRayGunMagSize);
                 _audioSource.PlayOneShot(WeaponPickupSound);
                 Destroy(collision.gameObject);
             }
             if (collision.gameObject.tag.Equals(TagList.sniperDropTag))
             {
-                WeaponPickup(WeaponType.Sniper, maxMagSize);
+                WeaponPickup(WeaponType.Sniper, maxSniperMagSize);
                 _audioSource.PlayOneShot(WeaponPickupSound);
                 Destroy(collision.gameObject);
             }
