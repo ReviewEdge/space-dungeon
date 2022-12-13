@@ -408,6 +408,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 591840178607077473, guid: dd086103966d2df4a8bd3a9686ef35c3, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 712369468123627648, guid: dd086103966d2df4a8bd3a9686ef35c3, type: 3}
+      propertyPath: m_MaskInteraction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 712369468123627661, guid: dd086103966d2df4a8bd3a9686ef35c3, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1271114617542192798, guid: dd086103966d2df4a8bd3a9686ef35c3, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -456,7 +468,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: MakesTheGameWork
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 712369467615079914, guid: dd086103966d2df4a8bd3a9686ef35c3, type: 3}
+    - {fileID: 712369467615079915, guid: dd086103966d2df4a8bd3a9686ef35c3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: dd086103966d2df4a8bd3a9686ef35c3, type: 3}
 --- !u!1001 &1062077903
 PrefabInstance:
