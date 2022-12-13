@@ -44,9 +44,13 @@ public class RobotGuardScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((HasLineOfSight() || _lastSpotted > 0) && !_player._isDead) {
+        if ((HasLineOfSight() || _lastSpotted > 0) && !_player._isDead)
+        {
             Move();
             Attack();
+        }
+        else {
+            _animator.SetBool("isAttacking", false);
         }
         _lastSpotted -= Time.deltaTime;
     }
