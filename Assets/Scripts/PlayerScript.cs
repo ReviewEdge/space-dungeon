@@ -37,6 +37,9 @@ public class PlayerScript : MonoBehaviour
     AudioSource _audioSource;
     public AudioClip HealthPickupSound;
     public AudioClip WeaponPickupSound;
+
+
+
     public AudioClip EmptyMagSound;
 
     void Start()
